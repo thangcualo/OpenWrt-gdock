@@ -66,24 +66,23 @@ jobs:
         cd openwrt && make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        
     - name: Build
       run: |
         cd openwrt
         make -j1 V=s
 
-    - name: Load custom configuration
+    - name: Re-Load custom configuration
       run: |
-        rm -rf openwrt/.config
-        rm -rf opemwrt/.tmp
-        cp ./G-DOCK/20191204.config openwrt/.config
+        rm -rf ./tmp && rm -rf .config
+        cp ./G-DOCK/20191205.config openwrt/.config
         cd openwrt
         make defconfig
         
     - name: Re-build
       run: |
         cd openwrt
-        echo -e "$(nproc) thread build."
-        make -j$(nproc) V=s
+        make -j1 V=s
         
     - name: Assemble artifact
       run: |
