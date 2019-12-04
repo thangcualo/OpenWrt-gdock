@@ -79,7 +79,7 @@ jobs:
         cd openwrt
         make defconfig
         
-     - name: Build
+    - name: Re-build
       run: |
         cd openwrt
         echo -e "$(nproc) thread build."
@@ -91,7 +91,7 @@ jobs:
         mkdir G-DOCK
         find ./bin -name "*sysupgrade.bin"  -type f  -exec mv {}   ./G-DOCK   \;
 
-    - name : Upload artifact1
+    - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
           name: G-DOCK
