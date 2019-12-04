@@ -58,7 +58,6 @@ jobs:
         chmod +x diy.sh
         ./diy.sh
         [ -e files ] && mv files openwrt/files
-        [ -e .config ] && mv .config openwrt
         cd openwrt
         make defconfig
     - name: Download package
