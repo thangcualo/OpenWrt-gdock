@@ -74,9 +74,9 @@ jobs:
 
     - name: Re-Load custom configuration
       run: |
-        rm -rf ./tmp && rm -rf .config
-        cp ./G-DOCK/2019120511.config openwrt/.config
         cd openwrt
+        rm -rf ./tmp && rm -rf .config
+        cp ../G-DOCK/2019120511.config .config
         make defconfig
         
     - name: Re-build
