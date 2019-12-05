@@ -47,4 +47,4 @@ sed -i '/exit 0/i\echo 0xDEADBEEF > /etc/config/google_fu_mode\n' package/lean/d
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
-cp ../G-DOCK/20191204.config .config
+cp ../G-DOCK/2019120519.config .config
