@@ -57,7 +57,6 @@ jobs:
       run: |
         chmod +x diy.sh
         ./diy.sh
-        cp ./G-DOCK/1.config openwrt/.config
         [ -e files ] && mv files openwrt/files
         cd openwrt
         make defconfig
@@ -70,20 +69,9 @@ jobs:
     - name: Build
       run: |
         cd openwrt
-        make -j1 V=s
+        echo -e "$(nproc) thread build."
+        make -j$(nproc) V=s
 
-    - name: Re-Load custom configuration
-      run: |
-        cd openwrt
-        rm -rf ./tmp && rm -rf .config
-        cp ../G-DOCK/2019120511.config .config
-        make defconfig
-        
-    - name: Re-build
-      run: |
-        cd openwrt
-        make -j1 V=s
-        
     - name: Assemble artifact
       run: |
         cd openwrt
