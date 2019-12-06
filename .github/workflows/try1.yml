@@ -59,6 +59,8 @@ jobs:
         ./diy.sh
         [ -e files ] && mv files openwrt/files
         cd openwrt
+        rm -rf .config
+        cp ../G-DOCK/nfs.config .config
         make defconfig
     - name: Download package
       run: |
@@ -81,5 +83,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-          name: G-DOCK
+          name: nfs
           path: openwrt/G-DOCK
