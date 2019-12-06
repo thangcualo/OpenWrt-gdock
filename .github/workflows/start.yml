@@ -65,10 +65,12 @@ jobs:
         cd openwrt && make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        
     - name: Build
       run: |
         cd openwrt
-        make -j1 V=s
+        echo -e "$(nproc) thread build."
+        make -j$(nproc) V=s
 
     - name: Assemble artifact
       run: |
@@ -76,7 +78,7 @@ jobs:
         mkdir G-DOCK
         find ./bin -name "*sysupgrade.bin"  -type f  -exec mv {}   ./G-DOCK   \;
 
-    - name : Upload artifact1
+    - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
           name: G-DOCK
