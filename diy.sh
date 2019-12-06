@@ -8,9 +8,9 @@
 #克隆源码
 git clone https://github.com/coolsnowwolf/lede openwrt
 cd openwrt
-#sed -i '$a src-git extra https://github.com/Andy2244/openwrt-extra.git' feeds.conf.default
+sed -i '$a src-git extra https://github.com/Andy2244/openwrt-extra.git' feeds.conf.default
 ./scripts/feeds update -a
-#./scripts/feeds install -f -p extra -a
+./scripts/feeds install -f -p extra -a
 ./scripts/feeds install -a
 #添加自定义插件
 git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
@@ -39,7 +39,6 @@ sed -i 's/OpenWrt/FK20100010/g' package/kernel/mac80211/files/lib/wifi/mac80211.
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
 #修改zzz-default-settings的配置
-#sed -i 's/samba.lua/samba4.lua/g' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\chmod 755 /etc/init.d/serverchan' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\chmod 755 /usr/bin/serverchan/serverchan' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\echo 0xDEADBEEF > /etc/config/google_fu_mode\n' package/lean/default-settings/files/zzz-default-settings
@@ -47,4 +46,4 @@ sed -i '/exit 0/i\echo 0xDEADBEEF > /etc/config/google_fu_mode\n' package/lean/d
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
-cp ../G-DOCK/2019120519.config .config
+cp ../G-DOCK/20191206.config .config
