@@ -1,0 +1,22 @@
+
+config globals
+	option workgroup 'WORKGROUP'
+	option description 'G-DOCK'
+
+config share
+	option read_only 'no'
+	option guest_ok 'yes'
+	option dir_mask '0777'
+	option browseable 'yes'
+	option name 'FK20100010'
+	option path '/mnt/sda'
+	option create_mask '0777'
+
+config share
+	option browseable 'yes'
+	option guest_ok 'yes'
+	option dir_mask '0777'
+	option name 'GDOCK'
+	option path '/mnt/mmcblk0p1/all'
+	option read_only 'no'
+	option create_mask '0777'
