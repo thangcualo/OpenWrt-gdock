@@ -83,5 +83,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-          name: G-DOCK
+          name: vpn
           path: openwrt/G-DOCK
