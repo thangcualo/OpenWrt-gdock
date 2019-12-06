@@ -18,6 +18,7 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-ser
 git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
 
 #删除自带的插件
+rm -rf feeds/extra/luci-app-cifsd
 rm -rf package/lean/luci-app-koolproxyR
 rm -rf package/lean/luci-app-serverchan
 rm -rf package/lean/luci-app-unblockmusic
