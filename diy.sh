@@ -20,6 +20,7 @@ git clone https://github.com/Ameykyl/luci-app-ssr-plus-jo package/luci-app-ssr-p
 git clone https://github.com/Ameykyl/my package/my
 
 #删除自带的插件
+rm -rf package/lean/luci-app-ssr-plus
 rm -rf feeds/extra/luci-app-cifsd
 rm -rf package/lean/luci-app-koolproxyR
 rm -rf package/lean/luci-app-serverchan
