@@ -8,9 +8,9 @@
 #克隆源码
 git clone https://github.com/coolsnowwolf/lede openwrt
 cd openwrt
-#sed -i '$a src-git extra https://github.com/Andy2244/openwrt-extra.git' feeds.conf.default
+sed -i '$a src-git extra https://github.com/Andy2244/openwrt-extra.git' feeds.conf.default
 ./scripts/feeds update -a
-#./scripts/feeds install -f -p extra -a
+./scripts/feeds install -f -p extra -a
 ./scripts/feeds install -a
 #添加自定义插件
 git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
@@ -21,7 +21,7 @@ git clone https://github.com/Ameykyl/my package/my
 
 #删除自带的插件
 rm -rf package/lean/luci-app-ssr-plus
-#rm -rf feeds/extra/luci-app-cifsd
+rm -rf feeds/extra/luci-app-samba4
 rm -rf package/lean/luci-app-koolproxyR
 rm -rf package/lean/luci-app-serverchan
 rm -rf package/lean/luci-app-unblockmusic
