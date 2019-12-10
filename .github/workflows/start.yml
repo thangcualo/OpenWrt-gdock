@@ -77,6 +77,8 @@ jobs:
         cd openwrt
         mkdir G-DOCK
         find ./bin -name "*sysupgrade.bin"  -type f  -exec mv {}   ./G-DOCK   \;
+        find ./bin -name "*config.*"  -type f  -exec mv {}   ./G-DOCK   \;
+        cp -f .config ./G-DOCK
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
