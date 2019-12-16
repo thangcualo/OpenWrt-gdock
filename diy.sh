@@ -16,7 +16,7 @@ sed -i '$a src-git extra https://github.com/Andy2244/openwrt-extra.git' feeds.co
 git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
-git clone https://github.com/Ameykyl/luci-app-ssr-plus-jo package/luci-app-ssr-plus-jo
+git clone https://github.com/Leo-Jo/luci-app-ssr-plus-jo.git package/luci-app-ssr-plus-jo
 git clone https://github.com/Ameykyl/my package/my
 
 #删除自带的插件
@@ -43,8 +43,9 @@ sed -i 's/OpenWrt/FK20100010/g' package/kernel/mac80211/files/lib/wifi/mac80211.
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
 #修改zzz-default-settings的配置
-sed -i '/exit 0/i\chmod 755 /etc/init.d/serverchan' package/lean/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\chmod 755 /usr/bin/serverchan/serverchan' package/lean/default-settings/files/zzz-default-settings
+sed -i 's/samba/samba4/g' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/exit 0/i\chmod 755 /etc/init.d/serverchan' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/exit 0/i\chmod 755 /usr/bin/serverchan/serverchan' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\echo 0xDEADBEEF > /etc/config/google_fu_mode\n' package/lean/default-settings/files/zzz-default-settings
 
 #修改banner
