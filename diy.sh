@@ -22,7 +22,7 @@ git clone https://github.com/Ameykyl/my package/my
 #删除自带的插件
 rm -rf package/lean/luci-app-ssr-plus
 #rm -rf feeds/extra/luci-app-samba4
-rm -rf feeds/extra/luci-app-cifsd
+#rm -rf feeds/extra/luci-app-cifsd
 #sed -i 's/cifsd-tools/cifsd-server/g' package/lean/luci-app-cifsd/Makefile
 rm -rf package/lean/luci-app-koolproxyR
 rm -rf package/lean/luci-app-serverchan
