@@ -48,6 +48,7 @@ sed -i 's/samba/samba4/g' package/lean/default-settings/files/zzz-default-settin
 #sed -i '/exit 0/i\chmod 755 /etc/init.d/serverchan' package/lean/default-settings/files/zzz-default-settings	
 #sed -i '/exit 0/i\chmod 755 /usr/bin/serverchan/serverchan' package/lean/default-settings/files/zzz-default-settings	
 sed -i '/exit 0/i\echo 0xDEADBEEF > /etc/config/google_fu_mode\n' package/lean/default-settings/files/zzz-default-settings
+#添加简易网盘
 sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash\n' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\ln -sv /mnt/sda /srv/webd/web/U盘\n' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡\n' package/lean/default-settings/files/zzz-default-settings
