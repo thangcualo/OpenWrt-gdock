@@ -16,8 +16,7 @@ sed -i '$a src-git extra https://github.com/Andy2244/openwrt-extra.git' feeds.co
 git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
-#git clone https://github.com/Leo-Jo/luci-app-ssr-plus-jo.git package/luci-app-ssr-plus-jo
-#git clone https://github.com/Ameykyl/my package/my
+git clone https://github.com/Lienol/openwrt-package.git package/openwrt-package
 
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
