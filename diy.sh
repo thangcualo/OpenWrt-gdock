@@ -25,8 +25,8 @@ sed -i 's/cifsd-tools/cifsd-server/g' package/lean/luci-app-cifsd/Makefile
 rm -rf package/lean/luci-app-koolproxyR
 rm -rf package/lean/luci-app-serverchan
 rm -rf package/lean/luci-app-unblockmusic
-rm -rf package/lean/qBittorrent/Makefile
-cp -f ../qb421 package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/Makefile
+#cp -f ../qb421 package/lean/qBittorrent/Makefile
 
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
