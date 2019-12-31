@@ -54,7 +54,6 @@ sed -i '/exit 0/i\echo 0xDEADBEEF > /etc/config/google_fu_mode\n' package/lean/d
 sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash\n' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\ln -sv /mnt/sda /srv/webd/web/U盘\n' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡\n' package/lean/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\rm -rf /usr/bin/v2ray' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/lean/default-settings/files/zzz-default-settings
 
 #修改banner
