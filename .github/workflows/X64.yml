@@ -93,7 +93,7 @@ jobs:
       run: |
         cd openwrt
         mkdir G-DOCK/X64
-        find ./bin -name "*sysupgrade.bin"  -type f  -exec mv {}   ./G-DOCK/X64   \;
+        find ./bin -name "*.vmdk"  -type f  -exec mv {}   ./G-DOCK/X64   \;
         find ./bin -name "*config.*"  -type f  -exec mv {}   ./G-DOCK/X64   \;
         cp -f .config ./G-DOCK/X64
         
