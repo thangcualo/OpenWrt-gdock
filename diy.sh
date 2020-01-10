@@ -21,7 +21,7 @@ git clone https://github.com/Lienol/openwrt-package.git package/openwrt-package
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
 rm -rf feeds/extra/luci-app-cifsd
-sed -i 's/cifsd-tools/cifsd-server/g' package/lean/luci-app-cifsd/Makefile
+sed -i 's/cifsd-tools/smbd-server/g' package/lean/luci-app-cifsd/Makefile
 rm -rf package/lean/luci-app-koolproxyR
 rm -rf package/lean/luci-app-serverchan
 rm -rf package/lean/luci-app-unblockmusic
