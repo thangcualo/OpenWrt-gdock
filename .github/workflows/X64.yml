@@ -59,8 +59,6 @@ jobs:
         ./diy.sh
         [ -e files ] && mv files openwrt/files
         cd openwrt
-        rm -rf .config
-        cp ../G-DOCK/vpn.config .config
         make defconfig
     - name: Download package
       run: |
@@ -79,9 +77,28 @@ jobs:
         cd openwrt
         mkdir G-DOCK
         find ./bin -name "*sysupgrade.bin"  -type f  -exec mv {}   ./G-DOCK   \;
+        find ./bin -name "*config.*"  -type f  -exec mv {}   ./G-DOCK   \;
+        cp -f .config ./G-DOCK
+        
+    - name: Build X64
+      run: |        
+        rm -rf openwrt/.config
+        [ -e X64.config ] && mv X64.config openwrt/.config
+        cd openwrt
+        make defconfig
+        echo -e "$(nproc) thread build."
+        make -j$(nproc) V=s
 
+    - name: Assemble artifact
+      run: |
+        cd openwrt
+        mkdir G-DOCK/X64
+        find ./bin -name "*sysupgrade.bin"  -type f  -exec mv {}   ./G-DOCK/X64   \;
+        find ./bin -name "*config.*"  -type f  -exec mv {}   ./G-DOCK/X64   \;
+        cp -f .config ./G-DOCK/X64
+        
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-          name: vpn
+          name: G-DOCK
           path: openwrt/G-DOCK
