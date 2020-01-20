@@ -29,6 +29,9 @@ rm -rf package/lean/qBittorrent/Makefile
 rm -rf package/lean/qBittorrent/patches
 cp -f ../qb421 package/lean/qBittorrent/Makefile
 
+改4.19内核
+sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
+
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
 ln -s ../../luci-app-flowoffload_ADGHome ./package/
