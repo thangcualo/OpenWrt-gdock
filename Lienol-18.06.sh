@@ -11,12 +11,6 @@ cd openwrt
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-#添加自定义插件
-git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-#删除自带的插件
-rm -rf package/lean/luci-app-koolproxyR
-rm -rf package/lean/luci-app-serverchan
 #修改qb版本为421
 #rm -rf package/lean/qBittorrent/Makefile
 #rm -rf package/lean/qBittorrent/patches
