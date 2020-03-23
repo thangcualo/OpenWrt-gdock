@@ -55,8 +55,8 @@ jobs:
 
     - name: Load custom configuration
       run: |
-        chmod +x Lienol-18.06.sh
-        ./Lienol-18.06.sh
+        chmod +x Lienol-19.07.sh
+        ./Lienol-19.07.sh
         [ -e files ] && mv files openwrt/files
         cd openwrt
         make defconfig
