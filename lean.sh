@@ -64,4 +64,4 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/lean/default-settings/files/z
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
 [ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
-[ -e ../G-DOCK/*.config ] && mv -f ../G-DOCK/*.config .config
+[ -e ../G-DOCK/lean*.config ] && mv -f ../G-DOCK/lean*.config .config
