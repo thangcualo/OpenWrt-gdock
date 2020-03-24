@@ -20,7 +20,6 @@ sed -i '$a src-git extra https://github.com/Andy2244/openwrt-extra.git' feeds.co
 
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon2.1 ./package/
-ln -s ../../luci-app-flowoffload_ADGHome ./package/
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
