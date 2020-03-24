@@ -13,10 +13,10 @@ cd openwrt
 #./scripts/feeds install -f -p extra -a
 ./scripts/feeds install -a
 #添加自定义插件
-git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
-git clone https://github.com/Lienol/openwrt-package.git package/openwrt-package
+#git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
+#git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+#git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
+#git clone https://github.com/Lienol/openwrt-package.git package/openwrt-package
 
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
@@ -26,16 +26,16 @@ git clone https://github.com/Lienol/openwrt-package.git package/openwrt-package
 #rm -rf package/lean/luci-app-serverchan
 #rm -rf package/lean/luci-app-unblockmusic
 #改qb版本为4.2.1
-rm -rf package/lean/qBittorrent/Makefile
-rm -rf package/lean/qBittorrent/patches
-cp -f ../qb421 package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/patches
+#cp -f ../qb421 package/lean/qBittorrent/Makefile
 
 改4.19内核
 sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
 
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.5 ./package/
-ln -s ../../luci-app-flowoffload_ADGHome ./package/
+#ln -s ../../luci-app-flowoffload_ADGHome ./package/
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
