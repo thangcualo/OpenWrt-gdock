@@ -34,7 +34,7 @@ cd openwrt
 sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
 
 #添加自己repo的插件的软连接
-ln -s ../../luci-theme-argon1.5 ./package/
+ln -s ../../luci-theme-argon1.x ./package/
 #ln -s ../../luci-app-flowoffload_ADGHome ./package/
 
 #修改lan口地址
