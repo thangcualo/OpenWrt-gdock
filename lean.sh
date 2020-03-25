@@ -16,7 +16,7 @@ cd openwrt
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
-#git clone https://github.com/Lienol/openwrt-package.git package/openwrt-package
+git clone https://github.com/Lienol/openwrt-package.git package/openwrt-package
 
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
