@@ -34,7 +34,7 @@ sed -i 's/OpenWrt/FK20100010/g' package/kernel/mac80211/files/lib/wifi/mac80211.
 #修改zzz-default-settings的配置
 #添加简易网盘
 sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash\n' package/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\ln -sv /mnt/sda /srv/webd/web/U盘\n' package/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\ln -sv /mnt/sda1 /srv/webd/web/U盘\n' package/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡\n' package/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/default-settings/files/zzz-default-settings
 
