@@ -14,6 +14,11 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
 
+#改qb版本为4.2.3
+rm -rf package/lean/qBittorrent/Makefile
+rm -rf package/lean/qBittorrent/patches
+cp -f ../qb423 package/lean/qBittorrent/Makefile
+
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
 #rm -rf package/lean/luci-app-koolproxyR
