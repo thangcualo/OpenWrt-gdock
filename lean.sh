@@ -25,7 +25,7 @@ git clone https://github.com/Lienol/openwrt-package.git package/openwrt-package
 #rm -rf package/lean/luci-app-koolproxyR
 #rm -rf package/lean/luci-app-serverchan
 #rm -rf package/lean/luci-app-unblockmusic
-#改qb版本为4.2.1
+#改qb版本为4.2.3
 #rm -rf package/lean/qBittorrent/Makefile
 #rm -rf package/lean/qBittorrent/patches
 #cp -f ../qb421 package/lean/qBittorrent/Makefile
