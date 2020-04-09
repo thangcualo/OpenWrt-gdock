@@ -5,11 +5,14 @@
 #   Author: P3TERX
 #   Blog: https://p3terx.com
 #=================================================
-git clone https://github.com/Lienol/openwrt 
+git clone https://github.com/Lienol/openwrt
+git clone https://github.com/coolsnowwolf/lede lede
+cp -rf openwrt/package/lean package/lean
 rm -rf target/linux/ipq40xx
 cp -rf openwrt/target/linux/ipq40xx target/linux/ipq40xx
 rm -rf package/firmware/ipq-wifi
 cp -rf openwrt/package/firmware/ipq-wifi package/firmware/ipq-wifi
+sed -i '45,48d' package/lean/default-settings/files/zzz-default-settings
 #添加Lienol的插件包
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 ./scripts/feeds update -a
