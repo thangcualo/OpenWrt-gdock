@@ -5,7 +5,7 @@
 #   Author: P3TERX
 #   Blog: https://p3terx.com
 #=================================================
-git clone https://github.com/Lienol/openwrt
+git clone -b dev-master https://github.com/Lienol/openwrt
 git clone https://github.com/coolsnowwolf/lede lede
 cp -rf openwrt/package/lean package/lean
 rm -rf target/linux/ipq40xx
@@ -23,9 +23,9 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
 
 #改qb版本为4.2.3
-rm -rf package/lean/qBittorrent/Makefile
-rm -rf package/lean/qBittorrent/patches
-cp -f ../qb423 package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/patches
+#cp -f ../qb423 package/lean/qBittorrent/Makefile
 
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
@@ -49,8 +49,8 @@ sed -i 's/OpenWrt/FK20100010/g' package/kernel/mac80211/files/lib/wifi/mac80211.
 #修改时区
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
-改4.19内核
-sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
+#改4.19内核
+#sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
 #修改zzz-default-settings的配置
 sed -i 's/samba.lua/samba4.lua/g' package/lean/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\chmod 755 /etc/init.d/serverchan' package/lean/default-settings/files/zzz-default-settings
@@ -65,4 +65,4 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/lean/default-settings/files/z
 
 #修改banner
 rm -rf package/base-files/files/etc/banner
-cp -rf ../banner package/base-files/files/etc/
+cp -f ../banner package/base-files/files/etc/
