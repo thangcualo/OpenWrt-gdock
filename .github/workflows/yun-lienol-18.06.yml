@@ -22,8 +22,8 @@ on:
     types: started
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/Lienol/openwrt
+  REPO_BRANCH: dev-master
   CONFIG_FILE: .config
   DIY_SH: diy.sh
   SSH_ACTIONS: true
@@ -56,6 +56,13 @@ jobs:
     - name: Clone source code
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a
+
+    
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
