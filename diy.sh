@@ -9,13 +9,9 @@
 #git clone https://github.com/coolsnowwolf/lede lede
 #rm -rf package/lean
 #cp -rf lede/package/lean package/lean
-#rm -rf target/linux/ipq40xx
-#cp -rf openwrt/target/linux/ipq40xx target/linux/ipq40xx
-#rm -rf package/firmware/ipq-wifi
-#cp -rf openwrt/package/firmware/ipq-wifi package/firmware/ipq-wifi
 #sed -i '45,48d' package/lean/default-settings/files/zzz-default-settings
 #添加Lienol的插件包
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #添加自定义插件
@@ -24,9 +20,9 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
 
 #改qb版本为4.2.3
-#rm -rf package/lean/qBittorrent/Makefile
-#rm -rf package/lean/qBittorrent/patches
-#cp -f ../qb423 package/lean/qBittorrent/Makefile
+rm -rf package/lean/qBittorrent/Makefile
+rm -rf package/lean/qBittorrent/patches
+cp -f ../qb423 package/lean/qBittorrent/Makefile
 
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
