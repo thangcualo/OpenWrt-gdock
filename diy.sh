@@ -12,8 +12,11 @@
 #sed -i '45,48d' package/lean/default-settings/files/zzz-default-settings
 #添加Lienol的插件包
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+awk 'BEGIN { cmd="cp -ri feeds/lienol1/* feeds/lienol/"; print "n" |cmd; }'
+rm -rf feeds/lienol1
 #添加自定义插件
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
