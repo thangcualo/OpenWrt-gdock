@@ -11,7 +11,7 @@
 #cp -rf lede/package/lean package/lean
 #sed -i '45,48d' package/lean/default-settings/files/zzz-default-settings
 #添加Lienol的插件包
-sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #添加自定义插件
@@ -33,6 +33,7 @@ cp -f ../qb423 package/lean/qBittorrent/Makefile
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
 ln -s ../../luci-app-flowoffload_ADGHome ./package/
+ln -s ../../luci-app-passwall ./package/
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
