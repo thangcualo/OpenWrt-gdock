@@ -7,14 +7,16 @@
 #=================================================
 #克隆源码
 git clone https://github.com/coolsnowwolf/lede openwrt
-cd openwrt
-#添加Lienol的插件包
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-awk 'BEGIN { cmd="cp -ri feeds/lienol1/* feeds/lienol/"; print "n" |cmd; }'
-rm -rf feeds/lienol1
+cd openwrt
+#添加Lienol的插件包
+#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+#sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+git clone https://github.com/Lienol/openwrt-package package/openwrt-package
+git clone https://github.com/a736399919/lienol-openwrt-package package/lienol-openwrt-package
+awk 'BEGIN { cmd="cp -ri package/lienol-openwrt-package/* package/openwrt-package/"; print "n" |cmd; }'
+rm -rf package/lienol-openwrt-package
 #添加自定义插件
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
@@ -28,9 +30,9 @@ rm -rf feeds/lienol1
 #rm -rf package/lean/luci-app-serverchan
 #rm -rf package/lean/luci-app-unblockmusic
 #改qb版本为4.2.3
-rm -f package/lean/qBittorrent/Makefile
-rm -rf package/lean/qBittorrent/patches
-cp -f ../qb421 package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/patches
+#cp -rf ../qb421 package/lean/qBittorrent/Makefile
 
 #改4.19内核
 #sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
@@ -64,6 +66,6 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/lean/default-settings/files/z
 
 #修改banner
 rm -rf package/base-files/files/etc/banner
-cp -f ../banner package/base-files/files/etc/
+cp -rf ../banner package/base-files/files/etc/
 [ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
 [ -e ../G-DOCK/lean*.config ] && mv -f ../G-DOCK/lean*.config .config
