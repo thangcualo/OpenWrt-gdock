@@ -28,9 +28,9 @@ rm -rf feeds/lienol1
 #rm -rf package/lean/luci-app-serverchan
 #rm -rf package/lean/luci-app-unblockmusic
 #改qb版本为4.2.3
-#rm -f package/lean/qBittorrent/Makefile
-#rm -rf package/lean/qBittorrent/patches
-#cp -f ../qb421 package/lean/qBittorrent/Makefile
+rm -f package/lean/qBittorrent/Makefile
+rm -rf package/lean/qBittorrent/patches
+cp -f ../qb421 package/lean/qBittorrent/Makefile
 
 #改4.19内核
 #sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
