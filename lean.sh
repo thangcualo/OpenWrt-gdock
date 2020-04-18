@@ -7,16 +7,16 @@
 #=================================================
 #克隆源码
 git clone https://github.com/coolsnowwolf/lede openwrt
-./scripts/feeds update -a
-./scripts/feeds install -a
 cd openwrt
 #添加Lienol的插件包
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-#sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-git clone https://github.com/Lienol/openwrt-package package/openwrt-package
-git clone https://github.com/a736399919/lienol-openwrt-package package/lienol-openwrt-package
-awk 'BEGIN { cmd="cp -ri package/lienol-openwrt-package/* package/openwrt-package/"; print "n" |cmd; }'
-rm -rf package/lienol-openwrt-package
+sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+#git clone https://github.com/Lienol/openwrt-package package/openwrt-package
+#git clone https://github.com/a736399919/lienol-openwrt-package package/lienol-openwrt-package
+#awk 'BEGIN { cmd="cp -ri package/lienol-openwrt-package/* package/openwrt-package/"; print "n" |cmd; }'
+#rm -rf package/lienol-openwrt-package
+./scripts/feeds update -a
+./scripts/feeds install -a
 #添加自定义插件
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
