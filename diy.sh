@@ -5,13 +5,7 @@
 #   Author: P3TERX
 #   Blog: https://p3terx.com
 #=================================================
-git clone -b dev-master https://github.com/Lienol/openwrt
-rm -rf target/linux/ipq40xx/patches-5.4
-cp -rf openwrt/target/linux/ipq40xx/patches-5.4 target/linux/ipq40xx/
-cp -rf openwrt/target/linux/ipq40xx/files-5.4  target/linux/ipq40xx/
-cp -rf openwrt/target/linux/ipq40xx/config-5.4  target/linux/ipq40xx/
-sed -i 's/4.19/5.4/g' target/linux/ipq40xx/Makefile
-touch target/linux/ipq40xx/Makefile
+#git clone -b dev-master https://github.com/Lienol/openwrt
 #git clone https://github.com/coolsnowwolf/lede lede
 #rm -rf package/lean
 #cp -rf lede/package/lean package/lean
