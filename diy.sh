@@ -6,13 +6,13 @@
 #   Blog: https://p3terx.com
 #=================================================
 #git clone -b dev-master https://github.com/Lienol/openwrt
-git clone https://github.com/coolsnowwolf/lede
+#git clone https://github.com/coolsnowwolf/lede
 #rm -rf package/lean
-cp -rf lede/package/lean package/lean
-sed -i '45,48d' package/lean/default-settings/files/zzz-default-settings
+#cp -rf lede/package/lean package/lean
+#sed -i '45,48d' package/lean/default-settings/files/zzz-default-settings
 #添加Lienol的插件包
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-#sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #awk 'BEGIN { cmd="cp -ri feeds/lienol1/* feeds/lienol/"; print "n" |cmd; }'
@@ -23,9 +23,9 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
 
 #改qb版本为4.2.3
-rm -rf package/lean/qBittorrent/Makefile
-rm -rf package/lean/qBittorrent/patches
-cp -f ../qb423 package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/patches
+#cp -f ../qb423 package/lean/qBittorrent/Makefile
 
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
