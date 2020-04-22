@@ -6,9 +6,9 @@
 #   Blog: https://p3terx.com
 #=================================================
 #git clone -b dev-master https://github.com/Lienol/openwrt
-git clone https://github.com/coolsnowwolf/lede
+#git clone https://github.com/coolsnowwolf/lede
 #rm -rf package/lean
-cp -rf lede/package/lean package/lean
+#cp -rf lede/package/lean package/lean
 #sed -i '45,48d' package/lean/default-settings/files/zzz-default-settings
 #添加Lienol的插件包
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
@@ -21,7 +21,7 @@ sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package'
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
-git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon2.1
 #改qb版本为4.2.3
 #rm -rf package/lean/qBittorrent/Makefile
 #rm -rf package/lean/qBittorrent/patches
