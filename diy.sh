@@ -12,11 +12,9 @@
 #sed -i '45,48d' package/lean/default-settings/files/zzz-default-settings
 #添加Lienol的插件包
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-#awk 'BEGIN { cmd="cp -ri feeds/lienol1/* feeds/lienol/"; print "n" |cmd; }'
-#rm -rf feeds/lienol1
 #添加自定义插件
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
@@ -36,10 +34,10 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
 ln -s ../../luci-app-flowoffload_ADGHome ./package/
-cp -rf ../G-DOCK/luci-app-passwall package
+#cp -rf ../G-DOCK/luci-app-passwall package
 
 #修改lan口地址
-sed -i 's/192.168.15.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
 #修改机器名称
 sed -i 's/OpenWrt/G-DOCK/g' package/base-files/files/bin/config_generate
