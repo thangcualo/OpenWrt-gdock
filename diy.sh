@@ -6,9 +6,9 @@
 #   Blog: https://p3terx.com
 #=================================================
 #git clone -b dev-master https://github.com/Lienol/openwrt
-#git clone https://github.com/coolsnowwolf/lede
+git clone https://github.com/coolsnowwolf/lede
 #rm -rf package/lean
-#cp -rf lede/package/lean package/lean
+cp -rf lede/package/lean package/lean
 #sed -i '45,48d' package/lean/default-settings/files/zzz-default-settings
 #添加Lienol的插件包
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
@@ -21,7 +21,7 @@ sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package'
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
-
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
 #改qb版本为4.2.3
 #rm -rf package/lean/qBittorrent/Makefile
 #rm -rf package/lean/qBittorrent/patches
@@ -39,13 +39,14 @@ ln -s ../../luci-app-flowoffload_ADGHome ./package/
 cp -rf ../G-DOCK/luci-app-passwall package
 
 #修改lan口地址
-sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.15.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
 #修改机器名称
 sed -i 's/OpenWrt/G-DOCK/g' package/base-files/files/bin/config_generate
 
 #修改wifi名称
 sed -i 's/OpenWrt/FK20100010/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#默认打开WiFi
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改时区
@@ -54,7 +55,7 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 #改4.19内核
 #sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
 #修改zzz-default-settings的配置
-sed -i 's/\"services\"/\"nas\"/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
+sed -i 's/services/nas/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
 #sed -i 's/samba.lua/samba4.lua/g' package/lean/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\chmod 755 /etc/init.d/serverchan' package/lean/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\chmod 755 /usr/bin/serverchan/serverchan' package/lean/default-settings/files/zzz-default-settings
