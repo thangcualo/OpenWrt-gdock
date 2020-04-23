@@ -16,18 +16,13 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 ./scripts/feeds uninstall -a
 ./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
+cp -rf ../G-DOCK/luci-app-passwall package
 #添加自定义插件
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.5.1
-#删除自带的插件
-#rm -rf feeds/extra/luci-app-samba4
-#rm -rf feeds/extra/luci-app-cifsd
-#sed -i 's/cifsd-tools/smbd-server/g' package/lean/luci-app-cifsd/Makefile
-#rm -rf package/lean/luci-app-koolproxyR
-#rm -rf package/lean/luci-app-serverchan
-#rm -rf package/lean/luci-app-unblockmusic
+
 #改qb版本为4.2.3
 #rm -rf package/lean/qBittorrent/Makefile
 #rm -rf package/lean/qBittorrent/patches
@@ -35,8 +30,6 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luc
 sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
 sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
 sed -i 's/R20.4.8/R18/g' package/lean/default-settings/files/zzz-default-settings
-#改4.19内核
-#sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
 
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
