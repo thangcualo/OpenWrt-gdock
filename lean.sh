@@ -9,19 +9,18 @@
 git clone https://github.com/coolsnowwolf/lede openwrt
 cd openwrt
 #添加Lienol的插件包
-#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-#git clone https://github.com/Lienol/openwrt-package package/openwrt-package
-#git clone https://github.com/a736399919/lienol-openwrt-package package/lienol-openwrt-package
-#awk 'BEGIN { cmd="cp -ri package/lienol-openwrt-package/* package/openwrt-package/"; print "n" |cmd; }'
-#rm -rf package/lienol-openwrt-package
+sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+#sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+./scripts/feeds clean
 ./scripts/feeds update -a
+./scripts/feeds uninstall -a
+./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
 #添加自定义插件
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
-
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.5.1
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
 #rm -rf feeds/extra/luci-app-cifsd
@@ -33,7 +32,9 @@ sed -i '$a src-git lienol1 https://github.com/a736399919/lienol-openwrt-package'
 #rm -rf package/lean/qBittorrent/Makefile
 #rm -rf package/lean/qBittorrent/patches
 #cp -rf ../qb421 package/lean/qBittorrent/Makefile
-
+sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
+sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
+sed -i 's/R20.4.8/R18/g' package/lean/default-settings/files/zzz-default-settings
 #改4.19内核
 #sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
 
