@@ -9,14 +9,14 @@
 git clone https://github.com/coolsnowwolf/lede openwrt
 cd openwrt
 #添加Lienol的插件包
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-#sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-./scripts/feeds clean
+#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+#./scripts/feeds clean
 ./scripts/feeds update -a
-./scripts/feeds uninstall -a
-./scripts/feeds install -f -p lienol -a
+#./scripts/feeds uninstall -a
+#./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
-cp -rf ../G-DOCK/luci-app-passwall package
+#cp -rf ../G-DOCK/luci-app-passwall package
 #添加自定义插件
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
