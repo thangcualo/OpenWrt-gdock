@@ -28,6 +28,8 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 #rm -rf package/lean/qBittorrent/Makefile
 #rm -rf package/lean/qBittorrent/patches
 #cp -f ../qb423 package/lean/qBittorrent/Makefile
+sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
+sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
 
 #删除自带的插件
 #rm -rf feeds/extra/luci-app-samba4
