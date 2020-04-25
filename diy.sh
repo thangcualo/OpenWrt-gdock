@@ -10,6 +10,7 @@ rm -rf openwrt
 git clone https://github.com/openwrt/openwrt.git
 git clone https://github.com/x-wrt/x-wrt.git
 git clone -b dev-master https://github.com/Lienol/openwrt lienol
+git clone https://github.com/coolsnowwolf/lede
 rm -rf openwrt/tools
 rm -rf openwrt/target/linux/ipq40xx/
 rm -rf openwrt/package/firmware/ipq-wifi/
@@ -18,6 +19,7 @@ cp -rf x-wrt/target/linux/ipq40xx/ openwrt/target/linux/
 cp -rf x-wrt/package/firmware/ipq-wifi/ openwrt/package/firmware/
 touch openwrt/target/linux/ipq40xx/
 touch openwrt/package/firmware/ipq-wifi/
+cp -rf lede/package/lean openwrt/package
 cd openwrt
 #添加Lienol的插件包
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
@@ -31,11 +33,11 @@ sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' 
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.1
 
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.5.1
-rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
-rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
-cp -rf ../luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
-sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
-sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
+rm -rf package/luci-theme-argon-2.1/htdocs/luci-static/argon/head-icon.jpg
+rm -rf package/luci-theme-argon-2.1/htdocs/luci-static/argon/img/
+cp -rf ../luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-2.1/htdocs/luci-static/argon/
+sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-2.1/luasrc/view/themes/argon/header.htm
+sed -i '/background-image/d' package/luci-theme-argon-2.1/luasrc/view/themes/argon/header.htm
 
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
@@ -58,7 +60,7 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 #改4.19内核
 #sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
 #修改zzz-default-settings的配置
-sed -i 's/services/nas/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
+#sed -i 's/services/nas/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
 #sed -i 's/samba.lua/samba4.lua/g' package/lean/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\chmod 755 /etc/init.d/serverchan' package/lean/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\chmod 755 /usr/bin/serverchan/serverchan' package/lean/default-settings/files/zzz-default-settings
