@@ -25,7 +25,7 @@ cd openwrt
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 sed -i '/luci/d' feeds.conf.default
-sed -i '$a src-git luci https://github.com/coolsnowwolf/luci' feeds.conf.default
+sed -i '$a src-git luci https://git.openwrt.org/project/luci.git;openwrt-18.06' feeds.conf.default
 sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
