@@ -38,7 +38,7 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.5.1
 rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
 rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
-cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
+cp -rf ../luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
 sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 
@@ -51,7 +51,6 @@ rm -rf package/lean/qBittorrent/patches
 cp -rf ../qb425 package/lean/qBittorrent/Makefile
 sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
 sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
-sed -i 's/R20.4.8/R18/g' package/lean/default-settings/files/zzz-default-settings
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
