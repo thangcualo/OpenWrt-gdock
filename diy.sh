@@ -45,7 +45,13 @@ sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/a
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
 #cp -rf ../G-DOCK/luci-app-passwall package
-
+#改qb版本为4.2.5
+rm -rf package/lean/qBittorrent/Makefile
+rm -rf package/lean/qBittorrent/patches
+cp -rf ../qb425 package/lean/qBittorrent/Makefile
+sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
+sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
+sed -i 's/R20.4.8/R18/g' package/lean/default-settings/files/zzz-default-settings
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
