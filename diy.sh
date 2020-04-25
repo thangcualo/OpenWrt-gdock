@@ -24,6 +24,8 @@ cd openwrt
 #添加Lienol的插件包
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+sed -i '/luci/d' feeds.conf.default
+sed -i '$a src-git luci https://github.com/coolsnowwolf/luci feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #添加自定义插件
@@ -33,11 +35,11 @@ sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' 
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.1
 
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.5.1
-rm -rf package/luci-theme-argon-2.1/htdocs/luci-static/argon/head-icon.jpg
-rm -rf package/luci-theme-argon-2.1/htdocs/luci-static/argon/img/
-cp -rf ../luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-2.1/htdocs/luci-static/argon/
-sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-2.1/luasrc/view/themes/argon/header.htm
-sed -i '/background-image/d' package/luci-theme-argon-2.1/luasrc/view/themes/argon/header.htm
+rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
+rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/img/
+cp -rf ../luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
+sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
+sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
@@ -57,8 +59,6 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 #修改时区
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
-#改4.19内核
-#sed -i 's/4.14/4.19/g' target/linux/ipq40xx/Makefile
 #修改zzz-default-settings的配置
 #sed -i 's/services/nas/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
 #sed -i 's/samba.lua/samba4.lua/g' package/lean/default-settings/files/zzz-default-settings
