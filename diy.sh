@@ -25,7 +25,7 @@ cd openwrt
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 sed -i '/luci/d' feeds.conf.default
-sed -i '$a src-git luci https://github.com/coolsnowwolf/luci feeds.conf.default
+sed -i '$a src-git luci https://github.com/coolsnowwolf/luci' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #添加自定义插件
@@ -36,8 +36,8 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.5.1
 rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
-rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/img
-cp -rf ../luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
+rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
+cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
 sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 
