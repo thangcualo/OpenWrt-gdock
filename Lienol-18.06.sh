@@ -8,8 +8,12 @@
 git clone https://github.com/x-wrt/x-wrt.git openwrt
 git clone -b dev-master https://github.com/Lienol/openwrt lienol
 git clone https://github.com/coolsnowwolf/lede
-#rm -rf lede/package/lean/luci-app-samba4
-#rm -rf lede/package/lean/luci-app-frpc
+rm -rf lede/package/lean/luci-app-samba4
+rm -rf lede/package/lean/luci-app-frpc
+rm -rf lede/package/lean/luci-app-aria2
+rm -rf lede/package/lean/luci-app-firewall
+rm -rf lede/package/lean/luci-app-nlbwmon
+rm -rf lede/package/lean/luci-app-wol
 rm -rf openwrt/tools
 #rm -rf openwrt/target/linux/ipq40xx/
 #rm -rf openwrt/package/firmware/ipq-wifi/
@@ -24,7 +28,7 @@ cd openwrt
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 sed -i '/luci/d' feeds.conf.default
-sed -i '$a src-git luci https://git.openwrt.org/project/luci.git;openwrt-18.06' feeds.conf.default
+sed -i '$a src-git luci https://git.openwrt.org/project/luci.git' feeds.conf.default
 sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -55,6 +59,12 @@ cp -rf ../luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/lu
 sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.1
+rm -rf package/luci-theme-argon-2.1/htdocs/luci-static/argon/head-icon.jpg
+rm -rf package/luci-theme-argon-2.1/htdocs/luci-static/argon/img/
+cp -rf ../luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-2.1/htdocs/luci-static/argon/
+sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-2.1/luasrc/view/themes/argon/header.htm
+sed -i '/background-image/d' package/luci-theme-argon-2.1/luasrc/view/themes/argon/header.htm
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
 
