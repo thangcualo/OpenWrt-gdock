@@ -12,8 +12,8 @@ rm -rf openwrt
 git clone https://github.com/x-wrt/x-wrt.git openwrt
 git clone -b dev-master https://github.com/Lienol/openwrt lienol
 git clone https://github.com/coolsnowwolf/lede
-rm -rf lede/package/lean/luci-app-samba4
-rm -rf lede/package/lean/luci-app-frpc
+#rm -rf lede/package/lean/luci-app-samba4
+#rm -rf lede/package/lean/luci-app-frpc
 rm -rf openwrt/tools
 #rm -rf openwrt/target/linux/ipq40xx/
 #rm -rf openwrt/package/firmware/ipq-wifi/
@@ -28,8 +28,8 @@ cd openwrt
 #添加Lienol的插件包
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-#sed -i '/luci/d' feeds.conf.default
-#sed -i '$a src-git luci https://git.openwrt.org/project/luci.git;openwrt-18.06' feeds.conf.default
+sed -i '/luci/d' feeds.conf.default
+sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-19.07' feeds.conf.default
 sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
