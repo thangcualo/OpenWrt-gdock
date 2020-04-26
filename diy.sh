@@ -6,6 +6,7 @@
 #   Blog: https://p3terx.com
 #=================================================
 cd ../
+cp -rf openwrt/files ./ 
 rm -rf openwrt
 #git clone https://github.com/openwrt/openwrt.git
 git clone https://github.com/x-wrt/x-wrt.git openwrt
