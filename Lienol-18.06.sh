@@ -5,45 +5,18 @@
 #   Author: P3TERX
 #   Blog: https://p3terx.com
 #=================================================
-git clone https://github.com/x-wrt/x-wrt.git openwrt
-git clone -b dev-master https://github.com/Lienol/openwrt lienol
+#克隆源码
+git clone -b dev-master https://github.com/Lienol/openwrt
 git clone https://github.com/coolsnowwolf/lede
-rm -rf lede/package/lean/luci-app-samba4
-rm -rf lede/package/lean/luci-app-frpc
-rm -rf lede/package/lean/luci-app-aria2
-rm -rf lede/package/lean/luci-app-firewall
-rm -rf lede/package/lean/luci-app-nlbwmon
-rm -rf lede/package/lean/luci-app-wol
-rm -rf openwrt/tools
-#rm -rf openwrt/target/linux/ipq40xx/
-#rm -rf openwrt/package/firmware/ipq-wifi/
-cp -rf lienol/tools openwrt
-#cp -rf x-wrt/target/linux/ipq40xx/ openwrt/target/linux/
-#cp -rf x-wrt/package/firmware/ipq-wifi/ openwrt/package/firmware/
-#touch openwrt/target/linux/ipq40xx/
-#touch openwrt/package/firmware/ipq-wifi/
-cp -rf lede/package/lean openwrt/package
+rm -rf openwrt/package/lean/
+cp -rf lede/package/lean/ openwrt/package/
 cd openwrt
-#添加Lienol的插件包
-#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '/lienol/d' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-sed -i '/luci/d' feeds.conf.default
-sed -i '$a src-git luci https://git.openwrt.org/project/luci.git' feeds.conf.default
 sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
+./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-#克隆源码
-#git clone -b dev-master https://github.com/Lienol/openwrt
-#git clone https://github.com/coolsnowwolf/lede
-#rm -rf openwrt/package/lean/
-#cp -rf lede/package/lean/ openwrt/package/
-#cd openwrt
-#sed -i '/lienol/d' feeds.conf.default
-#sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-#sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
-#./scripts/feeds clean
-#./scripts/feeds update -a
-#./scripts/feeds install -a
 #改qb版本为4.2.5
 rm -rf package/lean/qBittorrent/Makefile
 rm -rf package/lean/qBittorrent/patches
@@ -69,7 +42,7 @@ sed -i '/background-image/d' package/luci-theme-argon-2.1/luasrc/view/themes/arg
 ln -s ../../luci-theme-argon1.x ./package/
 
 #修改lan口地址
-sed -i 's/192.168.15.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
 #修改机器名称
 sed -i 's/OpenWrt/G-DOCK/g' package/base-files/files/bin/config_generate
