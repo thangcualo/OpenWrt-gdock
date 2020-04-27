@@ -1,4 +1,12 @@
 #!/bin/sh
+
+rm -f /usr/lib/lua/luci/view/admin_status/index/mwan.htm
+rm -f /usr/lib/lua/luci/view/admin_status/index/upnp.htm
+rm -f /usr/lib/lua/luci/view/admin_status/index/ddns.htm
+rm -f /usr/lib/lua/luci/view/admin_status/index/minidlna.htm
+
+
+
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/aria2.lua
 sed -i 's/services/nas/g' /usr/lib/lua/luci/view/aria2/overview_status.htm
 sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/hd_idle.lua
@@ -22,6 +30,9 @@ echo "iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53"
 
 sed -i '/log-facility/d' /etc/dnsmasq.conf
 echo "log-facility=/dev/null" >> /etc/dnsmasq.conf
+
+rm -rf /tmp/luci-modulecache/
+rm -f /tmp/luci-indexcache
 
 mkdir -pv /srv/webd/web/.Trash
 ln -sv /mnt/sda1 /srv/webd/web/U盘
