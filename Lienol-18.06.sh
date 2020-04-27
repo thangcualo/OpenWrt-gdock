@@ -23,12 +23,15 @@ cp -rf lede/package/lean openwrt/package
 cp -rf files openwrt
 cd openwrt
 #添加Lienol的插件包
-#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+#sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 sed -i '/luci/d' feeds.conf.default
 sed -i '$a src-git luci https://github.com/coolsnowwolf/luci' feeds.conf.default
 sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
+./scripts/feeds clean
 ./scripts/feeds update -a
+./scripts/feeds uninstall -a
+./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
 #克隆源码
 #git clone -b dev-master https://github.com/Lienol/openwrt
@@ -65,6 +68,7 @@ sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color:
 sed -i '/background-image/d' package/luci-theme-argon-2.1/luasrc/view/themes/argon/header.htm
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon1.x ./package/
+cp -rf ../G-DOCK/luci-app-passwall package
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
