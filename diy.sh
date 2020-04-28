@@ -5,24 +5,24 @@
 #   Author: P3TERX
 #   Blog: https://p3terx.com
 #=================================================
-cd ..
+#cd ..
 #git clone https://github.com/openwrt/openwrt.git
 #git clone https://github.com/x-wrt/x-wrt.git
-git clone -b dev-master https://github.com/Lienol/openwrt lienol
-git clone https://github.com/coolsnowwolf/lede
+#git clone -b dev-master https://github.com/Lienol/openwrt lienol
+#git clone https://github.com/coolsnowwolf/lede
 #rm -rf lede/package/lean/luci-app-samba4
 #rm -rf lede/package/lean/luci-app-frpc
-rm -rf openwrt/tools
+#rm -rf openwrt/tools
 #rm -rf openwrt/target/linux/ipq40xx/
 #rm -rf openwrt/package/firmware/ipq-wifi/
-cp -rf lienol/tools openwrt
+#cp -rf lienol/tools openwrt
 #cp -rf x-wrt/target/linux/ipq40xx/ openwrt/target/linux/
 #cp -rf x-wrt/package/firmware/ipq-wifi/ openwrt/package/firmware/
 #touch openwrt/target/linux/ipq40xx/
 #touch openwrt/package/firmware/ipq-wifi/
-cp -rf lede/package/lean openwrt/package
+#cp -rf lede/package/lean openwrt/package
 #cp -rf files openwrt
-cd openwrt
+#cd openwrt
 #添加Lienol的插件包
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 #sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
