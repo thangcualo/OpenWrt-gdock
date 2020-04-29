@@ -36,6 +36,7 @@
 #克隆源码
 git clone -b dev-master https://github.com/Lienol/openwrt
 git clone https://github.com/coolsnowwolf/lede
+rm -rf lede/package/lean/openwrt-fullconenat
 rm -rf openwrt/package/lean/
 cp -rf lede/package/lean/ openwrt/package/
 cd openwrt
