@@ -41,9 +41,10 @@ cp -rf lede/package/lean/ openwrt/package/
 cd openwrt
 sed -i '/lienol/d' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-#sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
+sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
+./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
 #改qb版本为4.2.5
 rm -rf package/lean/qBittorrent/Makefile
