@@ -35,9 +35,9 @@
 #./scripts/feeds install -a
 #克隆源码
 git clone -b dev-master https://github.com/Lienol/openwrt
-#git clone https://github.com/coolsnowwolf/lede
-#rm -rf openwrt/package/lean/
-#cp -rf lede/package/lean/ openwrt/package/
+git clone https://github.com/coolsnowwolf/lede
+rm -rf openwrt/package/lean/
+cp -rf lede/package/lean/ openwrt/package/
 cd openwrt
 sed -i '/lienol/d' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
