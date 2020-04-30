@@ -36,9 +36,11 @@
 #克隆源码
 git clone -b dev-master https://github.com/Lienol/openwrt
 git clone https://github.com/coolsnowwolf/lede
+rm -rf feeds/luci/applications/luci-app-aria2
 rm -rf package/lean/default-settings
 rm -rf lede/package/lean/openwrt-fullconenat
 rm -rf openwrt/package/lean/
+cp -rf lede/feeds/luci/applications/luci-app-aria2/ openwrt/package/
 cp -rf lede/package/lean/ openwrt/package/
 cd openwrt
 sed -i '/luci/d' feeds.conf.default
