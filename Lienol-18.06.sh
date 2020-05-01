@@ -36,11 +36,11 @@
 #克隆源码
 git clone -b dev-master https://github.com/Lienol/openwrt
 git clone https://github.com/coolsnowwolf/lede
-rm -rf openwrt/feeds/luci/applications/luci-app-aria2
+git clone https://github.com/coolsnowwolf/luci.git
 rm -rf lede/package/lean/default-settings
 rm -rf lede/package/lean/openwrt-fullconenat
 rm -rf openwrt/package/lean/
-cp -rf lede/feeds/luci/applications/luci-app-aria2/ openwrt/package/
+cp -rf luci/applications/luci-app-aria2/ openwrt/package/
 cp -rf lede/package/lean/ openwrt/package/
 cd openwrt
 sed -i '/luci/d' feeds.conf.default
@@ -51,6 +51,7 @@ sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.
 ./scripts/feeds update -a
 #./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
+rm -rf feeds/luci/applications/luci-app-aria2
 #改qb版本为4.2.5
 rm -rf package/lean/qBittorrent/Makefile
 rm -rf package/lean/qBittorrent/patches
