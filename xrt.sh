@@ -94,4 +94,4 @@ cp -f ../banner package/base-files/files/etc/
 #[ -e ../G-DOCK/Lienol-18.06*.config ] && mv -f ../G-DOCK/Lienol-18.06*.config .config
 rm -rf .config
 cp -rf ../5436 .config
-cp -rf ../G-DOCK/zzz-default-settings package/lean/default-settings/files/zzz-default-settings
+cp -rf ../G-DOCK/zzz package/lean/default-settings/files/zzz-default-settings
