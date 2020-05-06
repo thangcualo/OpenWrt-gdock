@@ -40,7 +40,6 @@ git clone https://github.com/coolsnowwolf/luci.git
 rm -rf lede/package/lean/default-settings
 rm -rf lede/package/lean/openwrt-fullconenat
 rm -rf openwrt/package/lean/
-cp -rf luci/applications/luci-app-aria2/ openwrt/package/
 cp -rf lede/package/lean/ openwrt/package/
 cd openwrt
 sed -i '/luci/d' feeds.conf.default
@@ -52,6 +51,8 @@ sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.
 #./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
 rm -rf feeds/luci/applications/luci-app-aria2
+cp -rf ../luci/applications/luci-app-aria2/ feeds/luci/applications/
+
 #改qb版本为4.2.5
 rm -rf package/lean/qBittorrent/Makefile
 rm -rf package/lean/qBittorrent/patches
@@ -106,5 +107,5 @@ cp -f ../banner package/base-files/files/etc/
 [ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
 #[ -e ../G-DOCK/Lienol-18.06*.config ] && mv -f ../G-DOCK/Lienol-18.06*.config .config
 rm -rf .config
-cp -rf ../5435 .config
+cp -rf ../5438 .config
 cp -rf ../G-DOCK/zzz-default-settings package/default-settings/files/zzz-default-settings
