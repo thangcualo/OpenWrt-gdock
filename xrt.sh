@@ -24,7 +24,7 @@ cp -rf lienol/tools openwrt
 #cp -rf files openwrt
 #cd openwrt
 #克隆源码
-rm -rf lede/package/lean/default-settings
+#rm -rf lede/package/lean/default-settings
 #rm -rf lede/package/lean/openwrt-fullconenat
 #rm -rf openwrt/package/lean
 cp -rf luci/applications/luci-app-aria2/ openwrt/package
