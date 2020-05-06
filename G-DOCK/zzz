@@ -1,0 +1,33 @@
+#!/bin/sh
+
+sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/aria2.lua
+sed -i 's/services/nas/g' /usr/lib/lua/luci/view/aria2/overview_status.htm
+sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/hd_idle.lua
+sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/samba4.lua
+sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/minidlna.lua
+sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/transmission.lua
+sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/mjpg-streamer.lua
+sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/p910nd.lua
+sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/usb_printer.lua
+sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/xunlei.lua
+sed -i 's/services/nas/g'  /usr/lib/lua/luci/view/minidlna_status.htm
+
+#uci set dhcp.lan.ra='server'
+#uci set dhcp.lan.dhcpv6='server'
+#uci set dhcp.lan.ra_management='1'
+#uci set dhcp.lan.ra_default='1'
+#uci commit dhcp
+
+
+#设置IP
+uci set network.lan.ipaddr='192.168.10.1'
+#uci set network.lan.netmask='255.255.255.0'
+#uci commit network
+
+mkdir -pv /srv/webd/web/.Trash
+ln -sv /mnt/sda1 /srv/webd/web/U盘
+ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡
+chmod 775 /usr/bin/webd
+
+
+exit 0
