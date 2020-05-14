@@ -37,7 +37,7 @@ sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaec
 sed -i 's/R20.5.9/R18/g' package/lean/default-settings/files/zzz-default-settings
 
 #添加自己repo的插件的软连接
-cp -rf ../luci-theme-argon1.x package/
+cp -rf ../luci-theme-argon-1.x/ package/
 #ln -s ../../luci-app-flowoffload_ADGHome ./package/
 
 #添加openwrt-usb-modeswitch-official
