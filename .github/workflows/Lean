@@ -57,7 +57,7 @@ jobs:
       run: |
         chmod +x lean.sh
         ./lean.sh
-        [ -e files ] && mv files openwrt/files
+#        [ -e files ] && mv files openwrt/files
         cd openwrt
         make defconfig
     - name: Download package
