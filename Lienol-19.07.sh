@@ -31,7 +31,7 @@ sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
 sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
 
 #添加自己repo的插件的软连接或copy
-cp -rf ../luci-theme-argon1.x package/
+ln -s ../../luci-theme-argon-1.x ./package/
 cp -rf ../G-DOCK/luci-app-passwall package
 #添加openwrt-usb-modeswitch-official
 git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
