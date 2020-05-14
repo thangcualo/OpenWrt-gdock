@@ -104,6 +104,7 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/lean/default-settings/files/z
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
+[ -e ../files ] && mv ../files files
 [ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
 #[ -e ../G-DOCK/Lienol-18.06*.config ] && mv -f ../G-DOCK/Lienol-18.06*.config .config
 rm -rf .config
