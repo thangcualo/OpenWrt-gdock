@@ -55,8 +55,8 @@ jobs:
 
     - name: Load custom configuration
       run: |
-        chmod +x lean.sh
-        ./lean.sh
+        chmod +x Lean.sh
+        ./Lean.sh
 #        [ -e files ] && mv files openwrt/files
         cd openwrt
         make defconfig
