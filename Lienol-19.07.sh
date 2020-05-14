@@ -14,9 +14,9 @@ rm -rf lede/package/lean/openwrt-fullconenat
 rm -rf openwrt/package/lean/
 cp -rf lede/package/lean/ openwrt/package/
 cd openwrt
-sed -i '/lienol/d' feeds.conf.default
-sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
+#sed -i '/lienol/d' feeds.conf.default
+#sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+#sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -65,7 +65,7 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/default-settings/files/zzz-de
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
-[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
-[ -e ../G-DOCK/Lienol-19.07*.config ] && mv -f ../G-DOCK/Lienol-18.06*.config .config
-cp -rf ../G-DOCK/zzz-default-settings package/default-settings/files/zzz-default-settings
+#[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
+#[ -e ../G-DOCK/Lienol-19.07*.config ] && mv -f ../G-DOCK/Lienol-18.06*.config .config
+#cp -rf ../G-DOCK/zzz-default-settings package/default-settings/files/zzz-default-settings
 
