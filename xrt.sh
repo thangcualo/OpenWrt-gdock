@@ -5,17 +5,16 @@
 #   Author: P3TERX
 #   Blog: https://p3terx.com
 #=================================================
-#git clone https://github.com/openwrt/openwrt.git
 git clone https://github.com/x-wrt/x-wrt.git openwrt
-git clone -b dev-master https://github.com/Lienol/openwrt lienol
-git clone https://github.com/coolsnowwolf/lede
-git clone https://github.com/coolsnowwolf/luci.git
-#rm -rf lede/package/lean/luci-app-samba4
-#rm -rf lede/package/lean/luci-app-frpc
-rm -rf openwrt/tools
-#rm -rf openwrt/target/linux/ipq40xx/
-#rm -rf openwrt/package/firmware/ipq-wifi/
-cp -rf lienol/tools openwrt
+#git clone -b dev-master https://github.com/Lienol/openwrt lienol
+#git clone https://github.com/coolsnowwolf/lede
+#git clone https://github.com/coolsnowwolf/luci.git
+##rm -rf lede/package/lean/luci-app-samba4
+##rm -rf lede/package/lean/luci-app-frpc
+#rm -rf openwrt/tools
+##rm -rf openwrt/target/linux/ipq40xx/
+##rm -rf openwrt/package/firmware/ipq-wifi/
+#cp -rf lienol/tools openwrt
 #cp -rf x-wrt/target/linux/ipq40xx/ openwrt/target/linux/
 #cp -rf x-wrt/package/firmware/ipq-wifi/ openwrt/package/firmware/
 #touch openwrt/target/linux/ipq40xx/
@@ -27,24 +26,24 @@ cp -rf lienol/tools openwrt
 #rm -rf lede/package/lean/default-settings
 #rm -rf lede/package/lean/openwrt-fullconenat
 #rm -rf openwrt/package/lean
-cp -rf luci/applications/luci-app-aria2/ openwrt/package
-cp -rf lede/package/lean/ openwrt/package
+#cp -rf luci/applications/luci-app-aria2/ openwrt/package
+#cp -rf lede/package/lean/ openwrt/package
 cd openwrt
-sed -i '/luci/d' feeds.conf.default
-sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06' feeds.conf.default
+#sed -i '/luci/d' feeds.conf.default
+#sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06' feeds.conf.default
 #sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
+#sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 #./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
-rm -rf feeds/luci/applications/luci-app-aria2
+#rm -rf feeds/luci/applications/luci-app-aria2
 #改qb版本为4.2.5
-rm -rf package/lean/qBittorrent/Makefile
-rm -rf package/lean/qBittorrent/patches
-cp -rf ../qb425 package/lean/qBittorrent/Makefile
-sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
-sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
+#rm -rf package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/patches
+#cp -rf ../qb425 package/lean/qBittorrent/Makefile
+#sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
+#sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
 
 #主题
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.5.1
@@ -90,9 +89,9 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/lean/default-settings/files/z
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
-[ -e ../files ] && mv ../files files
-[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
-#[ -e ../G-DOCK/Lienol-18.06*.config ] && mv -f ../G-DOCK/Lienol-18.06*.config .config
-rm -rf .config
-cp -rf ../5436 .config
-cp -rf ../G-DOCK/zzz package/lean/default-settings/files/zzz-default-settings
+#[ -e ../files ] && mv ../files files
+#[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
+##[ -e ../G-DOCK/Lienol-18.06*.config ] && mv -f ../G-DOCK/Lienol-18.06*.config .config
+#rm -rf .config
+#cp -rf ../5436 .config
+#cp -rf ../G-DOCK/zzz package/lean/default-settings/files/zzz-default-settings
