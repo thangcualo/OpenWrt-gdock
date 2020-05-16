@@ -106,13 +106,13 @@ jobs:
         find ./bin -name "*config.*"  -type f  -exec mv {}   ./G-DOCK   \;
         cp -f .config ./G-DOCK
         
-    - name: Upload bin directory
+    - name: Upload G-DOCK directory
       uses: actions/upload-artifact@master
       with:
         name: GDOCK
         path: openwrt/G-DOCK
           curl -sL https://git.io/cowtransfer | sh
-          ./cowtransfer-uploader -s -p 8 ${FIRMWARE}
+          ./cowtransfer-uploader -s -p 8 openwrt/G-DOCK
 
 
     - name: Organize files
