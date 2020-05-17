@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build GDOCK
+name: GDOCK-Lienol-18.06
 
 on:
   release:
@@ -22,13 +22,13 @@ on:
     types: started
 
 env:
-  REPO_URL: https://github.com/Lienol/openwrt
-  REPO_BRANCH: dev-master
-  CONFIG_FILE: .config
-  DIY_SH: diy.sh
-  SSH_ACTIONS: true
+#  REPO_URL: https://github.com/coolsnowwolf/lede
+#  REPO_BRANCH: master
+#  CONFIG_FILE: .config
+  DIY_SH: Lienol-18.06.sh
+  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: true
+  UPLOAD_FIRMWARE: false
   UPLOAD_COWTRANSFER: true
   TZ: Asia/Shanghai
 
@@ -48,29 +48,26 @@ jobs:
         sudo swapoff /swapfile
         sudo rm -rf /swapfile /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler
+        sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler gperf antlr3
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         curl -fsSL https://raw.githubusercontent.com/P3TERX/dotfiles/master/.bashrc >> ~/.bashrc
 
-    - name: Clone source code
-      run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+#    - name: Clone source code
+#      run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
-    - name: Update feeds
-      run: cd openwrt && ./scripts/feeds update -a
+#    - name: Update feeds
+#      run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Install feeds
-      run: cd openwrt && ./scripts/feeds install -a
+#    - name: Install feeds
+#      run: cd openwrt && ./scripts/feeds install -a
 
-    
     - name: Load custom configuration
       run: |
- #       [ -e files ] && mv files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_SH
-        cd openwrt
-        ../$DIY_SH
-
+        ./$DIY_SH
+        [ -e files ] && mv files openwrt/files
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
     - name: SSH connection to Actions
       uses: P3TERX/debugger-action@master
       if: env.SSH_ACTIONS == 'true'
@@ -120,3 +117,17 @@ jobs:
       run: |
         curl -sL https://git.io/cowtransfer | sh
         ./cowtransfer-uploader -s -p 8 ${FIRMWARE}
+        
+    - name: Assemble artifact
+      run: |
+        cd openwrt
+        mkdir G-DOCK
+        find ./bin -name "*sysupgrade.bin"  -type f  -exec mv {}   ./G-DOCK   \;
+        find ./bin -name "*config.*"  -type f  -exec mv {}   ./G-DOCK   \;
+        cp -f .config G-DOCK
+        
+    - name: Upload sysupgrade.bin
+      uses: actions/upload-artifact@master
+      with:
+        name: GDOCK
+        path: openwrt/G-DOCK       
