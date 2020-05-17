@@ -27,8 +27,8 @@ env:
 #  CONFIG_FILE: .config
 #  DIY_SH: diy.sh
   SSH_ACTIONS: true
-  UPLOAD_BIN_DIR: true
-  UPLOAD_FIRMWARE: true
+  UPLOAD_BIN_DIR: false
+  UPLOAD_FIRMWARE: false
   UPLOAD_COWTRANSFER: true
   TZ: Asia/Shanghai
 
@@ -98,23 +98,6 @@ jobs:
         name: OpenWrt_bin
         path: openwrt/bin
 
-    - name: Assemble artifact
-      run: |
-        cd openwrt
-        mkdir G-DOCK
-        find ./bin -name "*sysupgrade.bin"  -type f  -exec mv {}   ./G-DOCK   \;
-        find ./bin -name "*config.*"  -type f  -exec mv {}   ./G-DOCK   \;
-        cp -f .config ./G-DOCK
-        
-    - name: Upload G-DOCK directory
-      uses: actions/upload-artifact@master
-      with:
-        name: GDOCK
-        path: openwrt/G-DOCK
-          curl -sL https://git.io/cowtransfer | sh
-          ./cowtransfer-uploader -s -p 8 openwrt/G-DOCK
-
-
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
@@ -136,3 +119,17 @@ jobs:
       run: |
         curl -sL https://git.io/cowtransfer | sh
         ./cowtransfer-uploader -s -p 8 ${FIRMWARE}
+        
+    - name: Assemble artifact
+      run: |
+        cd openwrt
+        mkdir G-DOCK
+        find ./bin -name "*sysupgrade.bin"  -type f  -exec mv {}   ./G-DOCK   \;
+        find ./bin -name "*config.*"  -type f  -exec mv {}   ./G-DOCK   \;
+        cp -f .config G-DOCK
+        
+    - name: Upload sysupgrade.bin
+      uses: actions/upload-artifact@master
+      with:
+        name: GDOCK
+        path: openwrt/G-DOCK       
