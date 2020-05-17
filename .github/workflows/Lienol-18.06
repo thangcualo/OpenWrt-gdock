@@ -28,7 +28,7 @@ env:
   DIY_SH: Lienol-18.06.sh
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
-  UPLOAD_FIRMWARE: false
+  UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
   TZ: Asia/Shanghai
 
@@ -105,12 +105,12 @@ jobs:
         echo "::set-env name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
 
-    - name: Upload firmware directory
-      uses: actions/upload-artifact@master
-      if: steps.organize.outputs.status == 'success' && !cancelled()
-      with:
-        name: OpenWrt_firmware
-        path: ${{ env.FIRMWARE }}
+   # - name: Upload firmware directory
+   #   uses: actions/upload-artifact@master
+   #   if: steps.organize.outputs.status == 'success' && !cancelled()
+   #   with:
+   #     name: OpenWrt_firmware
+   #     path: ${{ env.FIRMWARE }}
 
     - name: Upload firmware to cowtransfer
       if: env.UPLOAD_COWTRANSFER == 'true' && !cancelled()
