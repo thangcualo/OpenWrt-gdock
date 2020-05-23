@@ -10,13 +10,12 @@ git clone https://github.com/coolsnowwolf/lede openwrt
 cd openwrt
 #添加Lienol的插件包
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-#./scripts/feeds clean
+#sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+./scripts/feeds clean
 ./scripts/feeds update -a
 #./scripts/feeds uninstall -a
 #./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
-#cp -rf ../G-DOCK/luci-app-passwall package
 #添加自定义插件
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
@@ -39,6 +38,7 @@ sed -i 's/R20.5.9/R18/g' package/lean/default-settings/files/zzz-default-setting
 #添加自己repo的插件的软连接
 cp -rf ../luci-theme-argon-1.x/ package/
 #ln -s ../../luci-app-flowoffload_ADGHome ./package/
+cp -rf ../G-DOCK/luci-app-passwall package
 
 #添加openwrt-usb-modeswitch-official
 git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
@@ -70,7 +70,11 @@ sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash\n' package/lean/default-setting
 sed -i '/exit 0/i\ln -sv /mnt/sda1 /srv/webd/web/U盘\n' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡\n' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/lean/default-settings/files/zzz-default-settings
-
+添加4G网卡网络接口
+sed -i '/exit 0/i\uci set network.4G_LTE=interface' package/lean/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\uci set network.4G_LTE.ifname=eth1' package/lean/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\uci set network.4G_LTE.proto=dhcp' package/lean/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\uci commit network' package/lean/default-settings/files/zzz-default-settings
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
