@@ -17,7 +17,11 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 #./scripts/feeds uninstall -a
 #./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
+
 #添加自定义插件
+cp -rf ../luci-theme-argon-1.x/ package/
+#ln -s ../../luci-app-flowoffload_ADGHome ./package/
+cp -rf ../G-DOCK/luci-app-passwall package
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
@@ -35,11 +39,6 @@ cp -rf ../qb425 package/lean/qBittorrent/Makefile
 sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
 sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
 sed -i 's/R20.5.9/R18/g' package/lean/default-settings/files/zzz-default-settings
-
-#添加自己repo的插件的软连接
-cp -rf ../luci-theme-argon-1.x/ package/
-#ln -s ../../luci-app-flowoffload_ADGHome ./package/
-cp -rf ../G-DOCK/luci-app-passwall package
 
 ##添加openwrt-usb-modeswitch-official
 #git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
