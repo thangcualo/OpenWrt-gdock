@@ -7,6 +7,7 @@
 #=================================================
 #克隆源码
 git clone https://github.com/coolsnowwolf/lede openwrt
+[ -e files ] && mv files openwrt/files
 cd openwrt
 #添加Lienol的插件包
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
@@ -40,12 +41,20 @@ cp -rf ../luci-theme-argon-1.x/ package/
 #ln -s ../../luci-app-flowoffload_ADGHome ./package/
 cp -rf ../G-DOCK/luci-app-passwall package
 
-#添加openwrt-usb-modeswitch-official
-git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
-sed -i 's/2.2.0/2.6.0/g' package/openwrt-usb-modeswitch-official/Makefile
-sed -i 's/f323fe700edd6ea404c40934ddf32b22/be73dcc84025794081a1d4d4e5a75e4c/g' package/openwrt-usb-modeswitch-official/Makefile
-sed -i 's/20140529/20191128/g' package/openwrt-usb-modeswitch-official/Makefile
-sed -i 's/dff94177781298aaf0b3c2a3c3dea6b2/e8fce7eb949cbe16c61fb71bade4cc17/g' package/openwrt-usb-modeswitch-official/Makefile
+##添加openwrt-usb-modeswitch-official
+#git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
+#sed -i 's/2.2.0/2.6.0/g' package/openwrt-usb-modeswitch-official/Makefile
+#sed -i 's/f323fe700edd6ea404c40934ddf32b22/be73dcc84025794081a1d4d4e5a75e4c/g' package/openwrt-usb-modeswitch-official/Makefile
+#sed -i 's/20140529/20191128/g' package/openwrt-usb-modeswitch-official/Makefile
+#sed -i 's/dff94177781298aaf0b3c2a3c3dea6b2/e8fce7eb949cbe16c61fb71bade4cc17/g' package/openwrt-usb-modeswitch-official/Makefile
+##添加ZTE-MF832S网卡
+#cp -rf ../ZTE-MF832S/* files/etc/
+##添加4G网卡网络接口
+#sed -i '/exit 0/i\uci set network.4G_LTE=interface' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/exit 0/i\uci set network.4G_LTE.ifname=eth1' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/exit 0/i\uci set network.4G_LTE.proto=dhcp' package/lean/default-settings/files/zzz-default-settings
+#sed -i '/exit 0/i\uci commit network' package/lean/default-settings/files/zzz-default-settings
+#sed -i "/exit 0/i\sed -i 's/wan wan6/wan wan6 4G_LTE/g' /etc/config/firewall\n" package/lean/default-settings/files/zzz-default-settings
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
@@ -70,16 +79,9 @@ sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/lean/default-settings/
 sed -i '/exit 0/i\ln -sv /mnt/sda1 /srv/webd/web/U盘' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/lean/default-settings/files/zzz-default-settings
-#添加4G网卡网络接口
-sed -i '/exit 0/i\uci set network.4G_LTE=interface' package/lean/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\uci set network.4G_LTE.ifname=eth1' package/lean/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\uci set network.4G_LTE.proto=dhcp' package/lean/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\uci commit network' package/lean/default-settings/files/zzz-default-settings
-sed -i "/exit 0/i\sed -i 's/wan wan6/wan wan6 4G_LTE/g' /etc/config/firewall\n" package/lean/default-settings/files/zzz-default-settings
 
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
-[ -e ../files ] && mv ../files files
 [ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
 [ -e ../G-DOCK/lean*.config ] && mv -f ../G-DOCK/lean*.config .config
