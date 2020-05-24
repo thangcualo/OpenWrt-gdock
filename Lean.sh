@@ -74,7 +74,9 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/lean/default-settings/files
 sed -i '/exit 0/i\uci set network.4G_LTE=interface' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\uci set network.4G_LTE.ifname=eth1' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\uci set network.4G_LTE.proto=dhcp' package/lean/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\uci commit network\n' package/lean/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\uci commit network' package/lean/default-settings/files/zzz-default-settings
+sed -i "/exit 0/i\sed -i 's/wan wan6/wan wan6 4G_LTE/g' /etc/config/firewall\n" package/lean/default-settings/files/zzz-default-settings
+
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
