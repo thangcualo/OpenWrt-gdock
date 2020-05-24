@@ -7,21 +7,13 @@
 #=================================================
 #克隆源码
 git clone https://github.com/ikghx/openwrt-life.git openwrt
-git clone https://github.com/x-wrt/x-wrt.git
-#git clone -b dev-master https://github.com/Lienol/openwrt lienol
-#git clone https://github.com/coolsnowwolf/lede
-#rm -rf lede/package/lean/luci-app-samba4
-#rm -rf lede/package/lean/luci-app-frpc
-#rm -rf openwrt/tools
+git clone -b dev-19.07 https://github.com/Lienol/openwrt Lienol
 rm -rf openwrt/target/linux/ipq40xx/
 rm -rf openwrt/package/firmware/ipq-wifi/
-#cp -rf lienol/tools openwrt
-cp -rf x-wrt/target/linux/ipq40xx/ openwrt/target/linux/
-cp -rf x-wrt/package/firmware/ipq-wifi/ openwrt/package/firmware/
+cp -rf Lienol/target/linux/ipq40xx/ openwrt/target/linux/
+cp -rf Lienol/package/firmware/ipq-wifi/ openwrt/package/firmware/
 touch openwrt/target/linux/ipq40xx/
 touch openwrt/package/firmware/ipq-wifi/
-#cp -rf lede/package/lean openwrt/package
-#cp -rf files openwrt
 cd openwrt
 #添加Lienol的插件包
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
@@ -31,8 +23,6 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 #sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
-#./scripts/feeds uninstall -a
-#./scripts/feeds install -f -p lienol -a
 ./scripts/feeds install -a
 #改qb版本为4.2.5
 #rm -rf package/lean/qBittorrent/Makefile
@@ -57,7 +47,8 @@ sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color:
 sed -i '/background-image/d' package/luci-theme-argon-2.1/luasrc/view/themes/argon/header.htm
 #添加自己repo的插件的软连接
 ln -s ../../luci-theme-argon-1.x ./package/
-#cp -rf ../G-DOCK/luci-app-passwall package
+cp -rf ../G-DOCK/luci-app-passwall package
+cp -rf ../G-DOCK/default-settings package
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
@@ -73,19 +64,9 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 #修改时区
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
-
-#修改zzz-default-settings的配置
-#sed -i 's/services/nas/g' package/lean/luci-app-samba4/luasrc/controller/samba4.lua
-#添加简易网盘
-#sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash\n' package/lean/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/i\ln -sv /mnt/sda1 /srv/webd/web/U盘\n' package/lean/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡\n' package/lean/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/i\chmod 775 /usr/bin/webd' package/lean/default-settings/files/zzz-default-settings
-
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
-#[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
 #[ -e ../G-DOCK/Lienol-18.06*.config ] && mv -f ../G-DOCK/Lienol-18.06*.config .config
 #cp -rf ../5435 .config
 #cp -rf ../G-DOCK/zzz-default-settings package/lean/default-settings/files/zzz-default-settings
