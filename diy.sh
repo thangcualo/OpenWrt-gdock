@@ -72,6 +72,7 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
+[ -e ../files ] && mv ../files files
 #[ -e ../G-DOCK/Lienol-18.06*.config ] && mv -f ../G-DOCK/Lienol-18.06*.config .config
 #cp -rf ../5435 .config
 #cp -rf ../G-DOCK/zzz-default-settings package/lean/default-settings/files/zzz-default-settings
