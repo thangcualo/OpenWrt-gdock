@@ -91,8 +91,12 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
-        cd openwrt/bin/targets/*/*
+        #cd openwrt/bin/targets/*/*
         #rm -rf packages
+        cd openwrt/bin/targets/*/*
+        zip -r packages.zip packages
+        cd ../../../
+        zip -r packages.zip packages
         echo "::set-env name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
 
