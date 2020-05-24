@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: GDOCK-Lienol
+name: GDOCK-Lienol-1907
 
 on:
   release:
@@ -100,8 +100,12 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
+        #cd openwrt/bin/targets/*/*
+        #rm -rf packages
         cd openwrt/bin/targets/*/*
-        rm -rf packages
+        zip -r packages.zip packages
+        cd ../../../
+        zip -r packages.zip packages
         echo "::set-env name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
 
