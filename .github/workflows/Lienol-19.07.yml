@@ -103,11 +103,11 @@ jobs:
       run: |
         #cd openwrt/bin/targets/*/*
         #rm -rf packages
-        cd openwrt/bin/targets/*/*
+        cd openwrt/bin
         zip -r packages.zip packages
-        rm -rf packages
-        cd ../../../
-        zip -r packages.zip packages
+        mv packages.zip targets/*/*
+        cd targets/*/*
+        zip -r packages1.zip packages
         rm -rf packages
         echo "::set-env name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
