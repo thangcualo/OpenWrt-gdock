@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: GDOCK-Lienol-master
+name: GDOCK-2.0
 
 on:
   repository_dispatch:
