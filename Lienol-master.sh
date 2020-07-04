@@ -81,4 +81,4 @@ cp -f ../banner package/base-files/files/etc/
 [ -e ../files ] && mv ../files files
 [ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
 [ -e ../G-DOCK/Lienol-18.06*.config ] && mv -f ../G-DOCK/Lienol-master*.config .config
-sed -i '/exit 0/i\cp -f /mnt/sda1/frpc.ini /etc/' package/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\cp -f /mnt/sda1/GDOCK/frpc.ini /etc/' package/default-settings/files/zzz-default-settings
