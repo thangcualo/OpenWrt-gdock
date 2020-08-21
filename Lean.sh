@@ -21,24 +21,23 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 #添加自定义插件
 cp -rf ../luci-theme-argon-1.x/ package/
 #ln -s ../../luci-app-flowoffload_ADGHome ./package/
-cp -rf ../G-DOCK/luci-app-passwall package
+#cp -rf ../G-DOCK/luci-app-passwall package
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
 
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.5.1
-rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
-rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
-cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
-sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
-sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.6.9
+#rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
+#rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
+#cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
+#sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
+#sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 #改qb版本为4.2.5
 rm -rf package/lean/qBittorrent/Makefile
 rm -rf package/lean/qBittorrent/patches
 cp -rf ../qb425 package/lean/qBittorrent/Makefile
 sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
 sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
-sed -i 's/R20.5.9/R18/g' package/lean/default-settings/files/zzz-default-settings
 
 ##添加openwrt-usb-modeswitch-official
 #git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
@@ -69,7 +68,7 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
 #修改zzz-default-settings的配置
-sed -i 's/samba/samba4/g' package/lean/default-settings/files/zzz-default-settings	
+sed -i 's/samba/samba4/g' package/lean/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\chmod 755 /etc/init.d/serverchan' package/lean/default-settings/files/zzz-default-settings	
 #sed -i '/exit 0/i\chmod 755 /usr/bin/serverchan/serverchan' package/lean/default-settings/files/zzz-default-settings	
 #sed -i '/exit 0/i\echo 0xDEADBEEF > /etc/config/google_fu_mode\n' package/lean/default-settings/files/zzz-default-settings
