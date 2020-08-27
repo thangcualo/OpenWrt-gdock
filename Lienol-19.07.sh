@@ -17,7 +17,7 @@ cp -rf lede/package/lean/ openwrt/package/
 cd openwrt
 #sed -i '/lienol/d' feeds.conf.default
 #sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
+#sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -49,6 +49,14 @@ cp -rf ../G-DOCK/luci-app-passwall package
 #sed -i '/exit 0/i\uci set network.4G_LTE.proto=dhcp' package/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\uci commit network' package/default-settings/files/zzz-default-settings
 #sed -i "/exit 0/i\sed -i 's/wan wan6/wan wan6 4G_LTE/g' /etc/config/firewall\n" package/default-settings/files/zzz-default-settings
+
+#添加主题
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.6.9
+#rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
+#rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
+#cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
+#sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
+#sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
