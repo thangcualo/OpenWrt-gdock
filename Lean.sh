@@ -26,7 +26,7 @@ cp -rf ../luci-theme-argon-1.x/ package/
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
 
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.6.9
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.0
 #rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
 #rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
 #cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
