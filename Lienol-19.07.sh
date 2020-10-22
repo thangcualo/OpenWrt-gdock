@@ -6,9 +6,8 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b dev-19.07 https://github.com/Lienol/openwrt
+git clone -b 19.07 --single-branch https://github.com/Lienol/openwrt
 git clone https://github.com/coolsnowwolf/lede
-#git clone https://github.com/coolsnowwolf/luci.git
 rm -rf lede/package/lean/default-settings
 rm -rf lede/package/lean/openwrt-fullconenat
 rm -rf openwrt/package/lean/
@@ -43,15 +42,12 @@ cp -rf ../G-DOCK/luci-app-passwall package
 #sed -i 's/dff94177781298aaf0b3c2a3c3dea6b2/e8fce7eb949cbe16c61fb71bade4cc17/g' package/openwrt-usb-modeswitch-official/Makefile
 ##添加ZTE-MF832S网卡
 #cp -rf ../ZTE-MF832S/* files/etc/
-##添加4G网卡网络接口
-#sed -i '/exit 0/i\uci set network.4G_LTE=interface' package/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/i\uci set network.4G_LTE.ifname=eth1' package/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/i\uci set network.4G_LTE.proto=dhcp' package/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/i\uci commit network' package/default-settings/files/zzz-default-settings
-#sed -i "/exit 0/i\sed -i 's/wan wan6/wan wan6 4G_LTE/g' /etc/config/firewall\n" package/default-settings/files/zzz-default-settings
+#添加usbwan(把txt文件的内容添加到zzz-default-settings文件)
+#sed -i -e '/exit 0/{h;s/.*/cat ../G-DOCK/add-usbwan/e;G}' package/default-settings/files/zzz-default-settings或
+sed  -i -e '/exit 0/r ../G-DOCK/add-usbwan' -e 'x;$G' package/default-settings/files/zzz-default-settings
 
 #添加主题
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.6.9
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.0
 #rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
 #rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
 #cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
