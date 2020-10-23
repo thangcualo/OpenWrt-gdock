@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: GDOCK-Lienol-1907
+name: GDOCK-Lienol-1907-128M
 
 on:
   repository_dispatch:
