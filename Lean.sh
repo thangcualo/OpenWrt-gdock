@@ -19,7 +19,7 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 ./scripts/feeds install -a
 
 #添加自定义插件
-cp -rf ../luci-theme-argon-1.x/ package/
+#cp -rf ../luci-theme-argon-1.x/ package/
 #ln -s ../../luci-app-flowoffload_ADGHome ./package/
 #cp -rf ../G-DOCK/luci-app-passwall package
 #git clone https://github.com/Ameykyl/luci-app-koolproxyR.git package/luci-app-koolproxyR
@@ -66,6 +66,10 @@ sed -i 's/OpenWrt/FK20100010/g' package/kernel/mac80211/files/lib/wifi/mac80211.
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #修改时区
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
+
+#添加usbwan(把txt文件的内容添加到zzz-default-settings文件)
+#sed -i -e '/exit 0/{h;s/.*/cat ../G-DOCK/add-usbwan/e;G}' package/lean/default-settings/files/zzz-default-settings或
+sed  -i -e '/exit 0/r ../G-DOCK/add-usbwan' -e 'x;$G' package/lean/default-settings/files/zzz-default-settings
 
 #修改zzz-default-settings的配置
 sed -i 's/samba/samba4/g' package/lean/default-settings/files/zzz-default-settings
