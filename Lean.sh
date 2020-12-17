@@ -10,8 +10,9 @@ git clone https://github.com/coolsnowwolf/lede openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
 #添加Lienol的插件包
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-#sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
+sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package.git;main' feeds.conf.default
+sed -i '$a src-git diy1 https://github.com/xiaorouji/openwrt-passwall.git;main' feeds.conf.default
+sed -i '$a src-git freifunk https://github.com/freifunk/openwrt-packages.git;openwrt-19.07' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 #./scripts/feeds uninstall -a
