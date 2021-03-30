@@ -17,6 +17,8 @@ cd openwrt
 #sed -i '/lienol/d' feeds.conf.default
 #sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 #sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
+#添加passwall
+sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -31,8 +33,8 @@ cd openwrt
 #sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
 
 #添加自己repo的插件的软连接或copy
-ln -s ../../luci-theme-argon-1.x ./package/
-cp -rf ../G-DOCK/luci-app-passwall package
+#ln -s ../../luci-theme-argon-1.x ./package/
+#cp -rf ../G-DOCK/luci-app-passwall package
 
 ##添加openwrt-usb-modeswitch-official
 #git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
