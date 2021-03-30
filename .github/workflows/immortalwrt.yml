@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: GDOCK-Lean-128M
+name: GDOCK-immortalwrt-128M
 
 on:
   repository_dispatch:
