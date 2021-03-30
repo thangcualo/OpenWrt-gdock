@@ -18,23 +18,19 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-#  schedule:
-#    - cron: 0 8 * * 5
-  #watch:
-  #  types: started
 
 env:
   #REPO_URL: https://github.com/coolsnowwolf/lede
   #REPO_BRANCH: master
   #FEEDS_CONF: feeds.conf.default
   #CONFIG_FILE: .config
-  #DIY_P1_SH: diy-part1.sh
-  #DIY_P2_SH: diy-part2.sh
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
   UPLOAD_WETRANSFER: true
-  UPLOAD_RELEASE: false
+  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -57,32 +53,32 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        
+#    - name: Clone source code
+#     working-directory: /workdir
+#     run: |
+#       df -hT $PWD
+#       git clone $REPO_URL -b $REPO_BRANCH openwrt
+#       ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    #- name: Clone source code
-    #  working-directory: /workdir
-    #  run: |
-    #    df -hT $PWD
-    #    git clone $REPO_URL -b $REPO_BRANCH openwrt
-    #    ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+#   - name: Load custom feeds
+#     run: |
+#       [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+#       chmod +x $DIY_P1_SH
+#       cd openwrt
+#       $GITHUB_WORKSPACE/$DIY_P1_SH
 
-   #- name: Load custom feeds
-   #  run: |
-   #    [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-   #    chmod +x $DIY_P1_SH
-   #    cd openwrt
-   #    $GITHUB_WORKSPACE/$DIY_P1_SH
-
-   #- name: Update feeds
-   #  run: cd openwrt && ./scripts/feeds update -a
-
-   #- name: Install feeds
-   #  run: cd openwrt && ./scripts/feeds install -a
+#    - name: Update feeds
+#      run: cd openwrt && ./scripts/feeds update -a
+#
+#    - name: Install feeds
+#      run: cd openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration
       run: |
-        #[ -e files ] && mv files openwrt/files
-        #[ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x ./*.sh
+       #[ -e files ] && mv files openwrt/files
+       #[ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x ./Lienol-19.07.sh
         ./Lienol-19.07.sh
         cd openwrt
 
@@ -179,7 +175,7 @@ jobs:
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
-      uses: ActionsRML/delete-workflow-runs@main
+      uses: GitRML/delete-workflow-runs@main
       with:
         retain_days: 1
         keep_minimum_runs: 3
@@ -192,4 +188,3 @@ jobs:
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
