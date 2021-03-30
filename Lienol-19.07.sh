@@ -7,11 +7,11 @@
 #=================================================
 #克隆源码
 git clone -b 19.07 --single-branch https://github.com/Lienol/openwrt
-git clone https://github.com/coolsnowwolf/lede
-rm -rf lede/package/lean/default-settings
-rm -rf lede/package/lean/openwrt-fullconenat
-rm -rf openwrt/package/lean/
-cp -rf lede/package/lean/ openwrt/package/
+#git clone https://github.com/coolsnowwolf/lede
+#rm -rf lede/package/lean/default-settings
+#rm -rf lede/package/lean/openwrt-fullconenat
+#rm -rf openwrt/package/lean/
+#cp -rf lede/package/lean/ openwrt/package/
 [ -e files ] && mv files openwrt/files
 cd openwrt
 #sed -i '/lienol/d' feeds.conf.default
@@ -24,11 +24,11 @@ cd openwrt
 #cp -rf ../luci/applications/luci-app-aria2/ feeds/luci/applications/
 
 #改qb版本为4.2.5
-rm -rf package/lean/qBittorrent/Makefile
-rm -rf package/lean/qBittorrent/patches
-cp -rf ../qb425 package/lean/qBittorrent/Makefile
-sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
-sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
+#rm -rf package/lean/qBittorrent/Makefile
+#rm -rf package/lean/qBittorrent/patches
+#cp -rf ../qb425 package/lean/qBittorrent/Makefile
+#sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
+#sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
 
 #添加自己repo的插件的软连接或copy
 ln -s ../../luci-theme-argon-1.x ./package/
@@ -47,7 +47,7 @@ cp -rf ../G-DOCK/luci-app-passwall package
 sed  -i -e '/exit 0/r ../G-DOCK/add-usbwan' -e 'x;$G' package/default-settings/files/zzz-default-settings
 
 #添加主题
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.0
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 #rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
 #rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
 #cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
