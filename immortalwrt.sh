@@ -6,9 +6,9 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b openwrt-18.06 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
-[ -e files ] && mv files openwrt/files
-cd openwrt
+git clone -b openwrt-18.06 --single-branch https://github.com/immortalwrt/immortalwrt
+[ -e files ] && mv files immortalwrt/files
+cd immortalwrt
 #sed -i '/lienol/d' feeds.conf.default
 #sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
 #sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
