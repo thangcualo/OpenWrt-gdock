@@ -18,3 +18,5 @@ sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡' package/lean/de
 sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/lean/default-settings/files/zzz-default-settings
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
+[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
+[ -e ../G-DOCK/immortalwrt*.config ] && mv -f ../G-DOCK/immortalwrt*.config .config
