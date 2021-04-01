@@ -7,6 +7,7 @@
 #=================================================
 #克隆源码
 git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
+[ -e files ] && mv files openwrt/files
 cd openwrt
 ./scripts/feeds update -a && ./scripts/feeds install -a
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.5
