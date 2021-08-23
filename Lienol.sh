@@ -6,7 +6,7 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b main --single-branch https://github.com/Lienol/openwrt
+git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
 #git clone https://github.com/coolsnowwolf/lede
 #rm -rf lede/package/lean/default-settings
 #rm -rf lede/package/lean/openwrt-fullconenat
