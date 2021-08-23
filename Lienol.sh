@@ -6,7 +6,7 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b 19.07 --single-branch https://github.com/Lienol/openwrt
+git clone -b main --single-branch https://github.com/Lienol/openwrt
 #git clone https://github.com/coolsnowwolf/lede
 #rm -rf lede/package/lean/default-settings
 #rm -rf lede/package/lean/openwrt-fullconenat
@@ -46,7 +46,7 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 #cp -rf ../ZTE-MF832S/* files/etc/
 #添加usbwan(把txt文件的内容添加到zzz-default-settings文件)
 #sed -i -e '/exit 0/{h;s/.*/cat ../G-DOCK/add-usbwan/e;G}' package/default-settings/files/zzz-default-settings或
-sed  -i -e '/exit 0/r ../G-DOCK/add-usbwan' -e 'x;$G' package/default-settings/files/zzz-default-settings
+#sed  -i -e '/exit 0/r ../G-DOCK/add-usbwan' -e 'x;$G' package/default-settings/files/zzz-default-settings
 
 #添加主题
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
