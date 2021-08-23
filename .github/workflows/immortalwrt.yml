@@ -84,6 +84,7 @@ jobs:
        #[ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x ./immortalwrt.sh
         ./immortalwrt.sh
+        cd openwrt
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
