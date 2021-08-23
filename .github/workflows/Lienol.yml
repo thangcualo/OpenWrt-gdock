@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: GDOCK-Lienol-1907-128M
+name: GDOCK-Lienol-128M
 
 on:
   repository_dispatch:
@@ -78,8 +78,8 @@ jobs:
       run: |
        #[ -e files ] && mv files openwrt/files
        #[ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x ./Lienol-19.07.sh
-        ./Lienol-19.07.sh
+        chmod +x ./Lienol.sh
+        ./Lienol.sh
         cd openwrt
 
     - name: SSH connection to Actions
