@@ -83,4 +83,4 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
 [ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
-[ -e ../G-DOCK/Lienol-19.07*.config ] && mv -f ../G-DOCK/Lienol-19.07*.config .config
+[ -e ../G-DOCK/Lienol-19.07*.config ] && mv -f ../G-DOCK/Lienol*.config .config
