@@ -7,23 +7,13 @@
 #=================================================
 #克隆源码
 git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
-#git clone https://github.com/coolsnowwolf/lede
-#rm -rf lede/package/lean/default-settings
-#rm -rf lede/package/lean/openwrt-fullconenat
-#rm -rf openwrt/package/lean/
-#cp -rf lede/package/lean/ openwrt/package/
 [ -e files ] && mv files openwrt/files
 cd openwrt
-#sed -i '/lienol/d' feeds.conf.default
-#sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-#sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-#rm -rf feeds/luci/applications/luci-app-aria2
-#cp -rf ../luci/applications/luci-app-aria2/ feeds/luci/applications/
 
 #改qb版本为4.2.5
 #rm -rf package/lean/qBittorrent/Makefile
@@ -31,10 +21,6 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 #cp -rf ../qb425 package/lean/qBittorrent/Makefile
 #sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
 #sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
-
-#添加自己repo的插件的软连接或copy
-#ln -s ../../luci-theme-argon-1.x ./package/
-#cp -rf ../G-DOCK/luci-app-passwall package
 
 ##添加openwrt-usb-modeswitch-official
 #git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
@@ -49,7 +35,7 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 #sed  -i -e '/exit 0/r ../G-DOCK/add-usbwan' -e 'x;$G' package/default-settings/files/zzz-default-settings
 
 #添加主题
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
+#git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 #rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
 #rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
 #cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
@@ -81,6 +67,6 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-
 
 #修改banner
 rm -rf package/base-files/files/etc/banner
-cp -f ../banner package/base-files/files/etc/
-[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
-[ -e ../G-DOCK/Lienol-19.07*.config ] && mv -f ../G-DOCK/Lienol*.config .config
+cp -f /banner package/base-files/files/etc/
+[ -e /G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
+[ -e /G-DOCK/Lienol-19.07*.config ] && mv -f ../G-DOCK/Lienol*.config .config
