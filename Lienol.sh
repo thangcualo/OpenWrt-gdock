@@ -44,6 +44,6 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 
 #修改banner
 rm -rf package/base-files/files/etc/banner
-cp -f /banner package/base-files/files/etc/
-[ -e /G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
-[ -e /G-DOCK/Lienol*.config ] && mv -f ../G-DOCK/Lienol*.config .config
+cp -f ../banner package/base-files/files/etc/
+[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
+[ -e ../G-DOCK/Lienol*.config ] && mv -f ../G-DOCK/Lienol*.config .config
