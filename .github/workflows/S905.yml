@@ -24,7 +24,7 @@ env:
   DIY_P1_SH: S905/diy-part1.sh
   DIY_P2_SH: S905/diy-part2.sh
   UPLOAD_BIN_DIR: false
-  UPLOAD_ARMVIRT: false
+  UPLOAD_ARMVIRT: true
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: false
   UPLOAD_COWTRANSFER: true
