@@ -1,6 +1,3 @@
-复制files文件夹到openwrt目录
-[ -e ../S905/files ] && mv ../S905/files files
-
 #移除不用软件包    
 rm -rf package/lean/luci-app-dockerman
 rm -rf package/lean/luci-app-wrtbwmon
