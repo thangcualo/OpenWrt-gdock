@@ -12,6 +12,8 @@ svn co https://github.com/breakings/OpenWrt/trunk/opt/kernel/5.4.145 /opt/kernel
 cd /opt
 git clone https://github.com/unifreq/openwrt_packit
 cd openwrt_packit
-sed -i 's/5.14.8-flippy-65+/5.4.145-flippy-64+o/g' make.env
+sed -i 's/5.14.8-flippy-65+/5.4.148-flippy-64+o' make.env
 wget http://91io.cn/s/WOqVqF8/openwrt-armvirt-64-default-rootfs.tar.gz
-sudo ./mk_s905_mxqpro+.sh
+sudo ./mmk_s912_zyxq.sh
+sudo ./mmk_s905x2_x96max.sh
+sudo ./mmk_s905x3_multi.sh
