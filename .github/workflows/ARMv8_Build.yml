@@ -64,7 +64,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: S905${{ env.PACKAGED_OUTPUTDATE }}
-        path: $GITHUB_WORKSPACE/opt/openwrt_packit/tmp/*
+        path: /opt/openwrt_packit/tmp
         
     - name: Upload firmware to cowtransfer
       id: cowtransfer
