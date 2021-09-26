@@ -9,7 +9,7 @@
 #============================================================
 
 svn co https://github.com/breakings/OpenWrt/trunk/opt/kernel/5.4.149 /opt/kernel
-mv /5.4.149/* /opt/kernel
+mv /opt/kernel/5.4.149/* /opt/kernel
 cd /opt
 git clone https://github.com/unifreq/openwrt_packit
 cd openwrt_packit
