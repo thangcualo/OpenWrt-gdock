@@ -8,7 +8,7 @@
 # Blog: https://p3terx.com
 #============================================================
 
-svn co https://github.com/breakings/OpenWrt/trunk/opt/kernel/5.4.145 /opt/kernel
+svn co https://github.com/breakings/OpenWrt/trunk/opt/kernel/5.4.148 /opt/kernel
 cd /opt
 git clone https://github.com/unifreq/openwrt_packit
 cd openwrt_packit
