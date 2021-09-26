@@ -8,11 +8,11 @@
 # Blog: https://p3terx.com
 #============================================================
 
-svn co https://github.com/breakings/OpenWrt/trunk/opt/kernel/5.4.149 /opt/kernel
-mv /opt/kernel/5.4.149/* /opt/kernel
+svn co https://github.com/breakings/OpenWrt/trunk/opt/kernel/5.4.145 /opt/kernel
 cd /opt
 git clone https://github.com/unifreq/openwrt_packit
 cd openwrt_packit
+sed -i 's/5.14.8-flippy-65+/5.4.145-flippy-64+o/g' make.env
 wget http://91io.cn/s/WOqVqF8/openwrt-armvirt-64-default-rootfs.tar.gz
 ./mk_s905d_n1.sh
 mv /opt $GITHUB_WORKSPACE/
