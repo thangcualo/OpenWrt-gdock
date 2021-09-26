@@ -47,16 +47,11 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-        
-#    - name: Download rootfs.tar.gz 
-#      run: |
-#        wget https://github.com/a736399919/OpenWrt/suites/3858413154/artifacts/95897005
-#        unzip openwrt_armvirt_64_2021.09.24.1040
       
-   - name: Load custom feeds
-     run: |
-       chmod +x S905/Package-Armvirt-as-OpenWrt.sh
-       $GITHUB_WORKSPACE/S905/Package-Armvirt-as-OpenWrt.sh
+    - name: Load custom
+      run: |
+          chmod +x S905/Package-Armvirt-as-OpenWrt.sh
+          $GITHUB_WORKSPACE/S905/Package-Armvirt-as-OpenWrt.sh
 
 #    - name: Upload bin directory
 #      uses: actions/upload-artifact@master
