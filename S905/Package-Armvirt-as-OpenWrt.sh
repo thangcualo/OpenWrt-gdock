@@ -17,3 +17,4 @@ wget http://91io.cn/s/WOqVqF8/openwrt-armvirt-64-default-rootfs.tar.gz
 sudo ./mk_s912_zyxq.sh
 sudo ./mk_s905x2_x96max.sh
 sudo ./mk_s905x3_multi.sh
+mv /opt $GITHUB_WORKSPACE/
