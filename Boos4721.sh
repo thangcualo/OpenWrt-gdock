@@ -8,7 +8,7 @@ sed -i 's/5.4/5.10/g' target/linux/ipq40xx/Makefile
 #=================================================
 #克隆源码
 git clone https://github.com/Boos4721/openwrt openwrt
-sed -i 's/5.4/5.10/g' openwrt/target/linux/ipq40xx/Makefile
+#sed -i 's/5.4/5.10/g' openwrt/target/linux/ipq40xx/Makefile
 [ -e files ] && mv files openwrt/files
 cd openwrt
 ./scripts/feeds update -a
@@ -30,11 +30,11 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 #修改zzz-default-settings的配置
 #修改网络共享的位置
-sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/default-settings/files/zzz-default-settings
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/lean/default-settings/files/zzz-default-settings
 #修改aria2的位置
-sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/aria2.lua" package/default-settings/files/zzz-default-settings
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/aria2.lua" package/lean/default-settings/files/zzz-default-settings
 #修改oaf的位置
-sed -i "/exit 0/i\sed -i 's/network/control/g' /usr/lib/lua/luci/controller/appfilter.lua" package/default-settings/files/zzz-default-settings
+sed -i "/exit 0/i\sed -i 's/network/control/g' /usr/lib/lua/luci/controller/appfilter.lua" package/lean/default-settings/files/zzz-default-settings
 #添加简易网盘
 sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/lean/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\ln -sv /mnt/sda1 /srv/webd/web/U盘' package/lean/default-settings/files/zzz-default-settings
