@@ -1,4 +1,3 @@
-sed -i 's/5.4/5.10/g' target/linux/ipq40xx/Makefile
 #!/bin/bash
 #=================================================
 #   Description: DIY script
