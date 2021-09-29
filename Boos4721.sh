@@ -8,7 +8,7 @@ sed -i 's/5.4/5.10/g' target/linux/ipq40xx/Makefile
 #=================================================
 #克隆源码
 git clone https://github.com/Boos4721/openwrt openwrt
-#sed -i 's/5.4/5.10/g' openwrt/target/linux/ipq40xx/Makefile
+sed -i 's/5.4/5.10/g' openwrt/target/linux/ipq40xx/Makefile
 [ -e files ] && mv files openwrt/files
 cd openwrt
 ./scripts/feeds update -a
