@@ -7,6 +7,7 @@
 #=================================================
 #克隆源码
 git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
+sed -i 's/5.4/5.10/g' openwrt/target/linux/ipq40xx/Makefile
 #git clone https://github.com/coolsnowwolf/lede
 #rm -rf lede/package/lean/default-settings
 #rm -rf lede/package/lean/openwrt-fullconenat
