@@ -16,6 +16,7 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 ./scripts/feeds install -a
 
 #添加自定义插件
+svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
 #cp -rf ../luci-theme-argon-1.x/ package/
 #ln -s ../../luci-app-flowoffload_ADGHome ./package/
 #cp -rf ../G-DOCK/luci-app-passwall package
@@ -23,6 +24,8 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 #git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 #git clone https://github.com/maxlicheng/luci-app-unblockmusic.git package/luci-app-unblockmusic
 
+#添加主题
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package/luci-theme-edge
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 #rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
 #rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
