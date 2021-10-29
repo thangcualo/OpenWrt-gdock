@@ -37,10 +37,12 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 
 #添加简易网盘
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/default-settings package/default-settings
-sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\ln -sv /mnt/sda1 /srv/webd/web/U盘' package/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡' package/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
+echo '#!/bin/sh' > package/default-settings/files/zzz-default-settings
+echo "mkdir -pv /srv/webd/web/.Trash" >> package/default-settings/files/zzz-default-settings
+echo "ln -sv /mnt/sda1 /srv/webd/web/U盘" >> package/default-settings/files/zzz-default-settings
+echo "ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡" >> package/default-settings/files/zzz-default-settings
+echo "chmod 775 /usr/bin/webd\n" >> package/default-settings/files/zzz-default-settings
+echo 'exit 0' >> package/default-settings/files/zzz-default-settings
 
 #修改banner
 rm -rf package/base-files/files/etc/banner
