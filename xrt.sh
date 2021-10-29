@@ -9,6 +9,8 @@
 git clone https://github.com/x-wrt/x-wrt.git openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
+sed -i '/luci/d' feeds.conf.default
+sed -i '1a\src-git luci https://git.openwrt.org/project/luci.git' feeds.conf.default
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 ./scripts/feeds update -a
