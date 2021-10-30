@@ -7,10 +7,11 @@
 #=================================================
 #克隆源码
 git clone https://github.com/x-wrt/x-wrt.git openwrt
-svn co https://github.com/coolsnowwolf/lede/trunk/tools/ucl openwrt/tools/ucl
-svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx openwrt/tools/upx
-echo 'tools-y += ucl upx' >> openwrt/tools/Makefile
-echo '$(curdir)/upx/compile := $(curdir)/ucl/compile' >> openwrt/tools/Makefile
+svn co https://github.com/Lienol/openwrt/trunk/tools/ucl openwrt/tools/ucl
+svn co https://github.com/Lienol/openwrt/trunk/tools/upx openwrt/tools/upx
+sed -i 'N;28 a tools-y += ucl upx' openwrt/tools/Makefile
+sed -i 'N;42 a $(curdir)/upx/compile := $(curdir)/ucl/compile' openwrt/tools/Makefile
+
 [ -e files ] && mv files openwrt/files
 cd openwrt
 sed -i '/luci/d' feeds.conf.default
@@ -19,7 +20,10 @@ sed -i '1a\src-git luci https://git.openwrt.org/project/luci.git' feeds.conf.def
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C staging_dir/host/bin upx-3.96-amd64_linux/upx
+#
+rm -rf feeds/packages/lang/golang
+svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
+#wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C staging_dir/host/bin upx-3.96-amd64_linux/upx
 #添加自定义插件
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-cpufreq package/luci-app-cpufreq
