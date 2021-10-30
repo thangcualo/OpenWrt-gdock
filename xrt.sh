@@ -7,6 +7,8 @@
 #=================================================
 #克隆源码
 git clone https://github.com/x-wrt/x-wrt.git openwrt
+rm -rf openwrt/tools
+svn co https://github.com/coolsnowwolf/lede/trunk/tools openwrt/tools
 [ -e files ] && mv files openwrt/files
 cd openwrt
 sed -i '/luci/d' feeds.conf.default
