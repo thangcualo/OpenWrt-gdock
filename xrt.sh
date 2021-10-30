@@ -7,8 +7,10 @@
 #=================================================
 #克隆源码
 git clone https://github.com/x-wrt/x-wrt.git openwrt
-rm -rf openwrt/tools
-svn co https://github.com/coolsnowwolf/lede/trunk/tools openwrt/tools
+svn co https://github.com/coolsnowwolf/lede/trunk/tools/ucl openwrt/tools/ucl
+svn co https://github.com/coolsnowwolf/lede/trunk/tools/upx openwrt/tools/upx
+echo 'tools-y += ucl upx' >> openwrt/tools/Makefile
+echo '$(curdir)/upx/compile := $(curdir)/ucl/compile' >> openwrt/tools/Makefile
 [ -e files ] && mv files openwrt/files
 cd openwrt
 sed -i '/luci/d' feeds.conf.default
