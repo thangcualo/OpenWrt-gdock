@@ -5,7 +5,7 @@
 # Source code repository: https://github.com/openwrt/openwrt / Branch: 21.02
 #========================================================================================================================
 
-name: Build OpenWrt official-21.02
+name: Build OpenWrt
 
 on:
   repository_dispatch:
@@ -46,7 +46,7 @@ jobs:
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install -y losetup lsblk blkid uuidgen fdisk parted mkfs.vfat mkfs.ext4 mkfs.btrfs
+        sudo -E apt-get -qq install $(curl -fsSL git.io/ubuntu-2004-openwrt)
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
