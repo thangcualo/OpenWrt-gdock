@@ -53,8 +53,7 @@ jobs:
     - name: Load custom
       run: |
           chmod +x S905/Package-Armvirt-as-OpenWrt.sh
-          $GITHUB_WORKSPACE/S905/Package-Armvirt-as-OpenWrt.sh
-          lsblk --version
+          $GITHUB_WORKSPACE/S905/Package-Armvirt-as-OpenWrt.sh       
 
 #    - name: Upload bin directory
 #      uses: actions/upload-artifact@master
@@ -67,13 +66,13 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: S905${{ env.PACKAGED_OUTPUTDATE }}
-        path: $GITHUB_WORKSPACE/opt/openwrt_packit/tmp
+        path: $GITHUB_WORKSPACE/opt/openwrt_packit/output
         
     - name: Upload firmware to cowtransfer
       id: cowtransfer
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer cow --block 2621440 -s -p 64 --no-progress $GITHUB_WORKSPACE/opt/openwrt_packit/tmp/* 2>&1 | tee cowtransfer.log
+        ./transfer cow --block 2621440 -s -p 64 --no-progress $GITHUB_WORKSPACE/opt/openwrt_packit/output/* 2>&1 | tee cowtransfer.log
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
         echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
         
@@ -81,6 +80,6 @@ jobs:
       id: wetransfer
       run: |
         curl -fsSL git.io/file-transfer | sh
-        ./transfer wet -s -p 16 --no-progress $GITHUB_WORKSPACE/opt/openwrt_packit/tmp/* 2>&1 | tee wetransfer.log
+        ./transfer wet -s -p 16 --no-progress $GITHUB_WORKSPACE/opt/openwrt_packit/output/* 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
         echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
