@@ -5,7 +5,7 @@
 # Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
 #========================================================================================================================
 
-name: Build OpenWrt Rootfs
+name: Build ARMv8_Rootfs
 
 on:
   repository_dispatch:
