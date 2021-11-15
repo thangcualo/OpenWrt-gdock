@@ -1,4 +1,4 @@
-name: ARMv8_Build
+name: ARMv8_Rootfs_S905
 
 on:
   repository_dispatch:
