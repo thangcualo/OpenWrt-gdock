@@ -59,9 +59,9 @@ jobs:
        PACKAGE_SOC: s905
        KERNEL_VERSION_NAME: 5.15.1
    
-     - name: Upload firmware directory
-       uses: actions/upload-artifact@master
-       with:
+    - name: Upload firmware directory
+      uses: actions/upload-artifact@master
+      with:
          name: S905${{ env.PACKAGED_OUTPUTDATE }}
          path: $GITHUB_WORKSPACE/opt/openwrt_packit/tmp
       
