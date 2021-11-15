@@ -1,3 +1,5 @@
+./scripts/feeds update -a
+./scripts/feeds install -a
 #移除不用软件包    
 rm -rf package/lean/luci-app-dockerman
 rm -rf package/lean/luci-app-wrtbwmon
