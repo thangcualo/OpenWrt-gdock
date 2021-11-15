@@ -53,14 +53,8 @@ jobs:
     - name: Load custom
       run: |
           chmod +x S905/Package-Armvirt-as-OpenWrt.sh
-          $GITHUB_WORKSPACE/S905/Package-Armvirt-as-OpenWrt.sh       
-
-#    - name: Upload bin directory
-#      uses: actions/upload-artifact@master
-#      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
-#      with:
-#        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-#        path: openwrt/bin/targets/*/*/bin.tar.gz
+          $GITHUB_WORKSPACE/S905/Package-Armvirt-as-OpenWrt.sh
+          rm $GITHUB_WORKSPACE/opt/openwrt_packit/output/*rootfs.tar.gz
 
     - name: Upload firmware directory
       uses: actions/upload-artifact@master
