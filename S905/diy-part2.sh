@@ -20,3 +20,4 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-
 #sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/lean/default-settings/files/zzz-default-settings
 #修改aria2的位置
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/aria2.lua" package/default-settings/files/zzz-default-settings
+[ -e S905/s905-1.config ] && mv -f S905/s905-1.config .config
