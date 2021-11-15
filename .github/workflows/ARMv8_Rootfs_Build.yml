@@ -5,7 +5,7 @@
 # Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
 #========================================================================================================================
 
-name: Build OpenWrt for S905
+name: Build OpenWrt Rootfs
 
 on:
   repository_dispatch:
