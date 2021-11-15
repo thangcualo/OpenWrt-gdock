@@ -9,4 +9,4 @@
 #============================================================
 
 git clone  https://github.com/vpei/openwrt-s905d-n1.git openwrt
-wget https://github.com/vpei/openwrt-s905d-n1/releases/download/openwrt_s9xxx_lede_2021.11.11.0541/openwrt-armvirt-64-default-rootfs.tar.gz
+wget https://91io.cn/s/myxxXcO/openwrt-armvirt-64-default-rootfs.tar.gz
