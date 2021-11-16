@@ -20,4 +20,4 @@ sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/lean/default-settings/
 sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/lean/default-settings/files/zzz-default-settings
 #
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
-[ -e ../S905/s905-1.config ] && mv -f ../S905/s905-1.config .config
+[ -e ../S905/s905-Lean.config ] && mv -f ../S905/s905-Lean.config .config
