@@ -1,8 +1,6 @@
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #移除不用软件包
-rm -rf feeds/luci/applications/luci-app-aria2
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-aria2 feeds/luci/applications/luci-app-aria2
 rm -rf package/lean/luci-app-dockerman
 rm -rf package/lean/luci-app-wrtbwmon
 rm -rf feeds/packages/net/smartdns
@@ -15,11 +13,11 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luc
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 #添加简易网盘
 #Lienol
-sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
-sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
+#sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
+#sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 #Lean
-#sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/lean/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/lean/default-settings/files/zzz-default-settings
-#修改aria2的位置
-sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/aria2.lua" package/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/lean/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/lean/default-settings/files/zzz-default-settings
+#
+svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 [ -e ../S905/s905-1.config ] && mv -f ../S905/s905-1.config .config
