@@ -2,7 +2,7 @@
 ./scripts/feeds install -a
 #移除不用软件包
 rm -rf feeds/luci/applications/luci-app-aria2
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-aria2 package/luci-app-aria2
+svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-aria2 feeds/luci/applications/luci-app-aria2
 rm -rf package/lean/luci-app-dockerman
 rm -rf package/lean/luci-app-wrtbwmon
 rm -rf feeds/packages/net/smartdns
