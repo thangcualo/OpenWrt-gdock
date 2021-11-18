@@ -5,7 +5,7 @@
 # Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
 #========================================================================================================================
 
-name: Build ARMv8_Rootfs
+name: Build ARMv8_Rootfs_Lienol
 
 on:
   repository_dispatch:
@@ -17,12 +17,6 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
-  FEEDS_CONF: S905/feeds.conf.default
-  CONFIG_FILE: S905/S905.config
-  DIY_P1_SH: S905/diy-part1.sh
-  DIY_P2_SH: S905/diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_ARMVIRT: true
   UPLOAD_FIRMWARE: false
@@ -62,19 +56,10 @@ jobs:
 #        git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 #        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: Load custom feeds
-      run: |
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
-        chmod +x $DIY_P1_SH
-        $GITHUB_WORKSPACE/$DIY_P1_SH
-
     - name: Load custom configuration
       run: |
-        [ -e S905/files ] && mv S905/files openwrt/files
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x $DIY_P2_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P2_SH
+        chmod +x S905/Lienol.sh
+        $GITHUB_WORKSPACE/S905/Lienol.sh
         
     - name: SSH connection to Actions @ Ctrl+C to enter, Ctrl+D to exit
       uses: P3TERX/ssh2actions@main
