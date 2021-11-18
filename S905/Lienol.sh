@@ -29,6 +29,12 @@ sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files
 sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 
 #添加自定义插件
+rm -rf package/lean/luci-app-turboacc
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-turboacc package/lean/luci-app-turboacc
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/dnsforwarder package/lean/dnsforwarder
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean//shortcut-fe/simulated-driver package/lean//shortcut-fe/simulated-driver
+
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+
 [ -e ../S905/s905-Lienol.config ] && mv -f ../S905/s905-Lienol.config .config
 
