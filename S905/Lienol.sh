@@ -34,6 +34,8 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-turboacc
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/dnsforwarder package/lean/dnsforwarder
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean//shortcut-fe/simulated-driver package/lean//shortcut-fe/simulated-driver
 
+git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
+
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 [ -e ../S905/s905-Lienol.config ] && mv -f ../S905/s905-Lienol.config .config
