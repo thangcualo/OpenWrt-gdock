@@ -20,6 +20,7 @@ rm -rf feeds/packages/net/smartdns
 #add luci-app-dockerman
 svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman
 #添加argon主题
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package/luci-theme-edge
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
