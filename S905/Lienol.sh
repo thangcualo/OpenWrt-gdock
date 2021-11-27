@@ -26,6 +26,7 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 #添加简易网盘
 [ -e ../S905/files ] && mv ../S905/files openwrt/files
 sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
+sed -i '/exit 0/i\ln -sv /mnt/mmcblk1p4/All-in-one /srv/webd/web/SD卡' package/default-settings/files/zzz-default-settings
 sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 
 #添加自定义插件
