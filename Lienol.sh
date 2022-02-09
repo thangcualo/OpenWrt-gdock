@@ -6,24 +6,16 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
-#git clone https://github.com/coolsnowwolf/lede
-#rm -rf lede/package/lean/default-settings
-#rm -rf lede/package/lean/openwrt-fullconenat
-#rm -rf openwrt/package/lean/
-#cp -rf lede/package/lean/ openwrt/package/
+git clone -b 21.02 --single-branch https://github.com/Lienol/openwrt openwrt
+
+#git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
-#sed -i '/lienol/d' feeds.conf.default
-#sed -i '$a src-git lienol https://github.com/a736399919/lienol-openwrt-package' feeds.conf.default
-#sed -i '$a src-git leanpackages https://github.com/coolsnowwolf/packages' feeds.conf.default
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-#rm -rf feeds/luci/applications/luci-app-aria2
-#cp -rf ../luci/applications/luci-app-aria2/ feeds/luci/applications/
 
 #改qb版本为4.2.5
 #rm -rf package/lean/qBittorrent/Makefile
@@ -52,11 +44,6 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package/luci-theme-edge
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
-#rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
-#rm -rf package/luci-theme-argon1.5/htdocs/luci-static/argon/img/
-#cp -rf package/luci-theme-argon-1.x/htdocs/luci-static/argon/head-icon.jpg package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/
-#sed -i '/class="darkMask"/a \ \ \ <div class="login-bg" style="background-color: #5e72e4"></div>' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
-#sed -i '/background-image/d' package/luci-theme-argon-1.5.1/luasrc/view/themes/argon/header.htm
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
