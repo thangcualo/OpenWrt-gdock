@@ -6,16 +6,16 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b 21.02 --single-branch https://github.com/Lienol/openwrt openwrt
-
+#git clone -b 21.02 --single-branch https://github.com/Lienol/openwrt openwrt
+git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
 #git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
 #添加passwall
-sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
-./scripts/feeds clean
-./scripts/feeds update -a
-./scripts/feeds install -a
+#sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
+#./scripts/feeds clean
+#./scripts/feeds update -a
+#./scripts/feeds install -a
 
 #改qb版本为4.2.5
 #rm -rf package/lean/qBittorrent/Makefile
