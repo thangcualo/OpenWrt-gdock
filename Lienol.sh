@@ -73,5 +73,5 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
-mv -f ../G-DOCK/Lienol.default .config
-#mv -f ../G-DOCK/Lienol*.config .config
+#mv -f ../G-DOCK/Lienol.default .config
+mv -f ../G-DOCK/Lienol*.config .config
