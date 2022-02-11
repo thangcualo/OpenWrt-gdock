@@ -6,8 +6,8 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-#git clone -b 21.02 --single-branch https://github.com/Lienol/openwrt openwrt
-git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
+git clone -b 21.02 --single-branch https://github.com/Lienol/openwrt openwrt
+#git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
 #git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
@@ -73,5 +73,5 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
-[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
-[ -e ../G-DOCK/Lienol*.config ] && mv -f ../G-DOCK/Lienol*.config .config
+mv -f ../G-DOCK/Lienol.default .config
+#mv -f ../G-DOCK/Lienol*.config .config
