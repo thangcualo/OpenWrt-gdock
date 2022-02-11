@@ -79,5 +79,5 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/lean/default-settings/files
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
-[ -e ../G-DOCK/default.config ] && mv -f ../G-DOCK/default.config .config
-[ -e ../G-DOCK/lean*.config ] && mv -f ../G-DOCK/lean*.config .config
+#mv -f ../G-DOCK/lean.default .config
+mv -f ../G-DOCK/lean*.config .config
