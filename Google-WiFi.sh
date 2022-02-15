@@ -17,8 +17,6 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
-chmod +x scripts/gen_image_vboot.sh
 
 #添加主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
@@ -53,3 +51,5 @@ sed -i "s/Google WiFi (Gale)/谷歌路由器/g" target/linux/ipq40xx/files/arch/
 #修改banner
 #mv -f ../G-DOCK/Google.default .config
 mv -f ../G-DOCK/Google*.config .config
+wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
+chmod +x scripts/gen_image_vboot.sh
