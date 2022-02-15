@@ -17,7 +17,9 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-
+git clone -b 21.02 --single-branch https://github.com/Lienol/openwrt sfe
+rm -rf package/kernel/shortcut-fe
+mv -f sfe/package/kernel/shortcut-fe package/kernel/shortcut-fe
 #添加主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
 
