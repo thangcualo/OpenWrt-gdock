@@ -8,15 +8,13 @@
 #克隆源码
 #git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
-rm -rf openwrt/target
-svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target openwrt/target
+rm -rf openwrt/target/linux/ipq40xx
+svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target/linux/ipq40xx openwrt/target/linux/ipq40xx
 [ -e files ] && mv files openwrt/files
 cd openwrt
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
-chmod 755 scripts/gen_image_vboot.sh
 
 #添加主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
@@ -55,3 +53,7 @@ sed -i "s/Google WiFi (Gale)/谷歌路由器/g" target/linux/ipq40xx/files/arch/
 #修改banner
 #mv -f ../G-DOCK/Google_immortalwrt.default .config
 mv -f ../G-DOCK/Google_immortalwrt*.config .config
+wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
+wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/common.sh
+chmod 755 scripts/gen_image_vboot.sh
+chmod 755 package/base-files/files/lib/upgrade/common.sh
