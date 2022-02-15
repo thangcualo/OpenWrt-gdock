@@ -16,6 +16,7 @@ cd openwrt
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
+chmod 755 scripts/gen_image_vboot.sh
 
 #添加主题
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
