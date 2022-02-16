@@ -8,12 +8,12 @@
 #克隆源码
 #git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
-#rm -rf openwrt/target/linux/ipq40xx
-#svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target/linux/ipq40xx openwrt/target/linux/ipq40xx
+rm -rf openwrt/target
+svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target/linux/ipq40xx openwrt/target
 [ -e files ] && mv files openwrt/files
 cd openwrt
-wget -O Add-support-for-Chromium-OS-and-Google-WiFi.patch http://patchwork.ozlabs.org/series/224800/mbox/
-patch -p1 < Add-support-for-Chromium-OS-and-Google-WiFi.patch
+#wget -O Add-support-for-Chromium-OS-and-Google-WiFi.patch http://patchwork.ozlabs.org/series/224800/mbox/
+#patch -p1 < Add-support-for-Chromium-OS-and-Google-WiFi.patch
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 ./scripts/feeds clean
@@ -27,6 +27,8 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
+wget -O target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch https://raw.githubusercontent.com/Lienol/openwrt/main/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+wget -O target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch https://raw.githubusercontent.com/Lienol/openwrt/main/target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
