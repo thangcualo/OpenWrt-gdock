@@ -9,7 +9,7 @@
 #git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
 rm -rf openwrt/target
-svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target/linux/ipq40xx openwrt/target
+svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target openwrt/target
 [ -e files ] && mv files openwrt/files
 cd openwrt
 #wget -O Add-support-for-Chromium-OS-and-Google-WiFi.patch http://patchwork.ozlabs.org/series/224800/mbox/
