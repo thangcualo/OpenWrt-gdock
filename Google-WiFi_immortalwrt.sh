@@ -9,7 +9,7 @@
 #git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
 rm -rf openwrt/target
-svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target/linux/ipq40xx openwrt/target
+svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target openwrt/target
 [ -e files ] && mv files openwrt/files
 cd openwrt
 
