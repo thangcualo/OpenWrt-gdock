@@ -79,6 +79,9 @@ chmod 755 scripts/target-metadata.pl
 
 rm -rf target/Config.in
 wget -P target https://raw.githubusercontent.com/computersforpeace/openwrt/gale/target/Config.in
+
+rm -rf target/linux/ipq40xx/image/generic.mk
+wget -P target/linux/ipq40xx/image https://raw.githubusercontent.com/computersforpeace/openwrt/gale/target/linux/ipq40xx/image/generic.mk
 ##
 
 #修改banner
