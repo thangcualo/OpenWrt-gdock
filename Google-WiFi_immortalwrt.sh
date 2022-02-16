@@ -8,10 +8,12 @@
 #克隆源码
 #git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
-rm -rf openwrt/target/linux/ipq40xx
-svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target/linux/ipq40xx openwrt/target/linux/ipq40xx
 [ -e files ] && mv files openwrt/files
 cd openwrt
+
+wget -O Add-support-for-Chromium-OS-and-Google-WiFi.patch http://patchwork.ozlabs.org/series/224800/mbox/
+patch -p1 < Add-support-for-Chromium-OS-and-Google-WiFi.patch
+
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -53,6 +55,7 @@ sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmb
 #sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 
 ##
+rm -rf scripts/gen_image_vboot.sh
 wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
 chmod 755 scripts/gen_image_vboot.sh
 
