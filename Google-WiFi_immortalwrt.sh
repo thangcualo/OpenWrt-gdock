@@ -38,8 +38,10 @@ sed -i "s/Google WiFi (Gale)/谷歌路由器/g" target/linux/ipq40xx/files/arch/
 
 #修改zzz-default-settings的配置
 #修改网络共享的位置
-#sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/default-settings/files/zzz-default-settings
-#sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-samba4.json" package/default-settings/files/zzz-default-settings
+#sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/emortal/default-settings/files/99-default-settings
+#sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-samba4.json" package/emortal/default-settings/files/99-default-settings
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/ksmbd.lua" package/emortal/default-settings/files/99-default-settings
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmbd.json" package/emortal/default-settings/files/99-default-settings
 
 #修改aria2的位置
 #sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/aria2.lua" package/default-settings/files/zzz-default-settings
@@ -50,10 +52,32 @@ sed -i "s/Google WiFi (Gale)/谷歌路由器/g" target/linux/ipq40xx/files/arch/
 #sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡' package/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 
+##
+wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
+chmod 755 scripts/gen_image_vboot.sh
+
+rm -rf package/base-files/files/lib/upgrade/common.sh
+wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/common.sh
+chmod 755 package/base-files/files/lib/upgrade/common.sh
+
+rm -rf include/image-commands.mk
+wget -P include https://raw.githubusercontent.com/computersforpeace/openwrt/gale/include/image-commands.mk
+
+rm -rf package/base-files/Makefile
+wget -P package/base-files https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/Makefile
+
+rm -rf package/base-files/files/lib/upgrade/emmc.sh
+wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/emmc.sh
+chmod 755 scripts/gen_image_vboot.sh package/base-files/files/lib/upgrade/emmc.sh
+
+rm -rf scripts/target-metadata.pl
+wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/target-metadata.pl
+chmod 755 scripts/target-metadata.pl
+
+rm -rf target/Config.in
+wget -P target https://raw.githubusercontent.com/computersforpeace/openwrt/gale/target/Config.in
+##
+
 #修改banner
 #mv -f ../G-DOCK/Google_immortalwrt.default .config
 mv -f ../G-DOCK/Google_immortalwrt*.config .config
-wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
-wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/common.sh
-chmod 755 scripts/gen_image_vboot.sh
-chmod 755 package/base-files/files/lib/upgrade/common.sh
