@@ -10,14 +10,14 @@ git clone -b gale --single-branch https://github.com/computersforpeace/openwrt o
 [ -e files ] && mv files openwrt/files
 cd openwrt
 #添加passwall&other
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package.git;main' feeds.conf.default
+#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package.git;main' feeds.conf.default
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git;dev' feeds.conf.default
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean package/lean
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
 #添加主题
+svn checkout https://github.com/Lienol/openwrt/branches/main/package/default-settings package/default-settings
 svn checkout https://github.com/Lienol/openwrt-luci/branches/main/themes/luci-theme-argon package/luci-theme-argon
 svn checkout https://github.com/Lienol/openwrt-luci/branches/main/themes/luci-theme-material package/luci-theme-material
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
@@ -27,7 +27,6 @@ git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 
-ack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
