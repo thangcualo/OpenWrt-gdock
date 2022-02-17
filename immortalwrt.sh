@@ -6,9 +6,9 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt
-[ -e files ] && mv files immortalwrt/files
-cd immortalwrt
+git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
+[ -e files ] && mv files openwrt/files
+cd openwrt
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
 #添加主题
