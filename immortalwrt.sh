@@ -34,16 +34,16 @@ sed -i "s/P&W R619AC 128M/竞斗云2.0/g" target/linux/ipq40xx/files/arch/arm/bo
 
 #修改zzz-default-settings的配置
 #修改网络共享的位置
-sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/ksmbd.lua" package/emortal/default-settings
-sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmbd.json" package/emortal/default-settings
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/ksmbd.lua" package/emortal/default-settings/files/99-default-settings
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmbd.json" package/emortal/default-settings/files/99-default-settings
 
 #修改aria2的位置
-#sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/aria2.lua" package/emortal/default-settings
+#sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/aria2.lua" package/emortal/default-settings/files/99-default-settings
 #添加简易网盘
-sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/emortal/default-settings
-sed -i '/exit 0/i\ln -sv /mnt/sda1 /srv/webd/web/U盘' package/emortal/default-settings
-sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡' package/emortal/default-settings
-sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/emortal/default-settings
+sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/emortal/default-settings/files/99-default-settings
+sed -i '/exit 0/i\ln -sv /mnt/sda1 /srv/webd/web/U盘' package/emortal/default-settings/files/99-default-settings
+sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡' package/emortal/default-settings/files/99-default-settings
+sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/emortal/default-settings/files/99-default-settings
 
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
