@@ -22,9 +22,9 @@ git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tc
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 #修改机器名称
-sed -i 's/OpenWrt/Gdock/g' package/base-files/files/bin/config_generate
+sed -i 's/OpenWrt/GDOCK/g' package/base-files/files/bin/config_generate
 #修改wifi名称
-sed -i 's/OpenWrt/Gdock/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/OpenWrt/GDOCK/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #默认打开WiFi
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #修改时区
@@ -48,4 +48,4 @@ sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/emortal/default-settings/fi
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
 #mv -f ../G-DOCK/immortalwrt.config .config
-mv -f ../G-DOCK/immortalwrt*.config .config
+mv -f ../G-DOCK/immortalwrt-*.config .config
