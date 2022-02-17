@@ -7,12 +7,11 @@
 #=================================================
 #克隆源码
 git clone -b 21.02 --single-branch https://github.com/Lienol/openwrt Lienol
-#git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
 #git clone -b main --single-branch https://github.com/Lienol/openwrt Lienol
 [ -e files ] && mv files Lienol/files
 cd Lienol
 #添加passwall
-sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
+sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git;dev' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
