@@ -9,12 +9,14 @@
 #git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
 [ -e files ] && mv files openwrt/files
+rm -rf openwrt/target
+svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target openwrt/target
 cd openwrt
 
-rm -rf target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-cm520-79f.dts
-mv -f ../G-DOCK/qcom-ipq4019-wifi.dts target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-cm520-79f.dts
-rm -rf target/linux/ipq40xx/base-files/etc/board.d/02_network
-mv -f ../G-DOCK/google_wifi_02_network target/linux/ipq40xx/base-files/etc/board.d/02_network
+#rm -rf target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-cm520-79f.dts
+#mv -f ../G-DOCK/qcom-ipq4019-wifi.dts target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-cm520-79f.dts
+#rm -rf target/linux/ipq40xx/base-files/etc/board.d/02_network
+#mv -f ../G-DOCK/google_wifi_02_network target/linux/ipq40xx/base-files/etc/board.d/02_network
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -57,4 +59,7 @@ sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmb
 
 #修改banner
 #mv -f ../G-DOCK/Google_immortalwrt.default .config
-mv -f ../G-DOCK/Google_immortalwrt*.config .config
+#mv -f ../G-DOCK/Google_immortalwrt*.config .config
+mv -f ../G-DOCK/Google_immortalwrt_gale*.config .config
+wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
+chmod +x scripts/gen_image_vboot.sh
