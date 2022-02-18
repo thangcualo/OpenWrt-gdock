@@ -8,14 +8,13 @@
 #克隆源码
 #git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
-rm -rf openwrt/target
-svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target openwrt/target
 [ -e files ] && mv files openwrt/files
 cd openwrt
 
-#wget -O Add-support-for-Chromium-OS-and-Google-WiFi.patch http://patchwork.ozlabs.org/series/224800/mbox/
-#patch -p1 < Add-support-for-Chromium-OS-and-Google-WiFi.patch
-
+rm -rf target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-cm520-79f.dts
+mv -f ../G-DOCK/qcom-ipq4019-wifi.dts target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-cm520-79f.dts
+rm -rf target/linux/ipq40xx/base-files/etc/board.d/02_network
+mv -f ../G-DOCK/google_wifi_02_network target/linux/ipq40xx/base-files/etc/board.d/02_network
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -26,9 +25,6 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
-
-wget -O target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
-wget -O target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
@@ -41,12 +37,12 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 #修改时区
 sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 #更改主机型号，支持中文。 
-sed -i "s/Google WiFi (Gale)/谷歌路由器/g" target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-wifi.dts
+sed -i "s/MobiPromo CM520-79F/谷歌路由器/g" target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-cm520-79f.dts
 
 #修改zzz-default-settings的配置
 #修改网络共享的位置
-#sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/emortal/default-settings/files/99-default-settings
-#sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-samba4.json" package/emortal/default-settings/files/99-default-settings
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/emortal/default-settings/files/99-default-settings
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-samba4.json" package/emortal/default-settings/files/99-default-settings
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/ksmbd.lua" package/emortal/default-settings/files/99-default-settings
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmbd.json" package/emortal/default-settings/files/99-default-settings
 
@@ -58,36 +54,6 @@ sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmb
 #sed -i '/exit 0/i\ln -sv /mnt/sda1 /srv/webd/web/U盘' package/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡' package/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
-
-##
-rm -rf scripts/gen_image_vboot.sh
-wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
-chmod 755 scripts/gen_image_vboot.sh
-
-rm -rf package/base-files/files/lib/upgrade/common.sh
-wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/common.sh
-chmod 755 package/base-files/files/lib/upgrade/common.sh
-
-rm -rf include/image-commands.mk
-wget -P include https://raw.githubusercontent.com/computersforpeace/openwrt/gale/include/image-commands.mk
-
-rm -rf package/base-files/Makefile
-wget -P package/base-files https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/Makefile
-
-rm -rf package/base-files/files/lib/upgrade/emmc.sh
-wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/emmc.sh
-chmod 755 scripts/gen_image_vboot.sh package/base-files/files/lib/upgrade/emmc.sh
-
-rm -rf scripts/target-metadata.pl
-wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/target-metadata.pl
-chmod 755 scripts/target-metadata.pl
-
-rm -rf target/Config.in
-wget -P target https://raw.githubusercontent.com/computersforpeace/openwrt/gale/target/Config.in
-
-rm -rf target/linux/ipq40xx/image/generic.mk
-wget -P target/linux/ipq40xx/image https://raw.githubusercontent.com/computersforpeace/openwrt/gale/target/linux/ipq40xx/image/generic.mk
-##
 
 #修改banner
 #mv -f ../G-DOCK/Google_immortalwrt.default .config
