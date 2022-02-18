@@ -27,8 +27,8 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
-wget -O target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch https://raw.githubusercontent.com/Lienol/openwrt/main/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
-wget -O target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch https://raw.githubusercontent.com/Lienol/openwrt/main/target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+#wget -O target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch https://raw.githubusercontent.com/Lienol/openwrt/main/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+#wget -O target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch https://raw.githubusercontent.com/Lienol/openwrt/main/target/linux/generic/hack-5.4/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
 
 #修改lan口地址
 sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
@@ -58,35 +58,37 @@ sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmb
 #sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 
 ##
-rm -rf scripts/gen_image_vboot.sh
-wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
-chmod +x scripts/gen_image_vboot.sh
-
-rm -rf package/base-files/files/lib/upgrade/common.sh
-wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/common.sh
-chmod +x package/base-files/files/lib/upgrade/common.sh
-
-rm -rf include/image-commands.mk
-wget -P include https://raw.githubusercontent.com/computersforpeace/openwrt/gale/include/image-commands.mk
-
-rm -rf package/base-files/Makefile
-wget -P package/base-files https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/Makefile
-
-rm -rf package/base-files/files/lib/upgrade/emmc.sh
-wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/emmc.sh
-chmod +x scripts/gen_image_vboot.sh package/base-files/files/lib/upgrade/emmc.sh
-
-rm -rf scripts/target-metadata.pl
-wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/target-metadata.pl
-chmod +x scripts/target-metadata.pl
-
-rm -rf target/Config.in
-wget -P target https://raw.githubusercontent.com/computersforpeace/openwrt/gale/target/Config.in
-
-rm -rf target/linux/ipq40xx/image/generic.mk
-wget -P target/linux/ipq40xx/image https://raw.githubusercontent.com/computersforpeace/openwrt/gale/target/linux/ipq40xx/image/generic.mk
+#rm -rf scripts/gen_image_vboot.sh
+#wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/gen_image_vboot.sh
+#chmod +x scripts/gen_image_vboot.sh
+#
+#rm -rf package/base-files/files/lib/upgrade/common.sh
+#wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/common.sh
+#chmod +x package/base-files/files/lib/upgrade/common.sh
+#
+#rm -rf include/image-commands.mk
+#wget -P include https://raw.githubusercontent.com/computersforpeace/openwrt/gale/include/image-commands.mk
+#
+#rm -rf package/base-files/Makefile
+#wget -P package/base-files https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/Makefile
+#
+#rm -rf package/base-files/files/lib/upgrade/emmc.sh
+#wget -P package/base-files/files/lib/upgrade https://raw.githubusercontent.com/computersforpeace/openwrt/gale/package/base-files/files/lib/upgrade/emmc.sh
+#chmod +x scripts/gen_image_vboot.sh package/base-files/files/lib/upgrade/emmc.sh
+#
+#rm -rf scripts/target-metadata.pl
+#wget -P scripts https://raw.githubusercontent.com/computersforpeace/openwrt/gale/scripts/target-metadata.pl
+#chmod +x scripts/target-metadata.pl
+#
+#rm -rf target/Config.in
+#wget -P target https://raw.githubusercontent.com/computersforpeace/openwrt/gale/target/Config.in
+#
+#rm -rf target/linux/ipq40xx/image/generic.mk
+#wget -P target/linux/ipq40xx/image https://raw.githubusercontent.com/computersforpeace/openwrt/gale/target/linux/ipq40xx/image/generic.mk
 ##
 
 #修改banner
 #mv -f ../G-DOCK/Google.default .config
-mv -f ../G-DOCK/Google_Lienol*.config .config
+#mv -f ../G-DOCK/Google_Lienol*.config .config
+mv -f ../G-DOCK/123.config .config
+
