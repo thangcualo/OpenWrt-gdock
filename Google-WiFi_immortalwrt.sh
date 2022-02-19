@@ -9,9 +9,10 @@
 #git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
 [ -e files ] && mv files openwrt/files
-rm -rf openwrt/target
-svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target openwrt/target
+rm -rf openwrt/target/linux/ipq40xx
+svn checkout https://github.com/computersforpeace/openwrt/branches/gale/target/linux/ipq40xx openwrt/target/linux/ipq40xx
 cd openwrt
+touch target/linux/*/Makefile
 
 #rm -rf target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-cm520-79f.dts
 #mv -f ../G-DOCK/qcom-ipq4019-wifi.dts target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-cm520-79f.dts
