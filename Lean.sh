@@ -22,6 +22,7 @@ git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 
 #添加主题
+git clone https://github.com/thinktip/luci-theme-neobird.git  
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package/luci-theme-edge
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 #rm -rf package/luci-theme-argon-1.5.1/htdocs/luci-static/argon/head-icon.jpg
