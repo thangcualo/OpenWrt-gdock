@@ -8,24 +8,22 @@
 #克隆源码
 git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 [ -e files ] && mv files openwrt/files
-rm -rf openwrt feeds.conf.default
-wget 
+rm -rf openwrt/feeds.conf.default
+wget -O openwrt/feeds.conf.default https://raw.githubusercontent.com/Lienol/openwrt/main/feeds.conf.default
 cd openwrt
 #添加passwall&other
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package.git;main' feeds.conf.default
-sed -i '$a src-git other https://github.com/Lienol/openwrt-package.git;other' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
 #添加主题
-svn checkout https://github.com/Lienol/openwrt/branches/main/package/default-settings package/default-settings
 svn checkout https://github.com/immortalwrt/luci/trunk/themes/luci-theme-argon package/luci-theme-argon
 svn checkout https://github.com/immortalwrt/luci/trunk/themes/luci-theme-material package/luci-theme-material
 #git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
 
 #添加自定义插件
+svn checkout https://github.com/Lienol/openwrt/branches/main/package/default-settings package/default-settings
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
 svn checkout https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq package/luci-app-cpufreq
@@ -43,7 +41,7 @@ sed -i 's/OpenWrt/Google/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #默认打开WiFi
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #修改时区
-sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
+#sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 #更改主机型号，支持中文。 
 sed -i "s/Google WiFi (Gale)/谷歌路由器/g" target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-wifi.dts
 
@@ -54,9 +52,6 @@ sed -i "s/Google WiFi (Gale)/谷歌路由器/g" target/linux/ipq40xx/files/arch/
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/ksmbd.lua" package/default-settings/files/zzz-default-settings
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmbd.json" package/default-settings/files/zzz-default-settings
 
-
-#修改aria2的位置
-#sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/aria2.lua" package/default-settings/files/zzz-default-settings
 
 #添加简易网盘
 #sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
