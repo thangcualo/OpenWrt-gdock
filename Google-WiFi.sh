@@ -61,7 +61,7 @@ sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmb
 
 #修改banner
 #mv -f ../G-DOCK/Google.default .config
-mv -f ../G-DOCK/Google_gale*.config .config
+mv -f ../G-DOCK/gale_lienol*.config .config
 
 rm -rf package/kernel/mac80211
 rm -rf package/network 
