@@ -24,6 +24,7 @@ svn checkout https://github.com/Lienol/openwrt-luci/branches/main/themes/luci-th
 #git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
 
 #添加自定义插件
+svn checkout https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq package/luci-app-cpufreq
 git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
