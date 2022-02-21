@@ -8,9 +8,11 @@
 #克隆源码
 git clone -b gale --single-branch https://github.com/computersforpeace/openwrt openwrt
 [ -e files ] && mv files openwrt/files
+rm -rf openwrt feeds.conf.default
+wget 
 cd openwrt
 #添加passwall&other
-sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git;dev' feeds.conf.default
+sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package.git;main' feeds.conf.default
 sed -i '$a src-git other https://github.com/Lienol/openwrt-package.git;other' feeds.conf.default
 ./scripts/feeds clean
@@ -24,6 +26,8 @@ svn checkout https://github.com/immortalwrt/luci/trunk/themes/luci-theme-materia
 #git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
 
 #添加自定义插件
+svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
+svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
 svn checkout https://github.com/immortalwrt/luci/trunk/applications/luci-app-cpufreq package/luci-app-cpufreq
 git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
