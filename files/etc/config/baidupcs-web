@@ -1,6 +1,0 @@
-
-config baidupcs-web 'config'
-	option port '5299'
-	option enabled '1'
-	option dl_dir '/mnt/mmcblk0p1/all/Downloads'
-
