@@ -1,6 +1,0 @@
-# Put your custom commands here that should be executed once
-# the system init finished. By default this file does nothing.
-/usr/bin/webd -l 9212  -u rulm:FK:qwerqwe123 -w /srv/webd/web &>/dev/null &
-/usr/bin/frpc -c /etc/frpc.ini &>/dev/null &
-
-exit 0
