@@ -60,7 +60,7 @@ sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-ksmb
 #sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 
 #修改banner
-#mv -f ../G-DOCK/Google.default .config
+#mv -f ../G-DOCK/google_wifi_lienol.default .config
 mv -f ../G-DOCK/gale_lienol*.config .config
 
 rm -rf package/kernel/mac80211
