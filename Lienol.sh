@@ -93,3 +93,4 @@ rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
 #mv -f ../G-DOCK/Lienol.default .config
 mv -f ../G-DOCK/Lienol_*.config .config
+wget -O target/linux/ipq40xx/patches-5.4/999-ipq40xx-unlock-cpu-frequency.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/target/linux/ipq40xx/patches-5.4/999-ipq40xx-unlock-cpu-frequency.patch
