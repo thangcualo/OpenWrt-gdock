@@ -18,9 +18,9 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 ./scripts/feeds install -a
 
 #添加主题
-svn checkout https://github.com/immortalwrt/luci/trunk/themes/luci-theme-argon package/luci-theme-argon
-svn checkout https://github.com/immortalwrt/luci/trunk/themes/luci-theme-material package/luci-theme-material
-#git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
+#svn checkout https://github.com/Lienol/openwrt-luci//branches/main/themes/luci-theme-argon package/luci-theme-argon
+svn checkout https://github.com/Lienol/openwrt-luci//branches/main/themes/luci-theme-material package/luci-theme-material
+git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
 
 
 svn checkout https://github.com/Lienol/openwrt/branches/main/package/default-settings package/default-settings
