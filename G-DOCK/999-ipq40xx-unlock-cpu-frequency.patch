@@ -1,0 +1,47 @@
+Signed-off-by: William <gw826943555@qq.com>
+===================================================================
+--- a/arch/arm/boot/dts/qcom-ipq4019.dtsi	2022-02-11 16:07:52.000000000 +0800
++++ b/arch/arm/boot/dts/qcom-ipq4019.dtsi	2022-02-24 17:25:51.225949612 +0800
+@@ -112,19 +112,28 @@
+ 		opp-48000000 {
+ 			opp-hz = /bits/ 64 <48000000>;
+ 			clock-latency-ns = <256000>;
++			clock-latency-ns = <100000>;
+ 		};
+ 		opp-200000000 {
+ 			opp-hz = /bits/ 64 <200000000>;
+ 			clock-latency-ns = <256000>;
++			clock-latency-ns = <100000>;
+ 		};
+ 		opp-500000000 {
+ 			opp-hz = /bits/ 64 <500000000>;
+ 			clock-latency-ns = <256000>;
++			clock-latency-ns = <100000>;
+ 		};
+ 		opp-716000000 {
+ 			opp-hz = /bits/ 64 <716000000>;
+ 			clock-latency-ns = <256000>;
++			clock-latency-ns = <100000>;
+  		};
++		opp-896000000 {
++			opp-hz = /bits/ 64 <896000000>;
++			clock-latency-ns = <256000>;
++			clock-latency-ns = <100000>;
++		};
+ 	};
+ 
+ 	memory {
+
+===================================================================
+--- a/drivers/clk/qcom/gcc-ipq4019.c	2022-02-11 16:07:52.000000000 +0800
++++ b/drivers/clk/qcom/gcc-ipq4019.c	2022-02-24 17:28:30.023560718 +0800
+@@ -579,6 +579,9 @@
+ 	F(632000000, P_DDRPLLAPSS, 1, 0, 0),
+ 	F(672000000, P_DDRPLLAPSS, 1, 0, 0),
+ 	F(716000000, P_DDRPLLAPSS, 1, 0, 0),
++	F(768000000, P_DDRPLLAPSS, 1, 0, 0),
++	F(823000000, P_DDRPLLAPSS, 1, 0, 0),
++	F(896000000, P_DDRPLLAPSS, 1, 0, 0),
+ 	{ }
+ };
+ 
