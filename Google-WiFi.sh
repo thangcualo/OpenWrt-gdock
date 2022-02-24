@@ -48,7 +48,7 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 sed -i "s/Google WiFi (Gale)/谷歌路由器/g" target/linux/ipq40xx/files/arch/arm/boot/dts/qcom-ipq4019-wifi.dts
 
 #修改zzz-default-settings的配置
-删除包含"exit 0"的行
+#删除包含"exit 0"的行
 sed -i '/exit 0/d' package/default-settings/files/zzz-default-settings
 #添加LingMaxDNS
 chmod +x files/etc/LingMaxDns_linux_arm
