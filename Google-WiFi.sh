@@ -53,7 +53,7 @@ sed -i '/exit 0/d' package/default-settings/files/zzz-default-settings
 #添加LingMaxDNS
 chmod +x files/etc/LingMaxDns_linux_arm
 sed -i '$a sed -i '\''$a iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 8287'\'' /etc/firewall.user' package/default-settings/files/zzz-default-settings
-sed -i '$a sed -i '\''/exit 0/i\/etc/LingMaxDns_linux_arm &'\'' /etc/rc.local' package/default-settings/files/zzz-default-settings
+sed -i '$a sed -i '\''/exit 0/i\/etc/LingMaxDns_linux_arm >/dev/null 2>&1 &'\'' /etc/rc.local' package/default-settings/files/zzz-default-settings
 
 #修改网络共享的位置
 sed -i '$a sed -i '\''s/services/nas/g'\'' /usr/lib/lua/luci/controller/samba4.lua' package/default-settings/files/zzz-default-settings
