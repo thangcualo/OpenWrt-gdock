@@ -3,7 +3,7 @@
 START=99
 USE_PROCD=1
 
-LingMaxDns="/etc/LingMaxDns_linux_arm >/dev/null 2>&1 &"
+LingMaxDns="/etc/LingMaxDns_linux_arm"
 
 start_service() {
  procd_open_instance
