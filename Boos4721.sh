@@ -13,6 +13,7 @@ cd openwrt
 ./scripts/feeds install -a -f
 
 #添加主题
+git clone https://github.com/thinktip/luci-theme-neobird.git package/luci-theme-neobird
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 
 #修改lan口地址
@@ -22,11 +23,16 @@ sed -i 's/OpenWrt/G-DOCK/g' package/base-files/files/bin/config_generate
 #修改wifi名称
 sed -i 's/OpenWrt_2.4G/FK20100010/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i 's/OpenWrt/FK20100010/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
 #默认打开WiFi
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #修改时区
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 #修改zzz-default-settings的配置
+
+# 设置密码为空（安装固件时无需密码登陆，然后自己修改想要的密码）
+sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz-default-settings
+
 #修改网络共享的位置
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/lean/default-settings/files/zzz-default-settings
 #修改aria2的位置
