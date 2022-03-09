@@ -1,0 +1,161 @@
+CONFIG_TARGET_ipq40xx=y
+CONFIG_TARGET_ipq40xx_generic=y
+CONFIG_TARGET_ipq40xx_generic_DEVICE_p2w_r619ac-128m=y
+CONFIG_ARIA2_BITTORRENT=y
+CONFIG_ARIA2_NOXML=y
+CONFIG_ARIA2_OPENSSL=y
+CONFIG_ARIA2_WEBSOCKET=y
+CONFIG_PACKAGE_LingTiGameAcc=y
+CONFIG_PACKAGE_aria2=y
+CONFIG_PACKAGE_ariang=y
+CONFIG_PACKAGE_atinout=y
+CONFIG_PACKAGE_chat=y
+CONFIG_PACKAGE_comgt=y
+CONFIG_PACKAGE_ddnsto=y
+CONFIG_PACKAGE_etherwake=y
+CONFIG_PACKAGE_fwknopd=y
+CONFIG_PACKAGE_iperf3=y
+# CONFIG_PACKAGE_ipset is not set
+CONFIG_PACKAGE_kmod-crypto-crc32=y
+CONFIG_PACKAGE_kmod-fs-f2fs=y
+# CONFIG_PACKAGE_kmod-shortcut-fe is not set
+# CONFIG_PACKAGE_kmod-shortcut-fe-cm is not set
+# CONFIG_PACKAGE_kmod-tcp-bbr is not set
+CONFIG_PACKAGE_libbz2=y
+CONFIG_PACKAGE_libdb47=y
+CONFIG_PACKAGE_libffi=y
+CONFIG_PACKAGE_libfko=y
+CONFIG_PACKAGE_libgdbm=y
+# CONFIG_PACKAGE_libipset is not set
+CONFIG_PACKAGE_liblzma=y
+# CONFIG_PACKAGE_libminiupnpc is not set
+# CONFIG_PACKAGE_libnatpmp is not set
+# CONFIG_PACKAGE_libnghttp2 is not set
+CONFIG_PACKAGE_libpcap=y
+CONFIG_PACKAGE_libpython3=y
+CONFIG_PACKAGE_libqrencode=y
+CONFIG_PACKAGE_libsqlite3=y
+CONFIG_PACKAGE_linkease=y
+CONFIG_PACKAGE_luci-app-LingTiGameAcc=y
+CONFIG_PACKAGE_luci-app-aria2=y
+CONFIG_PACKAGE_luci-app-atinout=y
+# CONFIG_PACKAGE_luci-app-autoreboot is not set
+CONFIG_PACKAGE_luci-app-autorebootnew=y
+# CONFIG_PACKAGE_luci-app-ddns is not set
+CONFIG_PACKAGE_luci-app-ddnsto=y
+# CONFIG_PACKAGE_luci-app-diskman_INCLUDE_btrfs_progs is not set
+# CONFIG_PACKAGE_luci-app-diskman_INCLUDE_lsblk is not set
+CONFIG_PACKAGE_luci-app-fwknopd=y
+CONFIG_PACKAGE_luci-app-linkease=y
+CONFIG_PACKAGE_luci-app-modeminfo=y
+CONFIG_PACKAGE_luci-app-netspeedtest=y
+CONFIG_PACKAGE_luci-app-poweroff=y
+# CONFIG_PACKAGE_luci-app-ramfree is not set
+# CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-ng is not set
+# CONFIG_PACKAGE_luci-app-rclone_INCLUDE_rclone-webui is not set
+CONFIG_PACKAGE_luci-app-shortcutmenu=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Client is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Server is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Libev_Client is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Libev_Server is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Simple_Obfs is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray is not set
+# CONFIG_PACKAGE_luci-app-turboacc is not set
+# CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_BBR_CCA is not set
+# CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_SHORTCUT_FE is not set
+# CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go is not set
+# CONFIG_PACKAGE_luci-app-unblockneteasemusic is not set
+# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Libev_Server is not set
+# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Trojan is not set
+# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Xray is not set
+# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Xray_plugin is not set
+CONFIG_PACKAGE_luci-app-wolplus=y
+# CONFIG_PACKAGE_luci-app-zerotier is not set
+CONFIG_PACKAGE_luci-i18n-aria2-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-autorebootnew-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-ddnsto-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-linkease-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-poweroff-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-shortcutmenu-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-wolplus-zh-cn=y
+CONFIG_PACKAGE_luci-theme-Butterfly=y
+# CONFIG_PACKAGE_luci-theme-argon is not set
+CONFIG_PACKAGE_luci-theme-btmod=y
+CONFIG_PACKAGE_luci-theme-ifit=y
+CONFIG_PACKAGE_luci-theme-infinityfreedom=y
+CONFIG_PACKAGE_luci-theme-neobird=y
+CONFIG_PACKAGE_luci-theme-opentomato=y
+CONFIG_PACKAGE_luci-theme-opentomcat=y
+CONFIG_PACKAGE_luci-theme-opentopd=y
+CONFIG_PACKAGE_luci-theme-rosy=y
+# CONFIG_PACKAGE_node is not set
+# CONFIG_PACKAGE_pdnsd-alt is not set
+CONFIG_PACKAGE_python3=y
+CONFIG_PACKAGE_python3-asyncio=y
+CONFIG_PACKAGE_python3-base=y
+CONFIG_PACKAGE_python3-cgi=y
+CONFIG_PACKAGE_python3-cgitb=y
+CONFIG_PACKAGE_python3-codecs=y
+CONFIG_PACKAGE_python3-ctypes=y
+CONFIG_PACKAGE_python3-dbm=y
+CONFIG_PACKAGE_python3-decimal=y
+CONFIG_PACKAGE_python3-distutils=y
+CONFIG_PACKAGE_python3-email=y
+CONFIG_PACKAGE_python3-gdbm=y
+CONFIG_PACKAGE_python3-light=y
+CONFIG_PACKAGE_python3-logging=y
+CONFIG_PACKAGE_python3-lzma=y
+CONFIG_PACKAGE_python3-multiprocessing=y
+CONFIG_PACKAGE_python3-ncurses=y
+CONFIG_PACKAGE_python3-openssl=y
+CONFIG_PACKAGE_python3-pydoc=y
+CONFIG_PACKAGE_python3-readline=y
+CONFIG_PACKAGE_python3-sqlite3=y
+CONFIG_PACKAGE_python3-unittest=y
+CONFIG_PACKAGE_python3-urllib=y
+CONFIG_PACKAGE_python3-xml=y
+CONFIG_PACKAGE_qrencode=y
+CONFIG_PACKAGE_shadow=y
+CONFIG_PACKAGE_shadow-chage=y
+CONFIG_PACKAGE_shadow-chfn=y
+CONFIG_PACKAGE_shadow-chgpasswd=y
+CONFIG_PACKAGE_shadow-chpasswd=y
+CONFIG_PACKAGE_shadow-chsh=y
+CONFIG_PACKAGE_shadow-common=y
+CONFIG_PACKAGE_shadow-expiry=y
+CONFIG_PACKAGE_shadow-faillog=y
+CONFIG_PACKAGE_shadow-gpasswd=y
+CONFIG_PACKAGE_shadow-groupadd=y
+CONFIG_PACKAGE_shadow-groupdel=y
+CONFIG_PACKAGE_shadow-groupmems=y
+CONFIG_PACKAGE_shadow-groupmod=y
+CONFIG_PACKAGE_shadow-groups=y
+CONFIG_PACKAGE_shadow-grpck=y
+CONFIG_PACKAGE_shadow-grpconv=y
+CONFIG_PACKAGE_shadow-grpunconv=y
+CONFIG_PACKAGE_shadow-lastlog=y
+CONFIG_PACKAGE_shadow-login=y
+CONFIG_PACKAGE_shadow-logoutd=y
+CONFIG_PACKAGE_shadow-newgidmap=y
+CONFIG_PACKAGE_shadow-newgrp=y
+CONFIG_PACKAGE_shadow-newuidmap=y
+CONFIG_PACKAGE_shadow-newusers=y
+CONFIG_PACKAGE_shadow-nologin=y
+CONFIG_PACKAGE_shadow-passwd=y
+CONFIG_PACKAGE_shadow-pwck=y
+CONFIG_PACKAGE_shadow-pwconv=y
+CONFIG_PACKAGE_shadow-pwunconv=y
+CONFIG_PACKAGE_shadow-su=y
+CONFIG_PACKAGE_shadow-useradd=y
+CONFIG_PACKAGE_shadow-userdel=y
+CONFIG_PACKAGE_shadow-usermod=y
+CONFIG_PACKAGE_shadow-utils=y
+CONFIG_PACKAGE_shadow-vipw=y
+# CONFIG_PACKAGE_zerotier is not set
+CONFIG_SQLITE3_DYNAMIC_EXTENSIONS=y
+CONFIG_SQLITE3_FTS3=y
+CONFIG_SQLITE3_FTS4=y
+CONFIG_SQLITE3_FTS5=y
+CONFIG_SQLITE3_JSON1=y
+CONFIG_SQLITE3_RTREE=y
+CONFIG_shadow-all=y
