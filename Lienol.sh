@@ -12,6 +12,7 @@ git clone -b 21.02 --single-branch https://github.com/Lienol/openwrt openwrt
 cd openwrt
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
+sed -i '$a src-git xiaorouji2 https://github.com/xiaorouji/openwrt-passwall2.git' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
