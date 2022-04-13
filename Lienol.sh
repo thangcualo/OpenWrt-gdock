@@ -96,6 +96,5 @@ cp -f ../banner package/base-files/files/etc/
 mv -f ../G-DOCK/Lienol_*.config .config
 #cp -f ../G-DOCK/999-ipq40xx-unlock-cpu-frequency.patch target/linux/ipq40xx/patches-5.4/999-ipq40xx-unlock-cpu-frequency.patch
 wget -O target/linux/ipq40xx/patches-5.10/999-ipq40xx-unlock-cpu-frequency.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/target/linux/ipq40xx/patches-5.10/999-ipq40xx-unlock-cpu-frequency.patch
-wget -O include/kernel-5.10 https://raw.githubusercontent.com/openwrt/openwrt/openwrt-22.03/include/kernel-5.10
 
 
