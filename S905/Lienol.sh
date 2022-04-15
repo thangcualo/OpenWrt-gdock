@@ -27,6 +27,9 @@ svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
 #添加简易网盘
+svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
+svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
+sed -i '$a chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 #[ -e ../S905/files ] && mv ../S905/files openwrt/files
 #sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\ln -sv /mnt/mmcblk1p4/All-in-one /srv/webd/web/SD卡' package/default-settings/files/zzz-default-settings
