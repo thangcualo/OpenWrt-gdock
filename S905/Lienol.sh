@@ -43,7 +43,8 @@ sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-samb
 #svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/dnsforwarder package/lean/dnsforwarder
 #svn co https://github.com/coolsnowwolf/lede/trunk/package/lean//shortcut-fe/simulated-driver package/lean//shortcut-fe/simulated-driver
 添加插件
-git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
+#git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
+svn co https://github.com/small-5/Openwrt-Compile/trunk/Small_5/package/ipk/luci-app-adblock-plus package/luci-app-adblock-plus
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 [ -e ../S905/s905-Lienol.config ] && mv -f ../S905/s905-Lienol.config .config
