@@ -31,7 +31,7 @@ svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd 
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
 sed -i '$a chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 sed -i 's/20220127/20220327/g' package/webd/Makefile
-sed -i 's/gwgw.ga/gwgw.ga\/fidx.html#/g' package/webd/Makefile
+sed -i 's/gwgw.ga/gwgw.ga\/fidx.html\\#/g' package/webd/Makefile
 
 #[ -e ../S905/files ] && mv ../S905/files openwrt/files
 #sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
