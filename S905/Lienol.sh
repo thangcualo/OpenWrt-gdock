@@ -30,6 +30,9 @@ git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-ar
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
 sed -i '$a chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
+sed -i 's/20220127/20220327/g' package/webd/Makefile
+sed -i 's/gwgw.ga/gwgw.ga\/fidx.html#/g' package/webd/Makefile
+
 #[ -e ../S905/files ] && mv ../S905/files openwrt/files
 #sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\ln -sv /mnt/mmcblk1p4/All-in-one /srv/webd/web/SD卡' package/default-settings/files/zzz-default-settings
