@@ -21,7 +21,7 @@ env:
   UPLOAD_ARMVIRT: true
   UPLOAD_FIRMWARE: false
   UPLOAD_RELEASE: false
-  UPLOAD_COWTRANSFER: true
+  UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: true
   RECENT_LASTEST: 3
   TZ: Asia/Shanghai
@@ -124,7 +124,7 @@ jobs:
       env:
         OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*.tar.gz
         PACKAGE_SOC: s905
-        KERNEL_VERSION_NAME: 5.10.1_5.15.1
+        KERNEL_VERSION_NAME: 5.15.1_5.17.1
         KERNEL_AUTO_LATEST: true
         WHOAMI: Lienol
         OPENWRT_VER: Lienol
