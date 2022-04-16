@@ -12,11 +12,15 @@ sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' 
 sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
 
 cd openwrt
+./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #移除不用软件包
-rm -rf package/lean/luci-app-dockerman
-rm -rf package/lean/luci-app-wrtbwmon
+rm -rf package/feeds/other/luci-app-mwan3helper
+rm -rf package/feeds/luci/luci-app-smartdns
+rm -rf feeds/luci/applications/luci-app-dockerman
+rm -rf feeds/other/luci-app-dockerman
+rm -rf feeds/other/lean/luci-app-wrtbwmon
 rm -rf feeds/packages/net/smartdns
 
 #add luci-app-dockerman
