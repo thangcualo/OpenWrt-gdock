@@ -126,6 +126,10 @@ jobs:
         PACKAGE_SOC: s905
         KERNEL_VERSION_NAME: 5.15.1_5.17.1
         KERNEL_AUTO_LATEST: true
+        ENABLE_WIFI_K510: 1
+        SW_FLOWOFFLOAD: 0
+        SFE_FLOW: 1
+        HW_FLOWOFFLOAD: 0
         WHOAMI: Lienol
         OPENWRT_VER: Lienol
 
