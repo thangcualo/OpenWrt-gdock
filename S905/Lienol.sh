@@ -7,11 +7,10 @@
 #=================================================
 #git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
 git clone -b 22.03 --single-branch https://github.com/Lienol/openwrt openwrt
+cd openwrt
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
-
-cd openwrt
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -56,4 +55,3 @@ svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/
 
 #[ -e ../S905/s905-Lienol.config ] && mv -f ../S905/s905-Lienol.config .config
 mv -f ../S905/arm64.config .config
-
