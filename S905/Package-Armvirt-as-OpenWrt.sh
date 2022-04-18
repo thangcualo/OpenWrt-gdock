@@ -19,4 +19,6 @@ sed -i 's/SW_FLOWOFFLOAD=1/SW_FLOWOFFLOAD=0/g' make.env
 sed -i 's/SFE_FLOW=0/SFE_FLOW=1/g' make.env
 wget -O  "openwrt-armvirt-64-default-rootfs.tar.gz" https://tmp-reach.vx-cdn.com/file-625d2f772979e/openwrt-armvirt-64-default-rootfs.tar.gz
 sudo ./mk_s905_mxqpro+.sh
+cd /opt/openwrt_packit/output/
+gzip openwrt_s905*
 sudo cp -rf /opt $GITHUB_WORKSPACE/
