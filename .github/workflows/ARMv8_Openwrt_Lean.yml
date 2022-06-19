@@ -5,7 +5,7 @@
 # Source code repository: https://github.com/coolsnowwolf/lede / Branch: master
 #========================================================================================================================
 
-name: Build ARMv8_Rootfs_Lean
+name: Build ARMv8_Openwrt_Lean
 
 on:
   repository_dispatch:
