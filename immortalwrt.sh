@@ -20,7 +20,7 @@ git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
-#svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
+svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
 #sed -i '$a chmod 775 /usr/bin/webd\n' package/emortal/default-settings/files/99-default-settings
 
 #修改lan口地址
