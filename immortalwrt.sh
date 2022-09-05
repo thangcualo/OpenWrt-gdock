@@ -61,5 +61,4 @@ sed -i '$a\exit 0' package/emortal/default-settings/files/99-default-settings
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
 #mv -f ../G-DOCK/immortalwrt.default .config
-#mv -f ../G-DOCK/immortalwrt-*.config .config
-wget https://github.com/a736399919/OpenWrt/raw/2aa646228d3bac2d51faa9ea0ff3d78df12f486b/G-DOCK/immortalwrt-20220905.config -O .config
+mv -f ../G-DOCK/immortalwrt-*.config .config
