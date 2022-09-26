@@ -6,7 +6,8 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
+#git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
+git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
 ./scripts/feeds update -a && ./scripts/feeds install -a
