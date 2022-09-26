@@ -6,8 +6,8 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b 22.03 --single-branch https://github.com/Lienol/openwrt openwrt
-#git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
+#git clone -b 22.03 --single-branch https://github.com/Lienol/openwrt openwrt
+git clone -b master --single-branch https://github.com/Lienol/openwrt openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
 #添加passwall
@@ -64,13 +64,14 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 #修改时区
 #sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 #修改zzz-default-settings的配置
+
 #删除包含"exit 0"的行
-sed -i '/exit 0/d' package/default-settings/files/zzz-default-settings
+#sed -i '/exit 0/d' package/default-settings/files/zzz-default-settings
 #添加LingMaxDNS
-chmod +x files/etc/LingMaxDns_linux_arm
-chmod +x files/etc/init.d/LingMaxDns
-sed -i '$a ln -s /etc/init.d/LingMaxDns /etc/rc.d/S999LingMaxDns' package/default-settings/files/zzz-default-settings
-sed -i '$a sed -i '\''$a iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 8287'\'' /etc/firewall.user' package/default-settings/files/zzz-default-settings
+#chmod +x files/etc/LingMaxDns_linux_arm
+#chmod +x files/etc/init.d/LingMaxDns
+#sed -i '$a ln -s /etc/init.d/LingMaxDns /etc/rc.d/S999LingMaxDns' package/default-settings/files/zzz-default-settings
+#sed -i '$a sed -i '\''$a iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 8287'\'' /etc/firewall.user' package/default-settings/files/zzz-default-settings
 
 #修改网络共享的位置
 sed -i '$a sed -i '\''s/services/nas/g'\'' /usr/lib/lua/luci/controller/samba4.lua' package/default-settings/files/zzz-default-settings
@@ -88,13 +89,13 @@ sed -i '$a\sed -i '\''s/services/nas/g'\'' /usr/share/luci/menu.d/luci-app-ksmbd
 #sed -i '/exit 0/i\ln -sv /mnt/mmcblk0p1/all /srv/webd/web/SD卡' package/default-settings/files/zzz-default-settings
 #sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 #添加包含"exit 0"的行
-sed -i '$a\exit 0' package/default-settings/files/zzz-default-settings
+#sed -i '$a\exit 0' package/default-settings/files/zzz-default-settings
+
+#修改内核版本
+sed -i 's/5.10/5.15/g' target/linux/ipq40xx/Makefile
+
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
 #mv -f ../G-DOCK/Lienol.default .config
 mv -f ../G-DOCK/Lienol_*.config .config
-#cp -f ../G-DOCK/999-ipq40xx-unlock-cpu-frequency.patch target/linux/ipq40xx/patches-5.4/999-ipq40xx-unlock-cpu-frequency.patch
-wget -O target/linux/ipq40xx/patches-5.10/999-ipq40xx-unlock-cpu-frequency.patch https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/target/linux/ipq40xx/patches-5.10/999-ipq40xx-unlock-cpu-frequency.patch
-
-
