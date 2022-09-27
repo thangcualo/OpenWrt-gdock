@@ -91,9 +91,6 @@ sed -i '$a\sed -i '\''s/services/nas/g'\'' /usr/share/luci/menu.d/luci-app-ksmbd
 #添加包含"exit 0"的行
 #sed -i '$a\exit 0' package/default-settings/files/zzz-default-settings
 
-#修改内核版本
-sed -i 's/5.10/5.15/g' target/linux/ipq40xx/Makefile
-
 #修改banner
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
