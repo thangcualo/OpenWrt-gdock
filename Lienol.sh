@@ -6,8 +6,8 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-#git clone -b 22.03 --single-branch https://github.com/Lienol/openwrt openwrt
-git clone -b master --single-branch https://github.com/Lienol/openwrt openwrt
+git clone -b 22.03 --single-branch https://github.com/Lienol/openwrt openwrt
+#git clone -b master --single-branch https://github.com/Lienol/openwrt openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
 #添加passwall
