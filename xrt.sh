@@ -57,4 +57,5 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
 mv -f ../G-DOCK/default.config .config
-mv -f ../G-DOCK/x-wrt*.config .config
+#mv -f ../G-DOCK/x-wrt*.config .config
+mv -f ../G-DOCK/x-wrt-gdock.config .config
