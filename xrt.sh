@@ -7,10 +7,11 @@
 #=================================================
 #克隆源码
 git clone -b master --single-branch https://github.com/x-wrt/x-wrt.git openwrt
-svn co https://github.com/Lienol/openwrt/trunk/tools/ucl openwrt/tools/ucl
-svn co https://github.com/Lienol/openwrt/trunk/tools/upx openwrt/tools/upx
-sed -i 'N;28 a tools-y += ucl upx' openwrt/tools/Makefile
-sed -i 'N;42 a $(curdir)/upx/compile := $(curdir)/ucl/compile' openwrt/tools/Makefile
+
+#svn co https://github.com/Lienol/openwrt/trunk/tools/ucl openwrt/tools/ucl
+#svn co https://github.com/Lienol/openwrt/trunk/tools/upx openwrt/tools/upx
+#sed -i 'N;28 a tools-y += ucl upx' openwrt/tools/Makefile
+#sed -i 'N;42 a $(curdir)/upx/compile := $(curdir)/ucl/compile' openwrt/tools/Makefile
 
 [ -e files ] && mv files openwrt/files
 cd openwrt
@@ -21,7 +22,8 @@ sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
-
+cp /usr/bin/upx staging_dir/host/bin
+cp /usr/bin/upx-ucl staging_dir/host/bin
 #wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C staging_dir/host/bin upx-3.96-amd64_linux/upx
 #添加自定义插件
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
