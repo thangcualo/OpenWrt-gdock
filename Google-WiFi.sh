@@ -6,8 +6,8 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b master --single-branch https://github.com/x-wrt/x-wrt.git openwrt
-
+#git clone -b master --single-branch https://github.com/x-wrt/x-wrt.git openwrt
+git clone -b master --single-branch https://github.com/openwrt/openwrt
 #svn co https://github.com/Lienol/openwrt/trunk/tools/ucl openwrt/tools/ucl
 #svn co https://github.com/Lienol/openwrt/trunk/tools/upx openwrt/tools/upx
 #sed -i 'N;28 a tools-y += ucl upx' openwrt/tools/Makefile
@@ -18,6 +18,7 @@ cd openwrt
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
+sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
