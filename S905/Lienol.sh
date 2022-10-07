@@ -6,14 +6,19 @@
 #   Blog: https://p3terx.com
 #=================================================
 #git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
-git clone -b 22.03 --single-branch https://github.com/Lienol/openwrt openwrt
+git clone -b master --single-branch https://github.com/openwrt/openwrt openwrt
 cd openwrt
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
+sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.default
+
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+
+cp /usr/bin/upx staging_dir/host/bin
+cp /usr/bin/upx-ucl staging_dir/host/bin
 #移除不用软件包
 rm -rf package/feeds/other/luci-app-mwan3helper
 rm -rf package/feeds/luci/luci-app-smartdns
@@ -29,12 +34,22 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package/luci-theme-edge
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-#添加简易网盘
+#添加插件
+svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-cpufreq package/luci-app-cpufreq
+svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-netdata package/luci-app-netdata
+git clone https://github.com/ssuperh/luci-app-vlmcsd-new.git package/luci-app-vlmcsd-new
+git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
+git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
-sed -i '$a chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
-sed -i 's/20220127/20220327/g' package/webd/Makefile
-sed -i 's/gwgw.ga/gwgw.ga\/fidx.html\\#/g' package/webd/Makefile
+git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
+git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
+git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
+git clone https://github.com/dazhaolear/luci-app-autorebootnew.git package/luci-app-autorebootnew
+git clone https://github.com/sbwml/luci-app-alist package/alist
+svn co https://github.com/small-5/Openwrt-Compile/trunk/Small_5/package/ipk/luci-app-adblock-plus package/luci-app-adblock-plus
+svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
 #[ -e ../S905/files ] && mv ../S905/files openwrt/files
 #sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
@@ -43,15 +58,7 @@ sed -i 's/gwgw.ga/gwgw.ga\/fidx.html\\#/g' package/webd/Makefile
 #修改Samba4d的位置
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/default-settings/files/zzz-default-settings
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-samba4.json" package/default-settings/files/zzz-default-settings
-#添加自定义插件
-#rm -rf package/lean/luci-app-turboacc
-#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-turboacc package/lean/luci-app-turboacc
-#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/dnsforwarder package/lean/dnsforwarder
-#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean//shortcut-fe/simulated-driver package/lean//shortcut-fe/simulated-driver
-添加插件
-#git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
-svn co https://github.com/small-5/Openwrt-Compile/trunk/Small_5/package/ipk/luci-app-adblock-plus package/luci-app-adblock-plus
-svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 
-[ -e ../S905/s905-Lienol.config ] && mv -f ../S905/s905-Lienol.config .config
-#mv -f ../S905/arm64.config .config
+
+#[ -e ../S905/s905-Lienol.config ] && mv -f ../S905/s905-Lienol.config .config
+mv -f ../S905/arm64.config .config
