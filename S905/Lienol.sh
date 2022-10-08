@@ -6,7 +6,8 @@
 #   Blog: https://p3terx.com
 #=================================================
 #git clone -b main --single-branch https://github.com/Lienol/openwrt openwrt
-git clone -b master --single-branch https://github.com/openwrt/openwrt openwrt
+#git clone -b master --single-branch https://github.com/openwrt/openwrt openwrt
+git clone -b openwrt-22.03 --single-branch https://github.com/openwrt/openwrt openwrt
 cd openwrt
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
