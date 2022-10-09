@@ -62,4 +62,5 @@ sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-samb
 
 
 #[ -e ../S905/s905-Lienol.config ] && mv -f ../S905/s905-Lienol.config .config
-mv -f ../S905/arm64.config .config
+#mv -f ../S905/arm64.config .config
+mv -f ../S905/s905-op.config .config
