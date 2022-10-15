@@ -64,5 +64,5 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-samba4/root/usr/share
 
 
 #[ -e ../S905/s905-Lienol.config ] && mv -f ../S905/s905-Lienol.config .config
-#mv -f ../S905/arm64.config .config
-mv -f ../S905/s905-op.config .config
+mv -f ../S905/arm64.config .config
+#mv -f ../S905/s905-op.config .config
