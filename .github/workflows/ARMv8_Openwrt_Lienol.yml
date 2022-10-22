@@ -17,9 +17,9 @@ on:
         default: 'false'
 
 env:
-  UPLOAD_BIN_DIR: false
+  UPLOAD_BIN_DIR: true
   UPLOAD_ARMVIRT: true
-  UPLOAD_FIRMWARE: false
+  UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: false
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: true
