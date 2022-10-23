@@ -35,6 +35,8 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package/luci-theme-edge
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-mcat package/luci-theme-mcat
 #添加插件
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-cpufreq package/luci-app-cpufreq
@@ -51,7 +53,8 @@ git clone https://github.com/dazhaolear/luci-app-autorebootnew.git package/luci-
 git clone https://github.com/sbwml/luci-app-alist package/alist
 svn co https://github.com/small-5/Openwrt-Compile/trunk/Small_5/package/ipk/luci-app-adblock-plus package/luci-app-adblock-plus
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
-git clone https://github.com/kiddin9/openwrt-adguardhome.git package/openwrt-adguardhome
+svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
+svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
 
 #[ -e ../S905/files ] && mv ../S905/files openwrt/files
 #sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
