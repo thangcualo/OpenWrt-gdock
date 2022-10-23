@@ -51,6 +51,7 @@ git clone https://github.com/dazhaolear/luci-app-autorebootnew.git package/luci-
 git clone https://github.com/sbwml/luci-app-alist package/alist
 svn co https://github.com/small-5/Openwrt-Compile/trunk/Small_5/package/ipk/luci-app-adblock-plus package/luci-app-adblock-plus
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
+git clone https://github.com/kiddin9/openwrt-adguardhome.git package/openwrt-adguardhome
 
 #[ -e ../S905/files ] && mv ../S905/files openwrt/files
 #sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
