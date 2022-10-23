@@ -35,8 +35,6 @@ git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-a
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package/luci-theme-edge
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 git clone https://github.com/jerrykuku/luci-app-argon-config package/luci-app-argon-config
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-argonne package/luci-theme-argonne
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-mcat package/luci-theme-mcat
 #添加插件
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-cpufreq package/luci-app-cpufreq
@@ -46,27 +44,32 @@ git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcs
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
 svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
-git clone https://github.com/a736399919/luci-app-adblock-plus.git package/luci-app-adblock-plus
+#git clone https://github.com/a736399919/luci-app-adblock-plus.git package/luci-app-adblock-plus
+#svn co https://github.com/small-5/Openwrt-Compile/trunk/Small_5/package/ipk/luci-app-adblock-plus package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 git clone https://github.com/dazhaolear/luci-app-autorebootnew.git package/luci-app-autorebootnew
+
+#更新golang19.x（修复openwrt-21.02/22.03分支的构建）
 git clone https://github.com/sbwml/luci-app-alist package/alist
-svn co https://github.com/small-5/Openwrt-Compile/trunk/Small_5/package/ipk/luci-app-adblock-plus package/luci-app-adblock-plus
+rm -rf feeds/packages/lang/golang
+svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
+
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
 svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome package/luci-app-adguardhome
 
-#[ -e ../S905/files ] && mv ../S905/files openwrt/files
-#sed -i '/exit 0/i\mkdir -pv /srv/webd/web/.Trash' package/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/i\ln -sv /mnt/mmcblk1p4/All-in-one /srv/webd/web/SD卡' package/default-settings/files/zzz-default-settings
-#sed -i '/exit 0/i\chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
 #修改Samba4d的位置
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/default-settings/files/zzz-default-settings
 sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-samba4.json" package/default-settings/files/zzz-default-settings
-sed -i 's/services/nas/g' feeds/luci/applications/luci-app-ksmbd/root/usr/share/luci/menu.d
-sed -i 's/services/nas/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d
+sed -i 's/services/nas/g' feeds/luci/applications/luci-app-ksmbd/root/usr/share/luci/menu.d/luci-app-ksmbd.json
+sed -i 's/services/nas/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
 #修改时区
 sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
+#修改lan口地址
+sed -i 's/192.168.1.1/192.168.5.5/g' package/base-files/files/bin/config_generate
+#修改机器名称
+sed -i 's/OpenWrt/HK1X3/g' package/base-files/files/bin/config_generate
 
 #[ -e ../S905/s905-Lienol.config ] && mv -f ../S905/s905-Lienol.config .config
 mv -f ../S905/arm64.config .config
