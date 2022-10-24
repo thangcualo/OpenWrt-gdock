@@ -22,6 +22,7 @@ cp /usr/bin/upx staging_dir/host/bin
 cp /usr/bin/upx-ucl staging_dir/host/bin
 rm -rf package/libs/ustream-ssl
 svn co https://github.com/x-wrt/x-wrt/trunk/package/libs/ustream-ssl package/ustream-ssl
+wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/999-natcap-patch-kernel-for-cone-nat-support.patch
 #移除不用软件包
 rm -rf package/feeds/other/luci-app-mwan3helper
 rm -rf package/feeds/luci/luci-app-smartdns
