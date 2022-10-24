@@ -20,6 +20,8 @@ sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.def
 
 cp /usr/bin/upx staging_dir/host/bin
 cp /usr/bin/upx-ucl staging_dir/host/bin
+rm -rf package/libs/ustream-ssl
+svn co https://github.com/x-wrt/x-wrt/trunk/package/libs/ustream-ssl package/ustream-ssl
 #移除不用软件包
 rm -rf package/feeds/other/luci-app-mwan3helper
 rm -rf package/feeds/luci/luci-app-smartdns
@@ -51,9 +53,9 @@ git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tc
 git clone https://github.com/dazhaolear/luci-app-autorebootnew.git package/luci-app-autorebootnew
 
 #更新golang19.x（修复openwrt-21.02/22.03分支的构建）
-git clone https://github.com/sbwml/luci-app-alist package/alist
-rm -rf feeds/packages/lang/golang
-svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
+#git clone https://github.com/sbwml/luci-app-alist package/alist
+#rm -rf feeds/packages/lang/golang
+#svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
 
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 svn co https://github.com/kenzok8/openwrt-packages/trunk/adguardhome package/adguardhome
