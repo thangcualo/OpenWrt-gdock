@@ -36,7 +36,7 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe packa
 svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
 sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/lean/luci-app-autoreboot/Makefile
 sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/lean/luci-app-turboacc/Makefile
-wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
+wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/Lienol/openwrt/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
 
 #更新golang19.x（修复openwrt-21.02/22.03分支的构建）
 #git clone https://github.com/sbwml/luci-app-alist package/alist
