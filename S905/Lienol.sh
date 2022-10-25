@@ -23,6 +23,11 @@ cp /usr/bin/upx-ucl staging_dir/host/bin
 rm -rf package/libs/ustream-ssl
 svn co https://github.com/x-wrt/x-wrt/trunk/package/libs/ustream-ssl package/ustream-ssl
 wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/999-natcap-patch-kernel-for-cone-nat-support.patch
+
+sed -i 's/2.86/2.87/g' package/network/services/dnsmasq/Makefile
+sed -i 's/28d52cfc9e2004ac4f85274f52b32e1647b4dbc9761b82e7de1e41c49907eb08/0228c0364a7f2356fd7e7f1549937cbf3099a78d3b2eb1ba5bb0c31e2b89de7a/g' package/network/services/dnsmasq/Makefile
+
+
 #移除不用软件包
 rm -rf package/feeds/other/luci-app-mwan3helper
 rm -rf package/feeds/luci/luci-app-smartdns
