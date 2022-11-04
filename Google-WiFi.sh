@@ -6,7 +6,6 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-#git clone -b master --single-branch https://github.com/x-wrt/x-wrt.git openwrt
 git clone -b master --single-branch https://github.com/openwrt/openwrt
 #svn co https://github.com/Lienol/openwrt/trunk/tools/ucl openwrt/tools/ucl
 #svn co https://github.com/Lienol/openwrt/trunk/tools/upx openwrt/tools/upx
@@ -25,6 +24,9 @@ sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.def
 
 cp /usr/bin/upx staging_dir/host/bin
 cp /usr/bin/upx-ucl staging_dir/host/bin
+rm -rf package/libs/ustream-ssl
+svn co https://github.com/x-wrt/x-wrt/trunk/package/libs/ustream-ssl package/ustream-ssl
+wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/999-natcap-patch-kernel-for-cone-nat-support.patch
 #wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C staging_dir/host/bin upx-3.96-amd64_linux/upx
 #添加自定义插件
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
@@ -40,7 +42,11 @@ git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 git clone https://github.com/dazhaolear/luci-app-autorebootnew.git package/luci-app-autorebootnew
-
+#修改Samba4d的位置
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/lib/lua/luci/controller/samba4.lua" package/default-settings/files/zzz-default-settings
+sed -i "/exit 0/i\sed -i 's/services/nas/g' /usr/share/luci/menu.d/luci-app-samba4.json" package/default-settings/files/zzz-default-settings
+sed -i 's/services/nas/g' feeds/luci/applications/luci-app-ksmbd/root/usr/share/luci/menu.d/luci-app-ksmbd.json
+sed -i 's/services/nas/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
 
 #修改lan口地址
 sed -i 's/192.168.15.1/192.168.10.1/g' package/base-files/files/bin/config_generate
@@ -54,6 +60,6 @@ sed -i 's/OpenWrt/Google-WiFi/g' package/kernel/mac80211/files/lib/wifi/mac80211
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #修改时区
-#sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
+sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
 
-mv -f ../Google-Wifi/x-wrt-google.config .config
+mv -f ../Google-Wifi/google.config .config
