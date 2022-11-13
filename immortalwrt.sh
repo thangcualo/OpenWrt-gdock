@@ -6,8 +6,8 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-#git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
-git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
+git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
+#git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
 ./scripts/feeds update -a && ./scripts/feeds install -a
@@ -16,16 +16,11 @@ cd openwrt
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
 
 #添加自定义插件
-git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 
-svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
-svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
-#sed -i '$a chmod 775 /usr/bin/webd\n' package/emortal/default-settings/files/99-default-settings
-
 #修改lan口地址
-sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 #修改机器名称
 sed -i 's/ImmortalWrt/GDOCK/g' package/base-files/files/bin/config_generate
 #修改wifi名称
