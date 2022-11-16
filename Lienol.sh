@@ -6,8 +6,7 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-git clone -b 22.03 --single-branch https://github.com/Lienol/openwrt openwrt
-#git clone -b master --single-branch https://github.com/Lienol/openwrt openwrt
+git clone -b 21.02 --single-branch https://github.com/Lienol/openwrt openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
 #添加passwall
@@ -17,24 +16,13 @@ sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #添加自定义插件
-git clone https://github.com/tcsr200722/luci-app-cpufreq package/luci-app-cpufreq
-svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
-svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
-sed -i '$a chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
-git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
+#git clone https://github.com/tcsr200722/luci-app-cpufreq package/luci-app-cpufreq
+#svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
+#svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
+#sed -i '$a chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
+#git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
-
-#改qb版本为4.2.5
-#rm -rf package/lean/qBittorrent/Makefile
-#rm -rf package/lean/qBittorrent/patches
-#cp -rf ../qb425 package/lean/qBittorrent/Makefile
-#sed -i 's/1.1.13/1.2.6/g' package/lean/rblibtorrent/Makefile
-#sed -i 's/6f1250c6535730897909240ea0f4f2a81937d21a/a9968916ca82366f1c236af59aaecb9bc94ffe73/g' package/lean/rblibtorrent/Makefile
-
-#添加自己repo的插件的软连接或copy
-#ln -s ../../luci-theme-argon-1.x ./package/
-#cp -rf ../G-DOCK/luci-app-passwall package
 
 ##添加openwrt-usb-modeswitch-official
 #git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
@@ -58,7 +46,7 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 #修改机器名称
 sed -i 's/OpenWrt/G-DOCK/g' package/base-files/files/bin/config_generate
 #修改wifi名称
-sed -i 's/OpenWrt/FK20100010/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/OpenWrt/GDOCK/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #默认打开WiFi
 sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #修改时区
@@ -95,4 +83,5 @@ sed -i '$a\sed -i '\''s/services/nas/g'\'' /usr/share/luci/menu.d/luci-app-ksmbd
 rm -rf package/base-files/files/etc/banner
 cp -f ../banner package/base-files/files/etc/
 #mv -f ../G-DOCK/Lienol.default .config
-mv -f ../G-DOCK/Lienol_*.config .config
+#mv -f ../G-DOCK/Lienol_*.config .config
+mv -f ../G-DOCK/Lienol_eqos.config .config
