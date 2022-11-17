@@ -57,4 +57,5 @@ sed -i '$a\exit 0' package/emortal/default-settings/files/99-default-settings
 rm -rf package/base-files/files/etc/banner
 cp -rf ../banner package/base-files/files/etc/
 #mv -f ../G-DOCK/immortalwrt.default .config
-mv -f ../G-DOCK/immortalwrt-*.config .config
+#mv -f ../G-DOCK/immortalwrt-*.config .config
+mv -f ../G-DOCK/immortalwrt-eqos.config .config
