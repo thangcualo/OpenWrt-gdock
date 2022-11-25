@@ -24,6 +24,7 @@ sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 git clone https://github.com/AlexZhuo/luci-app-bandwidthd.git package/luci-app-bandwidthd
+git clone https://github.com/Huangjoe123/luci-app-eqos.git package/luci-app-eqos
 
 ##添加openwrt-usb-modeswitch-official
 #git clone https://github.com/gzhechu/openwrt-usb-modeswitch-official.git package/openwrt-usb-modeswitch-official
