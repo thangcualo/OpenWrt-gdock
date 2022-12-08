@@ -7,7 +7,8 @@
 #=================================================
 #克隆源码
 #git clone -b master --single-branch https://github.com/x-wrt/x-wrt.git openwrt
-git clone -b openwrt-22.03 --single-branch https://github.com/openwrt/openwrt
+#git clone -b openwrt-22.03 --single-branch https://github.com/openwrt/openwrt
+git clone --branch v22.03.2 https://github.com/openwrt/openwrt
 
 #svn co https://github.com/Lienol/openwrt/trunk/tools/ucl openwrt/tools/ucl
 #svn co https://github.com/Lienol/openwrt/trunk/tools/upx openwrt/tools/upx
@@ -17,9 +18,9 @@ git clone -b openwrt-22.03 --single-branch https://github.com/openwrt/openwrt
 [ -e files ] && mv files openwrt/files
 cd openwrt
 #添加passwall
-sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
-sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
-#sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.default
+#sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
+#sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
+sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -27,21 +28,14 @@ sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;
 cp /usr/bin/upx staging_dir/host/bin
 cp /usr/bin/upx-ucl staging_dir/host/bin
 rm -rf package/libs/ustream-ssl
-svn co https://github.com/x-wrt/x-wrt/trunk/package/libs/ustream-ssl package/ustream-ssl
+svn co https://github.com/x-wrt/x-wrt/branches/22.03/package/libs/ustream-ssl package/ustream-ssl
 #wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C staging_dir/host/bin upx-3.96-amd64_linux/upx
 #添加自定义插件
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-turboacc package/lean/luci-app-turboacc
-svn co https://github.com/coolsnowwolf/packages/trunk/net/dnsforwarder package/lean/dnsforwarder
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/shortcut-fe package/lean/shortcut-fe
-svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
-sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/lean/luci-app-autoreboot/Makefile
-sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/lean/luci-app-turboacc/Makefile
-wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/Lienol/openwrt/master/target/linux/generic/hack-5.10/953-net-patch-linux-kernel-to-support-shortcut-fe.patch
-
-#更新golang19.x（修复openwrt-21.02/22.03分支的构建）
-#git clone https://github.com/sbwml/luci-app-alist package/alist
-#rm -rf feeds/packages/lang/golang
-#svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
+#svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
+#sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/lean/luci-app-autoreboot/Makefile
+#sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/lean/luci-app-turboacc/Makefile
+wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/999-natcap-patch-kernel-for-cone-nat-support.patch
+wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/960-net-core-__netif_receive_skb_core-handle-INGRESS-bef.patch
 
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-cpufreq package/luci-app-cpufreq
@@ -50,12 +44,14 @@ git clone https://github.com/ssuperh/luci-app-vlmcsd-new.git package/luci-app-vl
 git clone https://github.com/flytosky-f/openwrt-vlmcsd.git package/openwrt-vlmcsd
 git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
-svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
-svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
+#svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
+#svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
 #git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 git clone https://github.com/dazhaolear/luci-app-autorebootnew.git package/luci-app-autorebootnew
+git clone https://github.com/AlexZhuo/luci-app-bandwidthd.git package/luci-app-bandwidthd
+git clone https://github.com/Huangjoe123/luci-app-eqos.git package/luci-app-eqos
 
 #修改Samba4&ksmbd的位置
 sed -i 's/services/nas/g' feeds/luci/applications/luci-app-ksmbd/root/usr/share/luci/menu.d/luci-app-ksmbd.json
