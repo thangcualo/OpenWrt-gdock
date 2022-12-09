@@ -6,36 +6,35 @@
 #   Blog: https://p3terx.com
 #=================================================
 #克隆源码
-#git clone -b master --single-branch https://github.com/x-wrt/x-wrt.git openwrt
+git clone -b master --single-branch https://github.com/x-wrt/x-wrt.git openwrt
 #git clone -b openwrt-22.03 --single-branch https://github.com/openwrt/openwrt
-git clone --branch v22.03.2 https://github.com/openwrt/openwrt
 
 #svn co https://github.com/Lienol/openwrt/trunk/tools/ucl openwrt/tools/ucl
 #svn co https://github.com/Lienol/openwrt/trunk/tools/upx openwrt/tools/upx
 #sed -i 'N;28 a tools-y += ucl upx' openwrt/tools/Makefile
 #sed -i 'N;42 a $(curdir)/upx/compile := $(curdir)/ucl/compile' openwrt/tools/Makefile
 
-[ -e files ] && mv files openwrt/files
+#[ -e files ] && mv files openwrt/files
 cd openwrt
 #添加passwall
 #sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 #sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
-sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.default
+#sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
 cp /usr/bin/upx staging_dir/host/bin
 cp /usr/bin/upx-ucl staging_dir/host/bin
-rm -rf package/libs/ustream-ssl
-svn co https://github.com/x-wrt/x-wrt/branches/22.03/package/libs/ustream-ssl package/ustream-ssl
+#rm -rf package/libs/ustream-ssl
+#svn co https://github.com/x-wrt/x-wrt/branches/22.03/package/libs/ustream-ssl package/ustream-ssl
 #wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C staging_dir/host/bin upx-3.96-amd64_linux/upx
 #添加自定义插件
 #svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-autoreboot package/lean/luci-app-autoreboot
 #sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/lean/luci-app-autoreboot/Makefile
 #sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/lean/luci-app-turboacc/Makefile
-wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/999-natcap-patch-kernel-for-cone-nat-support.patch
-wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/960-net-core-__netif_receive_skb_core-handle-INGRESS-bef.patch
+#wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/999-natcap-patch-kernel-for-cone-nat-support.patch
+#wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/960-net-core-__netif_receive_skb_core-handle-INGRESS-bef.patch
 
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-cpufreq package/luci-app-cpufreq
@@ -58,7 +57,7 @@ sed -i 's/services/nas/g' feeds/luci/applications/luci-app-ksmbd/root/usr/share/
 sed -i 's/services/nas/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
 
 #修改lan口地址
-sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.15.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
 #修改机器名称
 sed -i 's/OpenWrt/G-DOCK/g' package/base-files/files/bin/config_generate
