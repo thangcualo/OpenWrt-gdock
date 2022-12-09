@@ -18,7 +18,7 @@ cd openwrt
 #添加passwall
 #sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 #sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
-#sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.default
+sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -26,9 +26,9 @@ cd openwrt
 cp /usr/bin/upx staging_dir/host/bin
 cp /usr/bin/upx-ucl staging_dir/host/bin
 rm -rf package/libs/ustream-ssl
-rm -rf packages/net/miniupnpd
+rm -rf feeds/packages/net/miniupnpd
 svn co https://github.com/x-wrt/x-wrt/trunk/package/libs/ustream-ssl package/ustream-ssl
-svn co https://github.com/x-wrt/x-wrt/trunk/packages/net/miniupnpd packages/net/miniupnpd
+svn co https://github.com/x-wrt/x-wrt/trunk/packages/net/miniupnpd feeds/packages/net/miniupnpd
 
 #wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C staging_dir/host/bin upx-3.96-amd64_linux/upx
 #添加自定义插件
