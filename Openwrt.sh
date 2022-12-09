@@ -28,7 +28,7 @@ cp /usr/bin/upx-ucl staging_dir/host/bin
 rm -rf package/libs/ustream-ssl
 rm -rf feeds/packages/net/miniupnpd
 svn co https://github.com/x-wrt/x-wrt/trunk/package/libs/ustream-ssl package/ustream-ssl
-svn co https://github.com/x-wrt/x-wrt/trunk/packages/net/miniupnpd feeds/packages/net/miniupnpd
+svn co https://github.com/x-wrt/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
 
 #wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C staging_dir/host/bin upx-3.96-amd64_linux/upx
 #添加自定义插件
