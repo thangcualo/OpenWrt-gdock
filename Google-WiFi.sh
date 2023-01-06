@@ -25,8 +25,13 @@ sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.def
 cp /usr/bin/upx staging_dir/host/bin
 cp /usr/bin/upx-ucl staging_dir/host/bin
 rm -rf package/libs/ustream-ssl
+rm -rf feeds/packages/net/miniupnpd
 svn co https://github.com/x-wrt/x-wrt/trunk/package/libs/ustream-ssl package/ustream-ssl
-wget -P target/linux/generic/hack-5.10 https://raw.githubusercontent.com/x-wrt/x-wrt/22.03/target/linux/generic/hack-5.10/999-natcap-patch-kernel-for-cone-nat-support.patch
+svn co https://github.com/x-wrt/packages/trunk/net/miniupnpd feeds/packages/net/miniupnpd
+
+wget -P target/linux/generic/hack-5.15 https://raw.githubusercontent.com/x-wrt/x-wrt/master/target/linux/generic/hack-5.15/999-natcap-patch-kernel-for-cone-nat-support.patch
+wget -P target/linux/generic/hack-5.15 https://raw.githubusercontent.com/x-wrt/x-wrt/master/target/linux/generic/hack-5.15/960-net-core-__netif_receive_skb_core-handle-INGRESS-bef.patch
+
 #wget -q -O - https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz | tar -Jx --strip 1 -f - -C staging_dir/host/bin upx-3.96-amd64_linux/upx
 #添加自定义插件
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-fileassistant package/luci-app-fileassistan
@@ -61,5 +66,7 @@ sed -i 's/disabled=1/disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac802
 
 #修改时区
 sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
+
+
 
 mv -f ../Google-Wifi/Google.config .config
