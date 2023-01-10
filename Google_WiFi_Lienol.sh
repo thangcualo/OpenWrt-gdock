@@ -67,4 +67,5 @@ sed -i '$a\sed -i '\''s/services/nas/g'\'' /usr/share/luci/menu.d/luci-app-ksmbd
 wget -P target/linux/generic/hack-5.15 https://raw.githubusercontent.com/x-wrt/x-wrt/master/target/linux/generic/hack-5.15/999-natcap-patch-kernel-for-cone-nat-support.patch
 #copy配置文件
 #mv -f ../Google-Wifi/Lienol.default .config
-mv -f ../Google-Wifi/Lienol_google_wifi.config .config
+#mv -f ../Google-Wifi/Lienol_google_wifi.config .config
+mv -f ../Google-Wifi/Lienol_google_wifi_sfe.config .config
