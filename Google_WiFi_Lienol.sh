@@ -13,15 +13,16 @@ cd openwrt
 #添加passwall
 sed -i '$a src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git' feeds.conf.default
 sed -i '$a src-git xiaorouji1 https://github.com/xiaorouji/openwrt-passwall.git;luci' feeds.conf.default
+sed -i '$a src-git-full x https://github.com/x-wrt/com.x-wrt.git' feeds.conf.default
 ./scripts/feeds clean
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 #添加自定义插件
-git clone https://github.com/tcsr200722/luci-app-cpufreq package/luci-app-cpufreq
-svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
-svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
-sed -i '$a chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
-git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
+#git clone https://github.com/tcsr200722/luci-app-cpufreq package/luci-app-cpufreq
+#svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/luci-app-webd package/luci-app-webd
+#svn checkout https://github.com/Hyy2001X/AutoBuild-Packages/trunk/webd package/webd
+#sed -i '$a chmod 775 /usr/bin/webd\n' package/default-settings/files/zzz-default-settings
+#git clone https://github.com/small-5/luci-app-adblock-plus.git package/luci-app-adblock-plus
 git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 
@@ -63,6 +64,7 @@ sed -i '$a\sed -i '\''s/services/nas/g'\'' /usr/share/luci/menu.d/luci-app-ksmbd
 #添加包含"exit 0"的行
 #sed -i '$a\exit 0' package/default-settings/files/zzz-default-settings
 
+wget -P target/linux/generic/hack-5.15 https://raw.githubusercontent.com/x-wrt/x-wrt/master/target/linux/generic/hack-5.15/999-natcap-patch-kernel-for-cone-nat-support.patch
 #copy配置文件
 #mv -f ../Google-Wifi/Lienol.default .config
-mv -f ../Google-Wifi/google_wifi.config .config
+mv -f ../Google-Wifi/Lienol_google_wifi.config .config
