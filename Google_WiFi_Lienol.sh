@@ -27,7 +27,7 @@ git clone https://github.com/ntlf9t/luci-app-easymesh package/luci-app-easymesh
 git clone https://github.com/KFERMercer/luci-app-tcpdump.git package/luci-app-tcpdump
 
 #添加主题
-svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package/luci-theme-edge
+#svn co https://github.com/kenzok8/openwrt-packages/trunk/luci-theme-edge package/luci-theme-edge
 git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-1.7.2
 git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-2.2.9
 
