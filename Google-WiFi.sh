@@ -69,4 +69,5 @@ sed -i "s/'UTC'/'CST-8'\n        set system.@system[-1].zonename='Asia\/Shanghai
 
 
 
-mv -f ../Google-Wifi/Google.config .config
+#mv -f ../Google-Wifi/Google.config .config
+mv -f ../Google-Wifi/x-wrt-google.config .config
